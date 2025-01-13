@@ -1,0 +1,12 @@
+.idea
+.vscode
+_ext_**
+.git
+node_modules
+vendor
+includes
+temp
+composer.lock
+package-lock.json
+mix-manifest.json
+.DS_Store

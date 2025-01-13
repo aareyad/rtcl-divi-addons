@@ -1,0 +1,16 @@
+{
+  "name": "radiustheme/rtcl-divi-addons",
+  "description": "Classified Listing required addons for Divi Builder",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "RtclDiviAddons\\": "app"
+    }
+  },
+  "authors": [
+    {
+      "name": "RadiusTheme",
+      "email": "radiustheme@gmail.com"
+    }
+  ]
+}
