@@ -64,7 +64,7 @@ if ((!process.env.npm_config_block && !process.env.npm_config_package) && (proce
 
     mix
         .babel(`src/js/frontend.js`, `assets/js/frontend${min}.js`)
-        .js(`includes/loader.js`, `assets/js/divi-modules${min}.js`).react()
+        .js(`src/js/loader.js`, `assets/js/divi-modules${min}.js`).react()
 
     mix.sass(`src/sass/frontend.scss`, `assets/css/frontend.css`)
 

@@ -2,6 +2,7 @@
 
 use RtclDiviAddons\Helpers\Installer;
 use RtclDiviAddons\Hooks\ActionHooks;
+use RtclDiviAddons\Hooks\DiviHooks;
 use RtclDiviAddons\Hooks\FilterHooks;
 use RtclDiviAddons\Models\Dependencies;
 
@@ -87,6 +88,7 @@ final class RtclDiviInit {
 		if ( $this->dependency->check() ) {
 			FilterHooks::init();
 			ActionHooks::init();
+			DiviHooks::init();
 		}
 	}
 
@@ -95,11 +97,26 @@ final class RtclDiviInit {
 		wp_register_script( 'rtcl-divi-addons', RTCL_DIVI_ADDONS_URL . "/assets/js/frontend.js", [ 'jquery' ], self::$version, true );
 		wp_enqueue_script( 'rtcl-divi-modules', RTCL_DIVI_ADDONS_URL . "/assets/js/divi-modules.js", [ 'jquery', 'react-dom', 'react', 'et_pb_media_library' ],
 			self::$version, true );
-		//wp_enqueue_script( 'rtcl-divi-modules', RTCL_DIVI_ADDONS_URL . "/assets/js/divi-modules.js", [ 'jquery' ], self::$version, true );
 	}
 
 	public static function load_admin_script() {
 
+	}
+
+	/**
+	 * @return string
+	 */
+	public function get_plugin_template_path() {
+		return $this->plugin_path() . '/templates/';
+	}
+
+	/**
+	 * Get the plugin path.
+	 *
+	 * @return string
+	 */
+	public function plugin_path() {
+		return untrailingslashit( plugin_dir_path( RTCL_DIVI_ADDONS_PLUGIN_FILE ) );
 	}
 }
 
@@ -107,7 +124,9 @@ function rtcl_divi_addons() {
 	return RtclDiviInit::getInstance();
 }
 
-rtcl_divi_addons();
+add_action( 'divi_extensions_init', function () {
+	rtcl_divi_addons();
+} );
 
 register_activation_hook( RTCL_DIVI_ADDONS_PLUGIN_FILE, [ Installer::class, 'activate' ] );
 register_deactivation_hook( RTCL_DIVI_ADDONS_PLUGIN_FILE, [ Installer::class, 'deactivate' ] );
