@@ -22,30 +22,8 @@ class ListingsGrid extends \ET_Builder_Module {
 			],
 			'advanced' => [
 				'toggles' => [
-					'title' => array(
-						'title'             => esc_html__( 'Title', 'rtcl-divi-addons' ),
-						'tabbed_subtoggles' => true,
-						'sub_toggles'       => array(
-							'normal' => array(
-								'name' => esc_html__( 'Normal', 'rtcl-divi-addons' ),
-							),
-							'hover'  => array(
-								'name' => esc_html__( 'Hover', 'rtcl-divi-addons' ),
-							),
-						),
-					),
-					'meta'  => array(
-						'title'             => esc_html__( 'Meta', 'rtcl-divi-addons' ),
-						'tabbed_subtoggles' => true,
-						'sub_toggles'       => array(
-							'normal' => array(
-								'name' => esc_html__( 'Normal', 'rtcl-divi-addons' ),
-							),
-							'hover'  => array(
-								'name' => esc_html__( 'Hover', 'rtcl-divi-addons' ),
-							),
-						),
-					),
+					'title' => esc_html__( 'Title', 'rtcl-divi-addons' ),
+					'meta'  => esc_html__( 'Meta', 'rtcl-divi-addons' ),
 				],
 			],
 		];
@@ -66,7 +44,7 @@ class ListingsGrid extends \ET_Builder_Module {
 		$listing_order_by = apply_filters( 'rtcl_divi_listing_order_by', $listing_order_by );
 
 		return [
-			'rtcl_grid_style'                => [
+			'rtcl_grid_style'          => [
 				'label'       => esc_html__( 'Style', 'rtcl-divi-addons' ),
 				'type'        => 'select',
 				'options'     => [
@@ -77,7 +55,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'layout',
 			],
-			'rtcl_grid_column'               => [
+			'rtcl_grid_column'         => [
 				'label'          => esc_html__( 'Grid Column', 'rtcl-divi-addons' ),
 				'type'           => 'select',
 				'options'        => [
@@ -92,7 +70,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'       => 'general',
 				'toggle_slug'    => 'layout',
 			],
-			'rtcl_listing_types'             => [
+			'rtcl_listing_types'       => [
 				'label'       => esc_html__( 'Listing Types', 'rtcl-divi-addons' ),
 				'type'        => 'select',
 				'options'     => array_merge(
@@ -105,7 +83,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
-			'rtcl_listing_categories'        => [
+			'rtcl_listing_categories'  => [
 				'label'       => esc_html__( 'Categories', 'rtcl-divi-addons' ),
 				'type'        => 'select',
 				'options'     => $category_dropdown,
@@ -113,7 +91,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
-			'rtcl_listing_location'          => [
+			'rtcl_listing_location'    => [
 				'label'       => esc_html__( 'Location', 'rtcl-divi-addons' ),
 				'type'        => 'select',
 				'options'     => $location_dropdown,
@@ -121,7 +99,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
-			'rtcl_listing_per_page'          => [
+			'rtcl_listing_per_page'    => [
 				'label'       => esc_html__( 'Listing Per Page', 'rtcl-divi-addons' ),
 				'type'        => 'number',
 				'default'     => '10',
@@ -129,7 +107,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'toggle_slug' => 'general',
 				'description' => esc_html__( 'Number of listing to display', 'rtcl-divi-addons' ),
 			],
-			'rtcl_listing_pagination'        => [
+			'rtcl_listing_pagination'  => [
 				'label'       => esc_html__( 'Listing Pagination', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -140,7 +118,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
-			'rtcl_orderby'                   => [
+			'rtcl_orderby'             => [
 				'label'       => esc_html__( 'Order By', 'rtcl-divi-addons' ),
 				'type'        => 'select',
 				'options'     => $listing_order_by,
@@ -148,7 +126,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
-			'rtcl_sortby'                    => [
+			'rtcl_sortby'              => [
 				'label'       => esc_html__( 'Sort By', 'rtcl-divi-addons' ),
 				'type'        => 'select',
 				'options'     => [
@@ -159,7 +137,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
-			'rtcl_image_size'                => [
+			'rtcl_image_size'          => [
 				'label'            => esc_html__( 'Image Size', 'rtcl-divi-addons' ),
 				'type'             => 'select',
 				'options'          => $this->get_image_sizes_select(),
@@ -170,14 +148,14 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'         => 'general',
 				'toggle_slug'      => 'general',
 			],
-			'rtcl_no_listing_text'           => [
+			'rtcl_no_listing_text'     => [
 				'label'       => esc_html__( 'No Listing Text', 'rtcl-divi-addons' ),
 				'type'        => 'text',
 				'default'     => esc_html__( 'No Listing Found', 'rtcl-divi-addons' ),
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
-			'rtcl_show_image'                => [
+			'rtcl_show_image'          => [
 				'label'       => esc_html__( 'Show Image', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -189,7 +167,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_description'          => [
+			'rtcl_show_description'    => [
 				'label'       => esc_html__( 'Show Description', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -201,7 +179,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_content_limit'             => [
+			'rtcl_content_limit'       => [
 				'label'       => esc_html__( 'Description Limit', 'rtcl-divi-addons' ),
 				'type'        => 'number',
 				'default'     => '20',
@@ -212,7 +190,7 @@ class ListingsGrid extends \ET_Builder_Module {
 					'rtcl_show_description' => 'on',
 				],
 			],
-			'rtcl_show_labels'               => [
+			'rtcl_show_labels'         => [
 				'label'       => esc_html__( 'Show Badge', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -224,7 +202,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_details_button'       => [
+			'rtcl_show_details_button' => [
 				'label'       => esc_html__( 'Show Details Button', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -236,7 +214,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_date'                 => [
+			'rtcl_show_date'           => [
 				'label'       => esc_html__( 'Show Date', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -248,7 +226,19 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_ad_types'             => [
+			'rtcl_show_views'          => [
+				'label'       => esc_html__( 'Show View Count', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'on',
+				'description' => __( 'Show / Hide listing views.', 'rtcl-divi-addons' ),
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'content_visibility',
+			],
+			'rtcl_show_ad_types'       => [
 				'label'       => esc_html__( 'Show Ad Type', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -260,7 +250,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_location'             => [
+			'rtcl_show_location'       => [
 				'label'       => esc_html__( 'Show Location', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -272,7 +262,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_category'             => [
+			'rtcl_show_category'       => [
 				'label'       => esc_html__( 'Show Category', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -284,7 +274,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_price'                => [
+			'rtcl_show_price'          => [
 				'label'       => esc_html__( 'Show Price', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -296,7 +286,7 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_user'                 => [
+			'rtcl_show_user'           => [
 				'label'       => esc_html__( 'Show Author Name', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -309,63 +299,34 @@ class ListingsGrid extends \ET_Builder_Module {
 				'toggle_slug' => 'content_visibility',
 			],
 			// Style
-			'rtcl_title_color'               => [
+			'rtcl_title_color'         => [
 				'label'       => esc_html__( 'Title Color', 'addons-for-divi' ),
 				'description' => esc_html__( 'Here you can define a custom color for listing title.', 'rtcl-divi-addons' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'title',
-				'sub_toggle'  => 'normal',
+				'hover'       => 'tabs',
 			],
-			'rtcl_title_hover_color'         => [
-				'label'       => esc_html__( 'Title Hover Color', 'addons-for-divi' ),
-				'description' => esc_html__( 'Here you can define a custom color for listing title.', 'rtcl-divi-addons' ),
-				'type'        => 'color-alpha',
-				'tab_slug'    => 'advanced',
-				'toggle_slug' => 'title',
-				'sub_toggle'  => 'hover',
-			],
-			'rtcl_meta_color'                => [
+			'rtcl_meta_color'          => [
 				'label'       => esc_html__( 'Meta Color', 'addons-for-divi' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'meta',
-				'sub_toggle'  => 'normal',
+				'hover'       => 'tabs',
 			],
-			'rtcl_meta_icon_color'           => [
+			'rtcl_meta_icon_color'     => [
 				'label'       => esc_html__( 'Meta Icon Color', 'addons-for-divi' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'meta',
-				'sub_toggle'  => 'normal',
+				'hover'       => 'tabs',
 			],
-			'rtcl_meta_category_color'       => [
+			'rtcl_meta_category_color' => [
 				'label'       => esc_html__( 'Category Color', 'addons-for-divi' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'meta',
-				'sub_toggle'  => 'normal',
-			],
-			'rtcl_meta_hover_color'          => [
-				'label'       => esc_html__( 'Meta Hover Color', 'addons-for-divi' ),
-				'type'        => 'color-alpha',
-				'tab_slug'    => 'advanced',
-				'toggle_slug' => 'meta',
-				'sub_toggle'  => 'hover',
-			],
-			'rtcl_meta_hover_icon_color'     => [
-				'label'       => esc_html__( 'Meta Icon Hover Color', 'addons-for-divi' ),
-				'type'        => 'color-alpha',
-				'tab_slug'    => 'advanced',
-				'toggle_slug' => 'meta',
-				'sub_toggle'  => 'hover',
-			],
-			'rtcl_meta_category_color_hover' => [
-				'label'       => esc_html__( 'Category Hover Color', 'addons-for-divi' ),
-				'type'        => 'color-alpha',
-				'tab_slug'    => 'advanced',
-				'toggle_slug' => 'meta',
-				'sub_toggle'  => 'hover',
+				'hover'       => 'tabs',
 			],
 		];
 	}
@@ -388,7 +349,6 @@ class ListingsGrid extends \ET_Builder_Module {
 				'hide_text_align'  => true,
 				'tab_slug'         => 'advanced',
 				'toggle_slug'      => 'title',
-				'sub_toggle'       => 'normal',
 				'line_height'      => array(
 					'range_settings' => array(
 						'min'  => '1',
@@ -414,7 +374,6 @@ class ListingsGrid extends \ET_Builder_Module {
 				'hide_text_align'  => true,
 				'tab_slug'         => 'advanced',
 				'toggle_slug'      => 'meta',
-				'sub_toggle'       => 'normal',
 				'line_height'      => array(
 					'range_settings' => array(
 						'min'  => '1',
@@ -508,10 +467,16 @@ class ListingsGrid extends \ET_Builder_Module {
 	public function widget_query_args() {
 		$settings = $this->props;
 
-		$categories_list   = isset( $settings['rtcl_listing_categories'] ) && ! empty( $settings['rtcl_listing_categories'] )
-			? $settings['rtcl_listing_categories'] : [];
-		$location_list     = isset( $settings['rtcl_listing_location'] ) && ! empty( $settings['rtcl_listing_location'] ) ? $settings['rtcl_listing_location']
-			: [];
+		$categories_list = $location_list = [];
+
+		if ( isset( $settings['rtcl_listing_categories'] ) && 'all' !== $settings['rtcl_listing_categories'] ) {
+			$categories_list[] = absint( $settings['rtcl_listing_categories'] );
+		}
+
+		if ( isset( $settings['rtcl_listing_location'] ) && 'all' !== $settings['rtcl_listing_location'] ) {
+			$location_list[] = absint( $settings['rtcl_listing_location'] );
+		}
+
 		$orderby           = isset( $settings['rtcl_orderby'] ) && ! empty( $settings['rtcl_orderby'] ) ? $settings['rtcl_orderby'] : 'date';
 		$order             = isset( $settings['rtcl_sortby'] ) && ! empty( $settings['rtcl_sortby'] ) ? $settings['rtcl_sortby'] : 'desc';
 		$listings_per_page = isset( $settings['rtcl_listing_per_page'] ) && ! empty( $settings['rtcl_listing_per_page'] ) ? $settings['rtcl_listing_per_page']
@@ -523,8 +488,8 @@ class ListingsGrid extends \ET_Builder_Module {
 			'post_type'      => rtcl()->post_type,
 			'posts_per_page' => $listings_per_page,
 			'post_status'    => 'publish',
-			'tax_query'      => [ // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-			                      'relation' => 'AND',
+			'tax_query'      => [
+				'relation' => 'AND',
 			],
 		];
 		$the_args['paged'] = Pagination::get_page_number();
@@ -590,6 +555,8 @@ class ListingsGrid extends \ET_Builder_Module {
 		$settings  = $this->props;
 		$the_loops = $this->widget_results();
 
+		$this->render_css( $render_slug );
+
 		$style = isset( $settings['rtcl_grid_style'] ) ? sanitize_text_field( $settings['rtcl_grid_style'] ) : 'style-1';
 
 		$template_style = 'listing-ads/grid/' . $style;
@@ -598,6 +565,8 @@ class ListingsGrid extends \ET_Builder_Module {
 			'template'      => $template_style,
 			'instance'      => $settings,
 			'the_loops'     => $the_loops,
+			'view'          => 'grid',
+			'style'         => $style,
 			'template_path' => rtcl_divi_addons()->get_plugin_template_path(),
 		];
 
@@ -610,5 +579,29 @@ class ListingsGrid extends \ET_Builder_Module {
 		}
 
 		wp_reset_postdata();
+	}
+
+	protected function render_css( $render_slug ) {
+		$title_color       = $this->props['rtcl_title_color'];
+		$title_hover_color = $this->get_hover_value( 'rtcl_title_color' );
+
+		if ( ! empty( $title_color ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => '%%order_class%% .rtcl-listing-title a',
+					'declaration' => sprintf( 'color: %1$s;', $title_color ),
+				]
+			);
+		}
+		if ( ! empty( $title_hover_color ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => '%%order_class%% .rtcl-listing-title a:hover',
+					'declaration' => sprintf( 'color: %1$s;', $title_hover_color ),
+				]
+			);
+		}
 	}
 }
