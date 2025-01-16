@@ -155,6 +155,32 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
+			// computed.
+			'__listings'               => array(
+				'type'                => 'computed',
+				//'computed_callback'   => array( 'ListingsGrid', 'get_listings' ),
+				'computed_depends_on' => array(
+					'rtcl_listing_types',
+					'rtcl_listing_categories',
+					'rtcl_listing_location',
+					'rtcl_orderby',
+					'rtcl_sortby',
+					'rtcl_listing_per_page',
+					'rtcl_image_size',
+					'rtcl_listing_pagination'
+				),
+				'computed_minimum'    => array(
+					'rtcl_listing_types',
+					'rtcl_listing_categories',
+					'rtcl_listing_location',
+					'rtcl_orderby',
+					'rtcl_sortby',
+					'rtcl_listing_per_page',
+					'rtcl_image_size',
+					'rtcl_listing_pagination'
+				),
+			),
+			// visibility
 			'rtcl_show_image'          => [
 				'label'       => esc_html__( 'Show Image', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
@@ -199,18 +225,6 @@ class ListingsGrid extends \ET_Builder_Module {
 				],
 				'default'     => 'on',
 				'description' => __( 'Show / Hide listing badge.', 'rtcl-divi-addons' ),
-				'tab_slug'    => 'general',
-				'toggle_slug' => 'content_visibility',
-			],
-			'rtcl_show_details_button' => [
-				'label'       => esc_html__( 'Show Details Button', 'rtcl-divi-addons' ),
-				'type'        => 'yes_no_button',
-				'options'     => [
-					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
-					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
-				],
-				'default'     => 'on',
-				'description' => __( 'Show / Hide listing button.', 'rtcl-divi-addons' ),
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
@@ -453,10 +467,9 @@ class ListingsGrid extends \ET_Builder_Module {
 		return $sizes_arr;
 	}
 
-	public function widget_results() {
-		$args = $this->widget_query_args();
+	public function widget_results( $settings ) {
+		$args = self::widget_query_args( $settings );
 
-		add_filter( 'excerpt_length', [ $this, 'excerpt_limit' ] );
 		add_filter( 'excerpt_more', '__return_empty_string' );
 		// The Query.
 		$loop_obj = new \WP_Query( $args );
@@ -464,8 +477,7 @@ class ListingsGrid extends \ET_Builder_Module {
 		return $loop_obj;
 	}
 
-	public function widget_query_args() {
-		$settings = $this->props;
+	public static function widget_query_args( $settings ) {
 
 		$categories_list = $location_list = [];
 
@@ -551,9 +563,21 @@ class ListingsGrid extends \ET_Builder_Module {
 		return $the_args;
 	}
 
+	public static function get_listings( $args = array(), $conditional_tags = array(), $current_page = array() ) {
+		$query_args = self::widget_query_args( $args );
+
+		$query = new \WP_Query( $query_args );
+
+		if ( $query->have_posts() ) {
+			return $query;
+		} else {
+			return false;
+		}
+	}
+
 	public function render( $unprocessed_props, $content, $render_slug ) {
 		$settings  = $this->props;
-		$the_loops = $this->widget_results();
+		$the_loops = $this->widget_results( $settings );
 
 		$this->render_css( $render_slug );
 
@@ -584,6 +608,8 @@ class ListingsGrid extends \ET_Builder_Module {
 	protected function render_css( $render_slug ) {
 		$title_color       = $this->props['rtcl_title_color'];
 		$title_hover_color = $this->get_hover_value( 'rtcl_title_color' );
+		$title_font        = explode( '|', $this->props['title_font'] )[0];
+		$title_font_weight = explode( '|', $this->props['title_font'] )[1];
 
 		if ( ! empty( $title_color ) ) {
 			\ET_Builder_Element::set_style(
@@ -601,6 +627,24 @@ class ListingsGrid extends \ET_Builder_Module {
 					'selector'    => '%%order_class%% .rtcl-listing-title a:hover',
 					'declaration' => sprintf( 'color: %1$s;', $title_hover_color ),
 				]
+			);
+		}
+		if ( ! empty( $title_font ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .rtcl-listing-title',
+					'declaration' => sprintf( 'font-family: %1$s;', $title_font ),
+				)
+			);
+		}
+		if ( ! empty( $title_font_weight ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				array(
+					'selector'    => '%%order_class%% .rtcl-listing-title',
+					'declaration' => sprintf( 'font-weight: %1$s;', $title_font_weight ),
+				)
 			);
 		}
 	}
