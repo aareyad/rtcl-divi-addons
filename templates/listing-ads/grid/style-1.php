@@ -12,16 +12,13 @@ use Rtcl\Models\Listing;
 
 ?>
 
-<div class="rtcl rtcl-listings-sc-wrapper rtcl-elementor-widget">
+<div class="rtcl rtcl-listings-sc-wrapper rtcl-divi-module">
     <div class="rtcl-listings-wrapper">
 		<?php
-		$class = '';
-		$class .= ! empty( $view ) ? 'rtcl-' . $view . '-view ' : 'rtcl-list-view ';
-		$class .= ! empty( $style ) ? 'rtcl-' . $style . '-view ' : 'rtcl-style-1-view ';
-
-		$class .= ! empty( $instance['rtcl_grid_column'] ) ? 'columns-' . $instance['rtcl_grid_column'] . ' ' : ' columns-1';
+		$class = ! empty( $style ) ? 'rtcl-grid-' . $style : 'rtcl-grid-style-1';
+		$class .= ! empty( $instance['rtcl_grid_column'] ) ? ' columns-' . $instance['rtcl_grid_column'] : ' columns-3';
 		?>
-        <div class="rtcl-listings <?php echo esc_attr( $class ); ?> ">
+        <div class="rtcl-listings rtcl-grid-view <?php echo esc_attr( $class ); ?> ">
 			<?php
 
 			while ( $the_loops->have_posts() ) :
@@ -63,14 +60,14 @@ use Rtcl\Models\Listing;
 					}
 					if ( 'on' === $instance['rtcl_show_date'] ) {
 						$time = sprintf(
-							'<li class="date"><i class="rtcl-icon rtcl-icon-clock" aria-hidden="true"></i>%s</li>',
+							'<li class="listing-date"><i class="rtcl-icon rtcl-icon-clock" aria-hidden="true"></i>%s</li>',
 							$listing->get_the_time()
 						);
 					}
 					if ( 'on' === $instance['rtcl_show_location'] ) {
 						if ( wp_strip_all_tags( $listing->the_locations( false ) ) ) {
 							$location = sprintf(
-								'<li class="location"><i class="rtcl-icon rtcl-icon-location" aria-hidden="true"></i>%s</li>',
+								'<li class="listing-location"><i class="rtcl-icon rtcl-icon-location" aria-hidden="true"></i>%s</li>',
 								$listing->the_locations( false, true )
 							);
 						}
@@ -78,7 +75,7 @@ use Rtcl\Models\Listing;
 
 					if ( 'on' === $instance['rtcl_show_price'] ) {
 						$price_html = $listing->get_price_html();
-						$price      = sprintf( '<div class="item-price">%s</div>', $price_html );
+						$price      = sprintf( '<div class="item-price listing-price">%s</div>', $price_html );
 					}
 					$author_html = '';
 					if ( 'on' === $instance['rtcl_show_user'] ) {
@@ -87,14 +84,14 @@ use Rtcl\Models\Listing;
 							do_action( 'rtcl_after_author_meta', $listing->get_owner_id() );
 						}
 						$after_author_meta = ob_get_clean();
-						$author_html       = sprintf( '<li class="author" ><i class="rtcl-icon rtcl-icon-user" aria-hidden="true"></i>%s %s</li>',
+						$author_html       = sprintf( '<li class="listing-author" ><i class="rtcl-icon rtcl-icon-user" aria-hidden="true"></i>%s %s</li>',
 							get_the_author(), $after_author_meta );
 					}
 					$views_html = '';
 					if ( 'on' === $instance['rtcl_show_views'] ) {
 						$views      = absint( get_post_meta( get_the_ID(), '_views', true ) );
 						$views_html = sprintf(
-							'<li class="view"><i class="rtcl-icon rtcl-icon-eye" aria-hidden="true"></i>%s</li>',
+							'<li class="listing-views"><i class="rtcl-icon rtcl-icon-eye" aria-hidden="true"></i>%s</li>',
 							sprintf(
 							/* translators: %s: views count */
 								_n( '%s view', '%s views', $views, 'classified-listing' ),
@@ -111,7 +108,7 @@ use Rtcl\Models\Listing;
 
 						if ( $types ) {
 							$types = sprintf(
-								'<li class="rtin-type"><i class="rtcl-icon-tags" aria-hidden="true"></i>%s</li>',
+								'<li class="listing-type"><i class="rtcl-icon rtcl-icon-tags" aria-hidden="true"></i>%s</li>',
 								$types
 							);
 						}
@@ -124,12 +121,12 @@ use Rtcl\Models\Listing;
 
 					if ( 'on' === $instance['rtcl_show_category'] ) {
 						$category = sprintf(
-							'<div class="category">%s</div>',
+							'<div class="listing-cat">%s</div>',
 							$listing->the_categories( false, true )
 						);
 					}
 					$listing_title = sprintf(
-						'<h3 class="listing-title rtcl-listing-title"><a href="%1$s" title="%2$s">%2$s</a></h3>',
+						'<h3 class="rtcl-listing-title"><a href="%1$s" title="%2$s">%2$s</a></h3>',
 						get_the_permalink(),
 						esc_html( get_the_title() )
 					);
@@ -138,21 +135,18 @@ use Rtcl\Models\Listing;
 
 						if ( $instance['rtcl_content_limit'] ) {
 							$listing_description = sprintf(
-								'<div class="rtcl-short-description"> %s </div>',
+								'<p class="rtcl-excerpt"> %s </p>',
 								wp_trim_words( wpautop( $excerpt ), $instance['rtcl_content_limit'] )
 							);
 						} else {
 							$listing_description = sprintf(
-								'<div class="rtcl-short-description"> %s </div>',
+								'<p class="rtcl-excerpt"> %s </p>',
 								wpautop( $excerpt )
 							);
 						}
 					}
 
-					$item_content_right = sprintf(
-						'<div class="rtin-right">%s </div>',
-						$price
-					);
+					$item_content_right = sprintf( '%s', $price );
 
 					$item_content   = sprintf(
 						'<div class="item-content">%s %s %s %s %s %s %s</div>',

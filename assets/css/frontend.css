@@ -1,1 +1,9 @@
-
+#et-boc .et-l .rtcl-listings-wrapper .listing-thumb {
+  margin-bottom: 20px;
+}
+#et-boc .et-l .rtcl-listings-wrapper .rtcl-listing-title a {
+  color: #2a2a2a;
+}
+#et-boc .et-l .rtcl-listings-wrapper .rtcl-listing-title a:hover {
+  color: var(--rtcl-primary-color);
+}

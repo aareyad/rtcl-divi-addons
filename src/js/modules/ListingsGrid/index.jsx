@@ -2,7 +2,7 @@
 import React, {Component, Fragment} from 'react';
 import Listings from './Components/Listings';
 
-import './style.css';
+//import './style.scss';
 
 class ListingsGrid extends Component {
     static slug = 'rtcl_listings_grid';

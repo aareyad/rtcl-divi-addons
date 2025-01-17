@@ -608,7 +608,6 @@ class ListingsGrid extends \ET_Builder_Module {
 	protected function render_css( $render_slug ) {
 		$title_color       = $this->props['rtcl_title_color'];
 		$title_hover_color = $this->get_hover_value( 'rtcl_title_color' );
-		$title_font        = explode( '|', $this->props['title_font'] )[0];
 		$title_font_weight = explode( '|', $this->props['title_font'] )[1];
 
 		if ( ! empty( $title_color ) ) {
@@ -627,15 +626,6 @@ class ListingsGrid extends \ET_Builder_Module {
 					'selector'    => '%%order_class%% .rtcl-listing-title a:hover',
 					'declaration' => sprintf( 'color: %1$s;', $title_hover_color ),
 				]
-			);
-		}
-		if ( ! empty( $title_font ) ) {
-			\ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '%%order_class%% .rtcl-listing-title',
-					'declaration' => sprintf( 'font-family: %1$s;', $title_font ),
-				)
 			);
 		}
 		if ( ! empty( $title_font_weight ) ) {

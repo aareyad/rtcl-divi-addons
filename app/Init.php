@@ -95,6 +95,9 @@ final class RtclDiviInit {
 	public static function front_end_script() {
 		wp_register_style( 'rtcl-divi-addons', RTCL_DIVI_ADDONS_URL . "/assets/css/frontend.css", [ 'rtcl-public' ], self::$version );
 		wp_register_script( 'rtcl-divi-addons', RTCL_DIVI_ADDONS_URL . "/assets/js/frontend.js", [ 'jquery' ], self::$version, true );
+
+		wp_enqueue_style( 'rtcl-divi-addons' );
+
 		wp_enqueue_script( 'rtcl-divi-modules', RTCL_DIVI_ADDONS_URL . "/assets/js/divi-modules.js",
 			[ 'jquery', 'react-dom', 'react', 'et_pb_media_library', 'wp-element', 'wp-i18n' ],
 			self::$version, true );

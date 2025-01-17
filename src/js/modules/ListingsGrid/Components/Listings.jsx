@@ -1,6 +1,7 @@
 import axios from "axios";
 import Qs from "qs";
 import Layout_1 from "./Layout_1";
+import classnames from "classnames";
 
 const {useState, useEffect} = wp.element;
 
@@ -44,12 +45,17 @@ function Listings(props) {
             .catch((error) => console.log(error));
     }, []);
 
+    attributes.rtcl_grid_class = classnames([
+        'rtcl-listings',
+        'rtcl-grid-view',
+        'columns-' + rtcl_grid_column,
+        'rtcl-grid-' + rtcl_grid_style
+    ]);
+
     return (
-        <div className="rtcl rtcl-listings-sc-wrapper">
-            <div class="rtcl-listings-wrapper">
-                <div className={`rtcl-listings columns-${rtcl_grid_column}`}>
-                    <Layout_1 settings={attributes} data={data}/>
-                </div>
+        <div className="rtcl rtcl-listings-sc-wrapper rtcl-divi-module">
+            <div className="rtcl-listings-wrapper">
+                <Layout_1 settings={attributes} data={data}/>
             </div>
         </div>
     );
