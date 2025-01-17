@@ -1,22 +1,178 @@
-#et-boc {
-  .et-l {
-    .rtcl-listings-wrapper {
-      .listing-thumb {
-        margin-bottom: 20px;
+.et-db #et-boc .et-l .et_pb_module {
+  .rtcl-listings-wrapper {
+    a {
+      margin: 0;
+      padding: 0;
+      font-weight: inherit;
+      transition: 0.3s all;
+      line-height: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--rtcl-link-hover-color);
       }
+    }
 
-      .rtcl-listing-title {
+    .listing-item {
+      box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      transition: all 0.4s ease-out;
+
+      .listing-thumb {
+        overflow: hidden;
+
+        img {
+          transform: scale(1);
+          transition: all 0.4s ease-out;
+        }
+
         a {
-          color: #2a2a2a;
-
-          &:hover {
-            color: var(--rtcl-primary-color);
-          }
+          padding-bottom: 0;
         }
       }
 
-      .rtcl-grid-view {
+      &:hover {
+        box-shadow: 0 2px 5px 0 rgb(0 0 0 / 20%);
 
+        .listing-thumb {
+          img {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+
+    .item-content {
+      padding: 25px 20px;
+      line-height: 1.4;
+    }
+
+    .listing-cat {
+      color: #888;
+      display: block;
+      font-size: 14px;
+      margin-bottom: 8px;
+
+      .rtcl-delimiter {
+        margin-right: 5px;
+      }
+
+      a {
+        color: inherit;
+        font-weight: 400;
+
+        &:hover {
+          color: var(--rtcl-primary-color);
+        }
+      }
+    }
+
+    .rtcl-listing-title {
+      margin: 0;
+      padding: 0;
+      font-size: 18px;
+      font-weight: 700;
+
+      a {
+        color: #2a2a2a;
+
+        &:hover {
+          color: var(--rtcl-primary-color);
+        }
+      }
+    }
+
+    .rtcl-listing-meta-data {
+      list-style-type: none;
+      margin: 15px 0 0;
+      padding: 0;
+      gap: 7px;
+
+      li {
+        color: #999;
+        font-size: 14px;
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
+
+        a {
+          color: #999;
+        }
+
+        i {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .item-price {
+      margin-top: 12px;
+
+      .rtcl-price {
+        color: var(--rtcl-primary-color);
+        display: inline-block;
+        font-weight: 400;
+
+        .rtcl-price-amount {
+          font-size: 20px;
+          font-weight: 600;
+        }
+
+        .rtcl-price-meta {
+          margin-left: 5px;
+        }
+      }
+
+      .rtcl-price-range {
+        display: inline-block;
+      }
+
+      .rtcl-price-meta {
+        font-size: 85%;
+        justify-content: start;
+      }
+    }
+
+    .rtcl-listing-badge-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 8px;
+
+      .badge {
+        line-height: 1.15;
+        font-size: 13px;
+        font-weight: 400;
+        margin: 0;
+        background-color: var(--rtcl-primary-color);
+        color: #fff;
+        padding: 3px 5px 4px;
+        text-align: center;
+        white-space: nowrap;
+        border-radius: 3px;
+
+        .rtcl-badge-new {
+          color: var(--rtcl-badge-new-color);
+          background-color: var(--rtcl-badge-new-bg-color);
+        }
+      }
+    }
+
+    .pagination {
+      .page-link {
+        min-width: 36px;
+        text-align: center;
+      }
+
+      .page-item {
+        &:hover,
+        &.active {
+          .page-link {
+            background-color: var(--rtcl-primary-color);
+            border-color: var(--rtcl-primary-color);
+            color: #fff;
+          }
+        }
       }
     }
   }

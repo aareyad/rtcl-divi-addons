@@ -53,10 +53,8 @@ function Listings(props) {
     ]);
 
     return (
-        <div className="rtcl rtcl-listings-sc-wrapper rtcl-divi-module">
-            <div className="rtcl-listings-wrapper">
-                <Layout_1 settings={attributes} data={data}/>
-            </div>
+        <div className="rtcl rtcl-listings-wrapper rtcl-divi-module">
+            <Layout_1 settings={attributes} data={data}/>
         </div>
     );
 }

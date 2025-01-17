@@ -271,13 +271,10 @@ function Listings(props) {
   }, []);
   attributes.rtcl_grid_class = classnames__WEBPACK_IMPORTED_MODULE_1___default()(['rtcl-listings', 'rtcl-grid-view', 'columns-' + rtcl_grid_column, 'rtcl-grid-' + rtcl_grid_style]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-    className: "rtcl rtcl-listings-sc-wrapper rtcl-divi-module",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "rtcl-listings-wrapper",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Layout_1__WEBPACK_IMPORTED_MODULE_0__["default"], {
-        settings: attributes,
-        data: data
-      })
+    className: "rtcl rtcl-listings-wrapper rtcl-divi-module",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Layout_1__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      settings: attributes,
+      data: data
     })
   });
 }
