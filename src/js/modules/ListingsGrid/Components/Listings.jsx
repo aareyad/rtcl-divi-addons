@@ -1,6 +1,7 @@
 import axios from "axios";
 import Qs from "qs";
 import Layout_1 from "./Layout_1";
+import Layout_2 from "./Layout_2";
 import classnames from "classnames";
 
 const {useState, useEffect} = wp.element;
@@ -13,8 +14,8 @@ function Listings(props) {
     const [pageState, setPageState] = useState(0);
 
     const ajaxAttributes = {
-        cats: attributes.rtcl_listing_categories === 'all' ? '' : attributes.rtcl_listing_categories,
-        locations: attributes.rtcl_listing_location === 'all' ? '' : attributes.rtcl_listing_location,
+        cats: attributes.rtcl_listing_categories === 'all' ? '' : [attributes.rtcl_listing_categories],
+        locations: attributes.rtcl_listing_location === 'all' ? '' : [attributes.rtcl_listing_location],
         listing_type: attributes.rtcl_listing_types === 'all' ? '' : attributes.rtcl_listing_types,
         orderby: attributes.rtcl_orderby,
         sortby: attributes.rtcl_sortby,
@@ -52,9 +53,17 @@ function Listings(props) {
         'rtcl-grid-' + rtcl_grid_style
     ]);
 
+    function load_layout() {
+        if ('style-2' === rtcl_grid_style) {
+            return <Layout_2 settings={attributes} data={data}/>
+        } else {
+            return <Layout_1 settings={attributes} data={data}/>
+        }
+    }
+
     return (
         <div className="rtcl rtcl-listings-wrapper rtcl-divi-module">
-            <Layout_1 settings={attributes} data={data}/>
+            {load_layout()}
         </div>
     );
 }

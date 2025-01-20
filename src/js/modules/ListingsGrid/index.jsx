@@ -10,15 +10,22 @@ class ListingsGrid extends Component {
     static css(props) {
         const additionalCss = [];
 
-        console.log(props);
-
         // CSS Selectors
-        const wrapper = "%%order_class%% .rtcl-listings-wrapper";
+        const wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-listings-wrapper";
         const titleSelector = `${wrapper} .rtcl-listing-title a`;
+        const priceSelector = `${wrapper} .listing-price .rtcl-price`;
+        const metaSelector = `${wrapper} .rtcl-listing-meta-data`;
+        const metaIconSelector = `${wrapper} .rtcl-listing-meta-data i`;
+        const categorySelector = `${wrapper} .listing-cat`;
 
-        // Title Settings
+        // Settings
         const titleColor = props.rtcl_title_color;
         const titleHoverColor = props?.rtcl_title_color__hover;
+        const priceColor = props.rtcl_price_color;
+        const metaColor = props.rtcl_meta_color;
+        const metaIconColor = props.rtcl_meta_icon_color;
+        const categoryColor = props.rtcl_meta_category_color;
+        const categoryHoverColor = props?.rtcl_meta_category_color__hover;
 
         // Apply CSS
         if ('' !== titleColor) {
@@ -34,6 +41,46 @@ class ListingsGrid extends Component {
                 {
                     selector: `${wrapper} .rtcl-listing-title a:hover`,
                     declaration: `color: ${titleHoverColor};`
+                }
+            ]);
+        }
+        if ('' !== priceColor) {
+            additionalCss.push([
+                {
+                    selector: priceSelector,
+                    declaration: `color: ${priceColor};`
+                }
+            ]);
+        }
+        if ('' !== metaColor) {
+            additionalCss.push([
+                {
+                    selector: metaSelector,
+                    declaration: `color: ${metaColor};`
+                }
+            ]);
+        }
+        if ('' !== metaIconColor) {
+            additionalCss.push([
+                {
+                    selector: metaIconSelector,
+                    declaration: `color: ${metaIconColor};`
+                }
+            ]);
+        }
+        if ('' !== categoryColor) {
+            additionalCss.push([
+                {
+                    selector: categorySelector,
+                    declaration: `color: ${categoryColor};`
+                }
+            ]);
+        }
+        if ('' !== categoryHoverColor) {
+            additionalCss.push([
+                {
+                    selector: `${wrapper} .listing-cat a:hover`,
+                    declaration: `color: ${categoryHoverColor};`
                 }
             ]);
         }

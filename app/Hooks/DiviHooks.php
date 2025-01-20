@@ -20,8 +20,6 @@ class DiviHooks {
 			return;
 		}
 
-		new Button();
-		new SimpleHeader();
 		new ListingsGrid();
 	}
 

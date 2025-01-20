@@ -1,6 +1,6 @@
 const {__} = wp.i18n;
 
-function Layout_1({settings, data}) {
+function Layout_2({settings, data}) {
     const {
         rtcl_show_image,
         rtcl_show_description,
@@ -36,6 +36,11 @@ function Layout_1({settings, data}) {
                             {(rtcl_show_labels === 'on' && listing.badges) ? (
                                 <div className="rtcl-listing-badge-wrap"
                                      dangerouslySetInnerHTML={{__html: listing.badges}}></div>
+                            ) : ''}
+
+                            {(rtcl_show_price === 'on' && listing.price) ? (
+                                <div className="item-price listing-price"
+                                     dangerouslySetInnerHTML={{__html: listing.price}}></div>
                             ) : ''}
 
                             {(rtcl_show_category === 'on' && listing.categories) ? (
@@ -77,10 +82,6 @@ function Layout_1({settings, data}) {
                                 <p className="rtcl-excerpt"
                                    dangerouslySetInnerHTML={{__html: listing.excerpt.split(' ', rtcl_content_limit).join(' ')}}></p>
                             ) : ''}
-                            {(rtcl_show_price === 'on' && listing.price) ? (
-                                <div className="item-price listing-price"
-                                     dangerouslySetInnerHTML={{__html: listing.price}}></div>
-                            ) : ''}
                         </div>
                     </div>
                 ))}
@@ -90,4 +91,4 @@ function Layout_1({settings, data}) {
     ]
 }
 
-export default Layout_1;
+export default Layout_2;

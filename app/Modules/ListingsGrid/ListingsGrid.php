@@ -15,14 +15,15 @@ class ListingsGrid extends \ET_Builder_Module {
 		$this->settings_modal_toggles = [
 			'general'  => [
 				'toggles' => [
-					'layout'             => esc_html__( 'Layout', 'rtcl-divi-addons' ),
-					'general'            => esc_html__( 'General', 'rtcl-divi-addons' ),
-					'content_visibility' => esc_html__( 'Content Visibility', 'rtcl-divi-addons' ),
+					'layout'             => esc_html__( 'General', 'rtcl-divi-addons' ),
+					'general'            => esc_html__( 'Query', 'rtcl-divi-addons' ),
+					'content_visibility' => esc_html__( 'Visibility', 'rtcl-divi-addons' ),
 				],
 			],
 			'advanced' => [
 				'toggles' => [
 					'title' => esc_html__( 'Title', 'rtcl-divi-addons' ),
+					'price' => esc_html__( 'Price', 'rtcl-divi-addons' ),
 					'meta'  => esc_html__( 'Meta', 'rtcl-divi-addons' ),
 				],
 			],
@@ -146,19 +147,19 @@ class ListingsGrid extends \ET_Builder_Module {
 					'__html',
 				],
 				'tab_slug'         => 'general',
-				'toggle_slug'      => 'general',
+				'toggle_slug'      => 'layout',
 			],
 			'rtcl_no_listing_text'     => [
 				'label'       => esc_html__( 'No Listing Text', 'rtcl-divi-addons' ),
 				'type'        => 'text',
 				'default'     => esc_html__( 'No Listing Found', 'rtcl-divi-addons' ),
 				'tab_slug'    => 'general',
-				'toggle_slug' => 'general',
+				'toggle_slug' => 'layout',
 			],
 			// computed.
 			'__listings'               => array(
 				'type'                => 'computed',
-				//'computed_callback'   => array( 'ListingsGrid', 'get_listings' ),
+				'computed_callback'   => array( 'ListingsGrid', 'get_listings' ),
 				'computed_depends_on' => array(
 					'rtcl_listing_types',
 					'rtcl_listing_categories',
@@ -326,14 +327,12 @@ class ListingsGrid extends \ET_Builder_Module {
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'meta',
-				'hover'       => 'tabs',
 			],
 			'rtcl_meta_icon_color'     => [
 				'label'       => esc_html__( 'Meta Icon Color', 'addons-for-divi' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'meta',
-				'hover'       => 'tabs',
 			],
 			'rtcl_meta_category_color' => [
 				'label'       => esc_html__( 'Category Color', 'addons-for-divi' ),
@@ -341,6 +340,13 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'meta',
 				'hover'       => 'tabs',
+			],
+			'rtcl_price_color'         => [
+				'label'       => esc_html__( 'Price Color', 'addons-for-divi' ),
+				'description' => esc_html__( 'Here you can define a custom color for listing price.', 'rtcl-divi-addons' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'price',
 			],
 		];
 	}
@@ -355,7 +361,7 @@ class ListingsGrid extends \ET_Builder_Module {
 		$advanced_fields['fonts'] = [
 			'title' => [
 				'css'              => array(
-					'main' => '%%order_class%% .rtcl-listing-title',
+					'main' => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-title',
 				),
 				'important'        => 'all',
 				'hide_text_color'  => true,
@@ -372,7 +378,7 @@ class ListingsGrid extends \ET_Builder_Module {
 					'default'        => '1.2em',
 				),
 				'font_size'        => array(
-					'default' => '24px',
+					'default' => '18px',
 				),
 				'font'             => [
 					'default' => '|700|||||||',
@@ -380,7 +386,7 @@ class ListingsGrid extends \ET_Builder_Module {
 			],
 			'meta'  => [
 				'css'              => array(
-					'main' => '%%order_class%% .rtcl-listing-meta-data',
+					'main' => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-meta-data',
 				),
 				'important'        => 'all',
 				'hide_text_color'  => true,
@@ -401,6 +407,31 @@ class ListingsGrid extends \ET_Builder_Module {
 				),
 				'font'             => [
 					'default' => '|400|||||||',
+				],
+			],
+			'price' => [
+				'css'              => array(
+					'main' => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listings .listing-price .rtcl-price .rtcl-price-amount',
+				),
+				'important'        => 'all',
+				'hide_text_color'  => true,
+				'hide_text_shadow' => true,
+				'hide_text_align'  => true,
+				'tab_slug'         => 'advanced',
+				'toggle_slug'      => 'price',
+				'line_height'      => array(
+					'range_settings' => array(
+						'min'  => '1',
+						'max'  => '3',
+						'step' => '.1',
+					),
+					'default'        => '1.3em',
+				),
+				'font_size'        => array(
+					'default' => '20px',
+				),
+				'font'             => [
+					'default' => '|600|||||||',
 				],
 			]
 		];
@@ -564,15 +595,7 @@ class ListingsGrid extends \ET_Builder_Module {
 	}
 
 	public static function get_listings( $args = array(), $conditional_tags = array(), $current_page = array() ) {
-		$query_args = self::widget_query_args( $args );
-
-		$query = new \WP_Query( $query_args );
-
-		if ( $query->have_posts() ) {
-			return $query;
-		} else {
-			return false;
-		}
+		return false;
 	}
 
 	public function render( $unprocessed_props, $content, $render_slug ) {
@@ -606,15 +629,22 @@ class ListingsGrid extends \ET_Builder_Module {
 	}
 
 	protected function render_css( $render_slug ) {
-		$title_color       = $this->props['rtcl_title_color'];
-		$title_hover_color = $this->get_hover_value( 'rtcl_title_color' );
-		$title_font_weight = explode( '|', $this->props['title_font'] )[1];
+		$wrapper              = '.et-db .et-l %%order_class%% .rtcl-listings-wrapper';
+		$title_color          = $this->props['rtcl_title_color'];
+		$title_hover_color    = $this->get_hover_value( 'rtcl_title_color' );
+		$title_font_weight    = explode( '|', $this->props['title_font'] )[1];
+		$meta_color           = $this->props['rtcl_meta_color'];
+		$meta_icon_color      = $this->props['rtcl_meta_icon_color'];
+		$category_color       = $this->props['rtcl_meta_category_color'];
+		$category_hover_color = $this->get_hover_value( 'rtcl_meta_category_color' );
+		$price_color          = $this->props['rtcl_price_color'];
 
+		// Title
 		if ( ! empty( $title_color ) ) {
 			\ET_Builder_Element::set_style(
 				$render_slug,
 				[
-					'selector'    => '%%order_class%% .rtcl-listing-title a',
+					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-title a',
 					'declaration' => sprintf( 'color: %1$s;', $title_color ),
 				]
 			);
@@ -623,7 +653,7 @@ class ListingsGrid extends \ET_Builder_Module {
 			\ET_Builder_Element::set_style(
 				$render_slug,
 				[
-					'selector'    => '%%order_class%% .rtcl-listing-title a:hover',
+					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-title a:hover',
 					'declaration' => sprintf( 'color: %1$s;', $title_hover_color ),
 				]
 			);
@@ -632,9 +662,56 @@ class ListingsGrid extends \ET_Builder_Module {
 			\ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '%%order_class%% .rtcl-listing-title',
+					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-title',
 					'declaration' => sprintf( 'font-weight: %1$s;', $title_font_weight ),
 				)
+			);
+		}
+		// Meta
+		if ( ! empty( $meta_color ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-meta-data',
+					'declaration' => sprintf( 'color: %1$s;', $meta_color ),
+				]
+			);
+		}
+		if ( ! empty( $meta_icon_color ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-meta-data i',
+					'declaration' => sprintf( 'color: %1$s;', $meta_icon_color ),
+				]
+			);
+		}
+		if ( ! empty( $category_color ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .listing-cat',
+					'declaration' => sprintf( 'color: %1$s;', $category_color ),
+				]
+			);
+		}
+		if ( ! empty( $category_hover_color ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .listing-cat a:hover',
+					'declaration' => sprintf( 'color: %1$s;', $category_hover_color ),
+				]
+			);
+		}
+		// Price
+		if ( ! empty( $price_color ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .listing-price .rtcl-price',
+					'declaration' => sprintf( 'color: %1$s;', $price_color ),
+				]
 			);
 		}
 	}
