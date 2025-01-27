@@ -13,10 +13,9 @@ use Rtcl\Helpers\Pagination;
 
 <div class="rtcl rtcl-listings-wrapper rtcl-divi-module">
 	<?php
-	$class = ! empty( $style ) ? 'rtcl-grid-' . $style : 'rtcl-grid-style-2';
-	$class .= ! empty( $instance['rtcl_grid_column'] ) ? ' columns-' . $instance['rtcl_grid_column'] : ' columns-3';
+	$class = ! empty( $style ) ? 'rtcl-list-' . $style : 'rtcl-list-style-2';
 	?>
-    <div class="rtcl-listings rtcl-grid-view <?php echo esc_attr( $class ); ?> ">
+    <div class="rtcl-listings rtcl-list-view <?php echo esc_attr( $class ); ?> ">
 		<?php
 
 		while ( $the_loops->have_posts() ) :

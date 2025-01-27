@@ -2,9 +2,8 @@
 
 namespace RtclDiviAddons\Hooks;
 
-use RtclDiviAddons\Modules\Button\Button;
 use RtclDiviAddons\Modules\ListingsGrid\ListingsGrid;
-use RtclDiviAddons\Modules\SimpleHeader\SimpleHeader;
+use RtclDiviAddons\Modules\ListingsList\ListingsList;
 
 class DiviHooks {
 
@@ -21,6 +20,7 @@ class DiviHooks {
 		}
 
 		new ListingsGrid();
+		new ListingsList();
 	}
 
 }

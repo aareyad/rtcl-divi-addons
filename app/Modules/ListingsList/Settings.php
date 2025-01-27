@@ -1,17 +1,16 @@
 <?php
 
-namespace RtclDiviAddons\Modules\ListingsGrid;
+namespace RtclDiviAddons\Modules\ListingsList;
 
 use Rtcl\Helpers\Functions;
-use Rtcl\Helpers\Pagination;
 use RtclDiviAddons\Helpers\Functions as DiviFunctions;
 
-class ListingsGrid extends \ET_Builder_Module {
-	public $slug = 'rtcl_listings_grid';
+class Settings extends \ET_Builder_Module {
+	public $slug = 'rtcl_listings_list';
 	public $vb_support = 'on';
 
 	public function init() {
-		$this->name = esc_html__( 'Listings Grid', 'rtcl-divi-addons' );
+		$this->name = esc_html__( 'Listings List', 'rtcl-divi-addons' );
 
 		$this->settings_modal_toggles = [
 			'general'  => [
@@ -37,7 +36,7 @@ class ListingsGrid extends \ET_Builder_Module {
 		$listing_order_by  = DiviFunctions::get_order_options();
 
 		return [
-			'rtcl_grid_style'          => [
+			'rtcl_list_style'          => [
 				'label'       => esc_html__( 'Style', 'rtcl-divi-addons' ),
 				'type'        => 'select',
 				'options'     => [
@@ -47,21 +46,6 @@ class ListingsGrid extends \ET_Builder_Module {
 				'default'     => 'style-1',
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'layout',
-			],
-			'rtcl_grid_column'         => [
-				'label'          => esc_html__( 'Grid Column', 'rtcl-divi-addons' ),
-				'type'           => 'select',
-				'options'        => [
-					'4' => __( 'Column 4', 'rtcl-divi-addons' ),
-					'3' => __( 'Column 3', 'rtcl-divi-addons' ),
-					'2' => __( 'Column 2', 'rtcl-divi-addons' ),
-					'1' => __( 'Column 1', 'rtcl-divi-addons' ),
-				],
-				'default'        => '3',
-				'description'    => esc_html__( 'Select column number to display listings.', 'rtcl-divi-addons' ),
-				'mobile_options' => true,
-				'tab_slug'       => 'general',
-				'toggle_slug'    => 'layout',
 			],
 			'rtcl_listing_types'       => [
 				'label'       => esc_html__( 'Listing Types', 'rtcl-divi-addons' ),
@@ -151,7 +135,7 @@ class ListingsGrid extends \ET_Builder_Module {
 			// computed.
 			'__listings'               => array(
 				'type'                => 'computed',
-				'computed_callback'   => array( 'ListingsGrid', 'get_listings' ),
+				'computed_callback'   => array( 'Settings', 'get_listings' ),
 				'computed_depends_on' => array(
 					'rtcl_listing_types',
 					'rtcl_listing_categories',
@@ -161,17 +145,7 @@ class ListingsGrid extends \ET_Builder_Module {
 					'rtcl_listing_per_page',
 					'rtcl_image_size',
 					'rtcl_listing_pagination'
-				),
-				'computed_minimum'    => array(
-					'rtcl_listing_types',
-					'rtcl_listing_categories',
-					'rtcl_listing_location',
-					'rtcl_orderby',
-					'rtcl_sortby',
-					'rtcl_listing_per_page',
-					'rtcl_image_size',
-					'rtcl_listing_pagination'
-				),
+				)
 			),
 			// visibility
 			'rtcl_show_image'          => [
@@ -293,6 +267,18 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
+			'rtcl_show_custom_fields'  => [
+				'label'       => esc_html__( 'Show Custom Fields', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'off',
+				'description' => __( 'Show / Hide listing custom fields.', 'rtcl-divi-addons' ),
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'content_visibility',
+			],
 			'rtcl_show_user'           => [
 				'label'       => esc_html__( 'Show Author Name', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
@@ -302,6 +288,42 @@ class ListingsGrid extends \ET_Builder_Module {
 				],
 				'default'     => 'on',
 				'description' => __( 'Show / Hide listing author name.', 'rtcl-divi-addons' ),
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'content_visibility',
+			],
+			'rtcl_show_favourites'     => [
+				'label'       => esc_html__( 'Show Favourites', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'off',
+				'description' => __( 'Show / Hide listing favourite button.', 'rtcl-divi-addons' ),
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'content_visibility',
+			],
+			'rtcl_show_quick_view'     => [
+				'label'       => esc_html__( 'Show Quick View', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'off',
+				'description' => __( 'Show / Hide quick view button.', 'rtcl-divi-addons' ),
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'content_visibility',
+			],
+			'rtcl_show_compare'        => [
+				'label'       => esc_html__( 'Show Compare', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'off',
+				'description' => __( 'Show / Hide compare button.', 'rtcl-divi-addons' ),
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
@@ -348,7 +370,6 @@ class ListingsGrid extends \ET_Builder_Module {
 		$advanced_fields                = [];
 		$advanced_fields['text']        = [];
 		$advanced_fields['text_shadow'] = [];
-		//$advanced_fields['fonts']       = [];
 
 		$advanced_fields['fonts'] = [
 			'title' => [
@@ -431,221 +452,7 @@ class ListingsGrid extends \ET_Builder_Module {
 		return $advanced_fields;
 	}
 
-	public function widget_results( $settings ) {
-		$args = self::widget_query_args( $settings );
-
-		add_filter( 'excerpt_more', '__return_empty_string' );
-		// The Query.
-		$loop_obj = new \WP_Query( $args );
-
-		return $loop_obj;
-	}
-
-	public static function widget_query_args( $settings ) {
-
-		$categories_list = $location_list = [];
-
-		if ( isset( $settings['rtcl_listing_categories'] ) && 'all' !== $settings['rtcl_listing_categories'] ) {
-			$categories_list[] = absint( $settings['rtcl_listing_categories'] );
-		}
-
-		if ( isset( $settings['rtcl_listing_location'] ) && 'all' !== $settings['rtcl_listing_location'] ) {
-			$location_list[] = absint( $settings['rtcl_listing_location'] );
-		}
-
-		$orderby           = isset( $settings['rtcl_orderby'] ) && ! empty( $settings['rtcl_orderby'] ) ? $settings['rtcl_orderby'] : 'date';
-		$order             = isset( $settings['rtcl_sortby'] ) && ! empty( $settings['rtcl_sortby'] ) ? $settings['rtcl_sortby'] : 'desc';
-		$listings_per_page = isset( $settings['rtcl_listing_per_page'] ) && ! empty( $settings['rtcl_listing_per_page'] ) ? $settings['rtcl_listing_per_page']
-			: '10';
-		$listing_type      = isset( $settings['rtcl_listing_types'] ) && ! empty( $settings['rtcl_listing_types'] ) ? $settings['rtcl_listing_types'] : 'all';
-
-		$meta_queries      = [];
-		$the_args          = [
-			'post_type'      => rtcl()->post_type,
-			'posts_per_page' => $listings_per_page,
-			'post_status'    => 'publish',
-			'tax_query'      => [
-				'relation' => 'AND',
-			],
-		];
-		$the_args['paged'] = Pagination::get_page_number();
-
-		if ( ! empty( $order ) && ! empty( $orderby ) ) {
-
-			switch ( $orderby ) {
-				case 'price':
-					$the_args['meta_key'] = $orderby; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
-					$the_args['orderby']  = 'meta_value_num';
-					$the_args['order']    = $order;
-					break;
-				case 'views':
-					$the_args['meta_key'] = '_views'; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
-					$the_args['orderby']  = 'meta_value_num';
-					$the_args['order']    = $order;
-					break;
-				case 'rand':
-					$the_args['orderby'] = $orderby;
-					break;
-				default:
-					$the_args['orderby'] = $orderby;
-					$the_args['order']   = $order;
-			}
-		}
-
-		if ( ! empty( $categories_list ) ) {
-			$the_args['tax_query'][] = [
-				'taxonomy' => rtcl()->category,
-				'terms'    => $categories_list,
-				'field'    => 'term_id',
-				'operator' => 'IN',
-			];
-		}
-
-		if ( ! empty( $location_list ) ) {
-			$the_args['tax_query'][] = [
-				'taxonomy' => rtcl()->location,
-				'terms'    => $location_list,
-				'field'    => 'term_id',
-				'operator' => 'IN',
-			];
-		}
-
-		if ( $listing_type && in_array( $listing_type, array_keys( Functions::get_listing_types() ) ) && ! Functions::is_ad_type_disabled() ) {
-			$meta_queries[] = [
-				'key'     => 'ad_type',
-				'value'   => $listing_type,
-				'compare' => '=',
-			];
-		}
-
-		$count_meta_queries = count( $meta_queries );
-		if ( $count_meta_queries ) {
-			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
-			$the_args['meta_query'] = ( $count_meta_queries > 1 ) ? array_merge( [ 'relation' => 'AND' ], $meta_queries ) : $meta_queries;
-		}
-
-		return $the_args;
-	}
-
 	public static function get_listings( $args = array(), $conditional_tags = array(), $current_page = array() ) {
 		return false;
-	}
-
-	public function render( $unprocessed_props, $content, $render_slug ) {
-		$settings  = $this->props;
-		$the_loops = $this->widget_results( $settings );
-
-		$this->render_css( $render_slug );
-
-		$style = isset( $settings['rtcl_grid_style'] ) ? sanitize_text_field( $settings['rtcl_grid_style'] ) : 'style-1';
-
-		$template_style = 'listing-ads/grid/' . $style;
-
-		$data = [
-			'template'      => $template_style,
-			'instance'      => $settings,
-			'the_loops'     => $the_loops,
-			'view'          => 'grid',
-			'style'         => $style,
-			'template_path' => rtcl_divi_addons()->get_plugin_template_path(),
-		];
-
-		$data = apply_filters( 'rtcl_divi_filter_listing_data', $data );
-
-		if ( $the_loops->found_posts ) {
-			return Functions::get_template_html( $data['template'], $data, '', $data['template_path'] );
-		} else if ( ! empty( $settings['rtcl_no_listing_text'] ) ) {
-			return '<h3>' . esc_html( $settings['rtcl_no_listing_text'] ) . '</h3>';
-		}
-
-		wp_reset_postdata();
-	}
-
-	protected function render_css( $render_slug ) {
-		$wrapper              = '.et-db .et-l %%order_class%% .rtcl-listings-wrapper';
-		$title_color          = $this->props['rtcl_title_color'];
-		$title_hover_color    = $this->get_hover_value( 'rtcl_title_color' );
-		$title_font_weight    = explode( '|', $this->props['title_font'] )[1];
-		$meta_color           = $this->props['rtcl_meta_color'];
-		$meta_icon_color      = $this->props['rtcl_meta_icon_color'];
-		$category_color       = $this->props['rtcl_meta_category_color'];
-		$category_hover_color = $this->get_hover_value( 'rtcl_meta_category_color' );
-		$price_color          = $this->props['rtcl_price_color'];
-
-		// Title
-		if ( ! empty( $title_color ) ) {
-			\ET_Builder_Element::set_style(
-				$render_slug,
-				[
-					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-title a',
-					'declaration' => sprintf( 'color: %1$s;', $title_color ),
-				]
-			);
-		}
-		if ( ! empty( $title_hover_color ) ) {
-			\ET_Builder_Element::set_style(
-				$render_slug,
-				[
-					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-title a:hover',
-					'declaration' => sprintf( 'color: %1$s;', $title_hover_color ),
-				]
-			);
-		}
-		if ( ! empty( $title_font_weight ) ) {
-			\ET_Builder_Element::set_style(
-				$render_slug,
-				array(
-					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-title',
-					'declaration' => sprintf( 'font-weight: %1$s;', $title_font_weight ),
-				)
-			);
-		}
-		// Meta
-		if ( ! empty( $meta_color ) ) {
-			\ET_Builder_Element::set_style(
-				$render_slug,
-				[
-					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-meta-data',
-					'declaration' => sprintf( 'color: %1$s;', $meta_color ),
-				]
-			);
-		}
-		if ( ! empty( $meta_icon_color ) ) {
-			\ET_Builder_Element::set_style(
-				$render_slug,
-				[
-					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-meta-data i',
-					'declaration' => sprintf( 'color: %1$s;', $meta_icon_color ),
-				]
-			);
-		}
-		if ( ! empty( $category_color ) ) {
-			\ET_Builder_Element::set_style(
-				$render_slug,
-				[
-					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .listing-cat',
-					'declaration' => sprintf( 'color: %1$s;', $category_color ),
-				]
-			);
-		}
-		if ( ! empty( $category_hover_color ) ) {
-			\ET_Builder_Element::set_style(
-				$render_slug,
-				[
-					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .listing-cat a:hover',
-					'declaration' => sprintf( 'color: %1$s;', $category_hover_color ),
-				]
-			);
-		}
-		// Price
-		if ( ! empty( $price_color ) ) {
-			\ET_Builder_Element::set_style(
-				$render_slug,
-				[
-					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .listing-price .rtcl-price',
-					'declaration' => sprintf( 'color: %1$s;', $price_color ),
-				]
-			);
-		}
 	}
 }

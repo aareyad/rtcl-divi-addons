@@ -480,6 +480,464 @@ _defineProperty(ListingsGrid, "slug", 'rtcl_listings_grid');
 
 /***/ }),
 
+/***/ "./src/js/modules/ListingsList/Components/Layout_1.jsx":
+/*!*************************************************************!*\
+  !*** ./src/js/modules/ListingsList/Components/Layout_1.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var __ = wp.i18n.__;
+function Layout_1(_ref) {
+  var settings = _ref.settings,
+    data = _ref.data;
+  var rtcl_show_image = settings.rtcl_show_image,
+    rtcl_show_description = settings.rtcl_show_description,
+    rtcl_content_limit = settings.rtcl_content_limit,
+    rtcl_show_labels = settings.rtcl_show_labels,
+    rtcl_show_date = settings.rtcl_show_date,
+    rtcl_show_views = settings.rtcl_show_views,
+    rtcl_show_ad_types = settings.rtcl_show_ad_types,
+    rtcl_show_location = settings.rtcl_show_location,
+    rtcl_show_category = settings.rtcl_show_category,
+    rtcl_show_price = settings.rtcl_show_price,
+    rtcl_show_user = settings.rtcl_show_user,
+    rtcl_list_class = settings.rtcl_list_class,
+    rtcl_no_listing_text = settings.rtcl_no_listing_text;
+  return [data.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: rtcl_list_class,
+    children: data.map(function (listing, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: [Object.values(listing.classes).join(" ")],
+        children: [rtcl_show_image === 'on' && listing.thumbnail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "listing-thumb",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+            href: listing.post_link,
+            className: "rtcl-media",
+            dangerouslySetInnerHTML: {
+              __html: listing.thumbnail
+            }
+          })
+        }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "item-content",
+          children: [rtcl_show_labels === 'on' && listing.badges ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "rtcl-listing-badge-wrap",
+            dangerouslySetInnerHTML: {
+              __html: listing.badges
+            }
+          }) : '', rtcl_show_category === 'on' && listing.categories ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "listing-cat",
+            dangerouslySetInnerHTML: {
+              __html: listing.categories
+            }
+          }) : '', listing.title ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+            className: "rtcl-listing-title",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+              href: listing.post_link,
+              children: listing.title
+            })
+          }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+            className: "rtcl-listing-meta-data",
+            children: [rtcl_show_ad_types === 'on' && listing.listing_type ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+              className: "listing-type",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                className: "rtcl-icon rtcl-icon-tags"
+              }), listing.listing_type]
+            }) : '', rtcl_show_date === 'on' && listing.time ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+              className: "listing-date",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                className: "rtcl-icon rtcl-icon-clock"
+              }), listing.time]
+            }) : '', rtcl_show_user === 'on' && listing.author ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+              className: "listing-author",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                className: "rtcl-icon rtcl-icon-user"
+              }), listing.author]
+            }) : '', rtcl_show_location === 'on' && listing.locations ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+              className: "listing-location",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                className: "rtcl-icon rtcl-icon-location"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                dangerouslySetInnerHTML: {
+                  __html: listing.locations
+                }
+              })]
+            }) : '', rtcl_show_views === 'on' && listing.views ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+              className: "listing-views",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                className: "rtcl-icon rtcl-icon-eye"
+              }), listing.views, " ", __("views", "rtcl-divi-addons")]
+            }) : '']
+          }), rtcl_show_description === 'on' && listing.excerpt ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+            className: "rtcl-excerpt",
+            dangerouslySetInnerHTML: {
+              __html: listing.excerpt.split(' ', rtcl_content_limit).join(' ')
+            }
+          }) : '', rtcl_show_price === 'on' && listing.price ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "item-price listing-price",
+            dangerouslySetInnerHTML: {
+              __html: listing.price
+            }
+          }) : '']
+        })]
+      }, index);
+    })
+  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+    children: rtcl_no_listing_text
+  })];
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Layout_1);
+
+/***/ }),
+
+/***/ "./src/js/modules/ListingsList/Components/Layout_2.jsx":
+/*!*************************************************************!*\
+  !*** ./src/js/modules/ListingsList/Components/Layout_2.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var __ = wp.i18n.__;
+function Layout_2(_ref) {
+  var settings = _ref.settings,
+    data = _ref.data;
+  var rtcl_show_image = settings.rtcl_show_image,
+    rtcl_show_description = settings.rtcl_show_description,
+    rtcl_content_limit = settings.rtcl_content_limit,
+    rtcl_show_labels = settings.rtcl_show_labels,
+    rtcl_show_date = settings.rtcl_show_date,
+    rtcl_show_views = settings.rtcl_show_views,
+    rtcl_show_ad_types = settings.rtcl_show_ad_types,
+    rtcl_show_location = settings.rtcl_show_location,
+    rtcl_show_category = settings.rtcl_show_category,
+    rtcl_show_price = settings.rtcl_show_price,
+    rtcl_show_user = settings.rtcl_show_user,
+    rtcl_list_class = settings.rtcl_list_class,
+    rtcl_no_listing_text = settings.rtcl_no_listing_text;
+  return [data.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: rtcl_list_class,
+    children: data.map(function (listing, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: [Object.values(listing.classes).join(" ")],
+        children: [rtcl_show_image === 'on' && listing.thumbnail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "listing-thumb",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+            href: listing.post_link,
+            className: "rtcl-media",
+            dangerouslySetInnerHTML: {
+              __html: listing.thumbnail
+            }
+          })
+        }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "item-content",
+          children: [rtcl_show_labels === 'on' && listing.badges ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "rtcl-listing-badge-wrap",
+            dangerouslySetInnerHTML: {
+              __html: listing.badges
+            }
+          }) : '', rtcl_show_price === 'on' && listing.price ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "item-price listing-price",
+            dangerouslySetInnerHTML: {
+              __html: listing.price
+            }
+          }) : '', rtcl_show_category === 'on' && listing.categories ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "listing-cat",
+            dangerouslySetInnerHTML: {
+              __html: listing.categories
+            }
+          }) : '', listing.title ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+            className: "rtcl-listing-title",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+              href: listing.post_link,
+              children: listing.title
+            })
+          }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+            className: "rtcl-listing-meta-data",
+            children: [rtcl_show_ad_types === 'on' && listing.listing_type ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+              className: "listing-type",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                className: "rtcl-icon rtcl-icon-tags"
+              }), listing.listing_type]
+            }) : '', rtcl_show_date === 'on' && listing.time ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+              className: "listing-date",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                className: "rtcl-icon rtcl-icon-clock"
+              }), listing.time]
+            }) : '', rtcl_show_user === 'on' && listing.author ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+              className: "listing-author",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                className: "rtcl-icon rtcl-icon-user"
+              }), listing.author]
+            }) : '', rtcl_show_location === 'on' && listing.locations ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+              className: "listing-location",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                className: "rtcl-icon rtcl-icon-location"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                dangerouslySetInnerHTML: {
+                  __html: listing.locations
+                }
+              })]
+            }) : '', rtcl_show_views === 'on' && listing.views ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+              className: "listing-views",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                className: "rtcl-icon rtcl-icon-eye"
+              }), listing.views, " ", __("views", "rtcl-divi-addons")]
+            }) : '']
+          }), rtcl_show_description === 'on' && listing.excerpt ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+            className: "rtcl-excerpt",
+            dangerouslySetInnerHTML: {
+              __html: listing.excerpt.split(' ', rtcl_content_limit).join(' ')
+            }
+          }) : '']
+        })]
+      }, index);
+    })
+  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+    children: rtcl_no_listing_text
+  })];
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Layout_2);
+
+/***/ }),
+
+/***/ "./src/js/modules/ListingsList/Components/Listings.jsx":
+/*!*************************************************************!*\
+  !*** ./src/js/modules/ListingsList/Components/Listings.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(qs__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Layout_1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Layout_1 */ "./src/js/modules/ListingsList/Components/Layout_1.jsx");
+/* harmony import */ var _Layout_2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Layout_2 */ "./src/js/modules/ListingsList/Components/Layout_2.jsx");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+
+var _wp$element = wp.element,
+  useState = _wp$element.useState,
+  useEffect = _wp$element.useEffect;
+function Listings(props) {
+  var attributes = props.data;
+  var rtcl_list_style = attributes.rtcl_list_style,
+    rtcl_listing_per_page = attributes.rtcl_listing_per_page;
+  var _useState = useState([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    data = _useState2[0],
+    setData = _useState2[1];
+  var _useState3 = useState(true),
+    _useState4 = _slicedToArray(_useState3, 2),
+    dataSuccess = _useState4[0],
+    setDataSuccess = _useState4[1];
+  var _useState5 = useState(0),
+    _useState6 = _slicedToArray(_useState5, 2),
+    pageState = _useState6[0],
+    setPageState = _useState6[1];
+  var ajaxAttributes = {
+    cats: attributes.rtcl_listing_categories === 'all' ? '' : [attributes.rtcl_listing_categories],
+    locations: attributes.rtcl_listing_location === 'all' ? '' : [attributes.rtcl_listing_location],
+    listing_type: attributes.rtcl_listing_types === 'all' ? '' : attributes.rtcl_listing_types,
+    orderby: attributes.rtcl_orderby,
+    sortby: attributes.rtcl_sortby,
+    perPage: attributes.rtcl_listing_per_page,
+    image_size: attributes.rtcl_image_size
+  };
+  useEffect(function () {
+    var paginationLimit = 0;
+    paginationLimit = rtcl_listing_per_page;
+    var ajaxdata = {
+      action: 'rtcl_gb_listings_ajax',
+      rtcl_nonce: rtcl_divi.rtcl_nonce,
+      attributes: ajaxAttributes
+    };
+    axios__WEBPACK_IMPORTED_MODULE_4__["default"].post(rtcl.ajaxurl, qs__WEBPACK_IMPORTED_MODULE_5___default().stringify(ajaxdata)).then(function (response) {
+      if (response.data.success) {
+        setData(_toConsumableArray(response.data.data.posts));
+        setDataSuccess(response.data.success);
+      } else {
+        setData([]);
+        setDataSuccess(response.data.success);
+      }
+      setPageState(Math.ceil(response.data.data.total_post / (paginationLimit == 0 || paginationLimit == -1 ? 1 : paginationLimit)));
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+  }, []);
+  attributes.rtcl_list_class = classnames__WEBPACK_IMPORTED_MODULE_2___default()(['rtcl-listings', 'rtcl-list-view', 'rtcl-list-' + rtcl_list_style]);
+  function load_layout() {
+    if ('style-2' === rtcl_list_style) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Layout_2__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        settings: attributes,
+        data: data
+      });
+    } else {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Layout_1__WEBPACK_IMPORTED_MODULE_0__["default"], {
+        settings: attributes,
+        data: data
+      });
+    }
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    className: "rtcl rtcl-listings-wrapper rtcl-divi-module",
+    children: load_layout()
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Listings);
+
+/***/ }),
+
+/***/ "./src/js/modules/ListingsList/index.jsx":
+/*!***********************************************!*\
+  !*** ./src/js/modules/ListingsList/index.jsx ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Components_Listings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Components/Listings */ "./src/js/modules/ListingsList/Components/Listings.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+// External Dependencies
+
+
+
+var ListingsList = /*#__PURE__*/function (_Component) {
+  function ListingsList() {
+    _classCallCheck(this, ListingsList);
+    return _callSuper(this, ListingsList, arguments);
+  }
+  _inherits(ListingsList, _Component);
+  return _createClass(ListingsList, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Components_Listings__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        data: this.props
+      });
+    }
+  }], [{
+    key: "css",
+    value: function css(props) {
+      var additionalCss = [];
+
+      // CSS Selectors
+      var wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-listings-wrapper";
+      var titleSelector = "".concat(wrapper, " .rtcl-listing-title a");
+      var priceSelector = "".concat(wrapper, " .listing-price .rtcl-price");
+      var metaSelector = "".concat(wrapper, " .rtcl-listing-meta-data");
+      var metaIconSelector = "".concat(wrapper, " .rtcl-listing-meta-data i");
+      var categorySelector = "".concat(wrapper, " .listing-cat");
+
+      // Settings
+      var titleColor = props.rtcl_title_color;
+      var titleHoverColor = props === null || props === void 0 ? void 0 : props.rtcl_title_color__hover;
+      var priceColor = props.rtcl_price_color;
+      var metaColor = props.rtcl_meta_color;
+      var metaIconColor = props.rtcl_meta_icon_color;
+      var categoryColor = props.rtcl_meta_category_color;
+      var categoryHoverColor = props === null || props === void 0 ? void 0 : props.rtcl_meta_category_color__hover;
+
+      // Apply CSS
+      if ('' !== titleColor) {
+        additionalCss.push([{
+          selector: titleSelector,
+          declaration: "color: ".concat(titleColor, ";")
+        }]);
+      }
+      if ('' !== titleHoverColor && 'undefined' !== titleHoverColor) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-listing-title a:hover"),
+          declaration: "color: ".concat(titleHoverColor, ";")
+        }]);
+      }
+      if ('' !== priceColor) {
+        additionalCss.push([{
+          selector: priceSelector,
+          declaration: "color: ".concat(priceColor, ";")
+        }]);
+      }
+      if ('' !== metaColor) {
+        additionalCss.push([{
+          selector: metaSelector,
+          declaration: "color: ".concat(metaColor, ";")
+        }]);
+      }
+      if ('' !== metaIconColor) {
+        additionalCss.push([{
+          selector: metaIconSelector,
+          declaration: "color: ".concat(metaIconColor, ";")
+        }]);
+      }
+      if ('' !== categoryColor) {
+        additionalCss.push([{
+          selector: categorySelector,
+          declaration: "color: ".concat(categoryColor, ";")
+        }]);
+      }
+      if ('' !== categoryHoverColor) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .listing-cat a:hover"),
+          declaration: "color: ".concat(categoryHoverColor, ";")
+        }]);
+      }
+      return additionalCss;
+    }
+  }]);
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+_defineProperty(ListingsList, "slug", 'rtcl_listings_list');
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ListingsList);
+
+/***/ }),
+
 /***/ "./src/js/modules/index.js":
 /*!*********************************!*\
   !*** ./src/js/modules/index.js ***!
@@ -492,8 +950,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _ListingsGrid_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListingsGrid/index */ "./src/js/modules/ListingsGrid/index.jsx");
+/* harmony import */ var _ListingsList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListingsList */ "./src/js/modules/ListingsList/index.jsx");
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_ListingsGrid_index__WEBPACK_IMPORTED_MODULE_0__["default"]]);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_ListingsGrid_index__WEBPACK_IMPORTED_MODULE_0__["default"], _ListingsList__WEBPACK_IMPORTED_MODULE_1__["default"]]);
 
 /***/ }),
 
