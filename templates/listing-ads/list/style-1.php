@@ -21,22 +21,25 @@ use RtclPro\Controllers\Hooks\TemplateHooks;
 
 		while ( $the_loops->have_posts() ) :
 			$the_loops->the_post();
-			$_id                 = get_the_ID();
-			$post_meta           = get_post_meta( $_id );
-			$listing             = rtcl()->factory->get_listing( $_id );
-			$listing_title       = null;
-			$listing_meta        = null;
-			$listing_description = null;
-			$img                 = null;
-			$labels              = null;
-			$u_info              = null;
-			$time                = null;
-			$location            = null;
-			$category            = null;
-			$price               = null;
-			$types               = null;
-			$img_position_class  = '';
-			$custom_field        = null;
+			$_id                    = get_the_ID();
+			$post_meta              = get_post_meta( $_id );
+			$listing                = rtcl()->factory->get_listing( $_id );
+			$listing_title          = null;
+			$listing_meta           = null;
+			$listing_description    = null;
+			$img                    = null;
+			$labels                 = null;
+			$u_info                 = null;
+			$time                   = null;
+			$location               = null;
+			$category               = null;
+			$price                  = null;
+			$right_content          = null;
+			$types                  = null;
+			$img_position_class     = '';
+			$custom_field           = null;
+			$button                 = null;
+			$item_details_page_link = null;
 			?>
 
             <div <?php Functions::listing_class( [ 'rtcl-widget-listing-item', 'listing-item', $img_position_class ] ); ?>>
@@ -136,7 +139,7 @@ use RtclPro\Controllers\Hooks\TemplateHooks;
 
 				if ( 'on' === $instance['rtcl_show_price'] ) {
 					$price_html = $listing->get_price_html();
-					$price      = sprintf( '<div class="item-price listing-price">%s</div>', $price_html );
+					$price      = sprintf( '<div class="item-price">%s</div>', $price_html );
 				}
 				$author_html = '';
 				if ( 'on' === $instance['rtcl_show_user'] ) {
@@ -207,27 +210,45 @@ use RtclPro\Controllers\Hooks\TemplateHooks;
 					}
 				}
 
+				if ( 'on' === $instance['rtcl_show_details_button'] ) {
+					$item_details_page_link = sprintf(
+						'<a class="rtcl-details-button" href="%s">%s</a>',
+						get_the_permalink(),
+						esc_html__( 'Details', 'rtcl-divi-addons' )
+					);
+				}
+
 				if ( rtcl()->has_pro() ) {
-					if ( ! empty( $instance['rtcl_show_custom_fields'] ) ) {
+					if ( 'on' === $instance['rtcl_show_custom_fields'] ) {
 						ob_start();
 						TemplateHooks::loop_item_listable_fields();
 						$custom_field = ob_get_clean();
 					}
 				}
 
-				$item_content_right = sprintf( '%s', $price );
+				$item_price = sprintf( '%s', $price );
 
-				$item_content   = sprintf(
+				$item_content = sprintf(
 					'<div class="item-content">%s %s %s %s %s %s %s</div>',
 					$labels,
 					$category,
 					$listing_title,
 					$custom_field,
-					$listing_meta,
 					$listing_description,
-					$item_content_right
+					$listing_meta,
+					$item_price
 				);
-				$final_contents = sprintf( '%s <div class="rtin-content-area">%s</div>', $img, $item_content );
+
+				if ( $item_details_page_link || $button_icon ) {
+					$right_content = sprintf(
+						'<div class="right-content">%s %s</div>',
+						$item_details_page_link,
+						$button
+					);
+				}
+
+				$final_contents = sprintf( '%s %s %s', $img, $item_content, $right_content );
+
 				echo wp_kses_post( $final_contents );
 				?>
             </div>

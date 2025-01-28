@@ -291,6 +291,18 @@ class Settings extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
+			'rtcl_show_details_button' => [
+				'label'       => esc_html__( 'Show Details Button', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'on',
+				'description' => __( 'Show / Hide listing details button.', 'rtcl-divi-addons' ),
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'content_visibility',
+			],
 			'rtcl_show_favourites'     => [
 				'label'       => esc_html__( 'Show Favourites', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
@@ -424,7 +436,7 @@ class Settings extends \ET_Builder_Module {
 			],
 			'price' => [
 				'css'              => array(
-					'main' => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listings .listing-price .rtcl-price .rtcl-price-amount',
+					'main' => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listings .item-price .rtcl-price .rtcl-price-amount',
 				),
 				'important'        => 'all',
 				'hide_text_color'  => true,

@@ -214,7 +214,7 @@ class ListingsList extends Settings {
 			\ET_Builder_Element::set_style(
 				$render_slug,
 				[
-					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .listing-price .rtcl-price',
+					'selector'    => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .item-price .rtcl-price',
 					'declaration' => sprintf( 'color: %1$s;', $price_color ),
 				]
 			);

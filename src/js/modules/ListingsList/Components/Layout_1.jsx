@@ -13,6 +13,11 @@ function Layout_1({settings, data}) {
         rtcl_show_category,
         rtcl_show_price,
         rtcl_show_user,
+        rtcl_show_favourites,
+        rtcl_show_quick_view,
+        rtcl_show_compare,
+        rtcl_show_custom_fields,
+        rtcl_show_details_button,
         rtcl_list_class,
         rtcl_no_listing_text
     } = settings;
@@ -48,6 +53,11 @@ function Layout_1({settings, data}) {
                                 </h3>
                             ) : ''}
 
+                            {(rtcl_show_custom_fields === 'on' && listing?.custom_field) ? (
+                                <div className="rtcl-custom-field-warp"
+                                     dangerouslySetInnerHTML={{__html: listing?.custom_field}}/>
+                            ) : ''}
+
                             <ul className="rtcl-listing-meta-data">
                                 {(rtcl_show_ad_types === 'on' && listing.listing_type) ? (
                                     <li className="listing-type"><i
@@ -78,9 +88,30 @@ function Layout_1({settings, data}) {
                                    dangerouslySetInnerHTML={{__html: listing.excerpt.split(' ', rtcl_content_limit).join(' ')}}></p>
                             ) : ''}
                             {(rtcl_show_price === 'on' && listing.price) ? (
-                                <div className="item-price listing-price"
+                                <div className="item-price"
                                      dangerouslySetInnerHTML={{__html: listing.price}}></div>
                             ) : ''}
+                        </div>
+                        <div className="right-content">
+                            {(rtcl_show_details_button === 'on' && listing.post_link) ? (
+                                <a className="rtcl-details-button"
+                                   href={listing.post_link}>{__("Details", "rtcl-divi-addons")}</a>
+                            ) : ''}
+                            <div className="rtcl-meta-buttons-withtext meta-button-count-3">
+                                {rtcl_show_favourites === 'on' && listing.favourite_link ? (
+                                    <div className="rtcl-text-el-button"
+                                         dangerouslySetInnerHTML={{__html: listing.favourite_link}}></div>
+                                ) : ''}
+                                {rtcl_show_quick_view === 'on' && listing.quick_view ? (
+                                    <div className="rtcl-text-el-button"
+                                         dangerouslySetInnerHTML={{__html: listing.quick_view}}></div>
+                                ) : ''}
+                                {rtcl_show_compare === 'on' && listing.compare ? (
+                                    <div className="rtcl-text-el-button"
+                                         dangerouslySetInnerHTML={{__html: listing.compare}}></div>
+                                ) : ''}
+                            </div>
+
                         </div>
                     </div>
                 ))}

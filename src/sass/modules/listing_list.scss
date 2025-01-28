@@ -1,0 +1,51 @@
+.et-db .et-l .et_pb_module {
+  .rtcl-listings-wrapper {
+    .rtcl-list-view {
+      .item-content {
+        padding: 0;
+      }
+
+      .listing-item {
+        gap: 25px;
+      }
+
+      .rtcl-listing-meta-data {
+        margin-top: 10px;
+      }
+
+      .right-content {
+        max-width: 180px;
+        flex: 0 0 auto;
+
+        @media screen and (min-width: 768px) {
+          align-self: center;
+        }
+
+        .rtcl-meta-buttons-withtext {
+          margin-top: 15px;
+        }
+      }
+
+      .rtcl-text-el-button {
+        margin-top: 8px;
+        position: relative;
+        display: flex;
+
+        .rtcl-icon {
+          margin-right: 5px;
+        }
+
+        a {
+          line-height: 1.6;
+          font-size: 15px;
+          color: unset;
+          font-weight: 400;
+
+          &:hover {
+            color: var(--rtcl-primary-color);
+          }
+        }
+      }
+    }
+  }
+}
