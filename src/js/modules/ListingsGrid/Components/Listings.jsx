@@ -46,10 +46,15 @@ function Listings(props) {
             .catch((error) => console.log(error));
     }, []);
 
+    const rtcl_grid_column_tablet = attributes?.rtcl_grid_column_tablet;
+    const rtcl_grid_column_phone = attributes?.rtcl_grid_column_phone;
+
     attributes.rtcl_grid_class = classnames([
         'rtcl-listings',
         'rtcl-grid-view',
         'columns-' + rtcl_grid_column,
+        'tab-columns-' + rtcl_grid_column_tablet,
+        'mobile-columns-' + rtcl_grid_column_phone,
         'rtcl-grid-' + rtcl_grid_style
     ]);
 

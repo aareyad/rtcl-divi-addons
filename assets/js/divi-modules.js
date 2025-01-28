@@ -336,7 +336,9 @@ function Listings(props) {
       return console.log(error);
     });
   }, []);
-  attributes.rtcl_grid_class = classnames__WEBPACK_IMPORTED_MODULE_2___default()(['rtcl-listings', 'rtcl-grid-view', 'columns-' + rtcl_grid_column, 'rtcl-grid-' + rtcl_grid_style]);
+  var rtcl_grid_column_tablet = attributes === null || attributes === void 0 ? void 0 : attributes.rtcl_grid_column_tablet;
+  var rtcl_grid_column_phone = attributes === null || attributes === void 0 ? void 0 : attributes.rtcl_grid_column_phone;
+  attributes.rtcl_grid_class = classnames__WEBPACK_IMPORTED_MODULE_2___default()(['rtcl-listings', 'rtcl-grid-view', 'columns-' + rtcl_grid_column, 'tab-columns-' + rtcl_grid_column_tablet, 'mobile-columns-' + rtcl_grid_column_phone, 'rtcl-grid-' + rtcl_grid_style]);
   function load_layout() {
     if ('style-2' === rtcl_grid_style) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Layout_2__WEBPACK_IMPORTED_MODULE_1__["default"], {
