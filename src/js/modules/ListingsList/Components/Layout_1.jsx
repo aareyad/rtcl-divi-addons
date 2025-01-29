@@ -111,7 +111,6 @@ function Layout_1({settings, data}) {
                                          dangerouslySetInnerHTML={{__html: listing.compare}}></div>
                                 ) : ''}
                             </div>
-
                         </div>
                     </div>
                 ))}

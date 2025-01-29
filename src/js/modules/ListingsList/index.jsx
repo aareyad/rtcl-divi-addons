@@ -11,7 +11,7 @@ class ListingsList extends Component {
         // CSS Selectors
         const wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-listings-wrapper";
         const titleSelector = `${wrapper} .rtcl-listing-title a`;
-        const priceSelector = `${wrapper} .listing-price .rtcl-price`;
+        const priceSelector = `${wrapper} .item-price .rtcl-price`;
         const metaSelector = `${wrapper} .rtcl-listing-meta-data`;
         const metaIconSelector = `${wrapper} .rtcl-listing-meta-data i`;
         const categorySelector = `${wrapper} .listing-cat`;

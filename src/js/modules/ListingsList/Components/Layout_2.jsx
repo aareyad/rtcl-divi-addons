@@ -13,6 +13,11 @@ function Layout_2({settings, data}) {
         rtcl_show_category,
         rtcl_show_price,
         rtcl_show_user,
+        rtcl_show_favourites,
+        rtcl_show_quick_view,
+        rtcl_show_compare,
+        rtcl_show_custom_fields,
+        rtcl_show_details_button,
         rtcl_list_class,
         rtcl_no_listing_text
     } = settings;
@@ -26,8 +31,24 @@ function Layout_2({settings, data}) {
 
                         {(rtcl_show_image === 'on' && listing.thumbnail) ? (
                             <div className="listing-thumb">
-                                <a href={listing.post_link} className="rtcl-media"
-                                   dangerouslySetInnerHTML={{__html: listing.thumbnail}}></a>
+                                <div className="listing-thumb-inner">
+                                    <a href={listing.post_link} className="rtcl-media"
+                                       dangerouslySetInnerHTML={{__html: listing.thumbnail}}></a>
+                                    <div className="rtcl-meta-buttons-wrap">
+                                        {rtcl_show_favourites === 'on' && listing.favourite_link ? (
+                                            <div className="rtcl-el-button"
+                                                 dangerouslySetInnerHTML={{__html: listing.favourite_link}}></div>
+                                        ) : ''}
+                                        {rtcl_show_quick_view === 'on' && listing.quick_view ? (
+                                            <div className="rtcl-el-button"
+                                                 dangerouslySetInnerHTML={{__html: listing.quick_view}}></div>
+                                        ) : ''}
+                                        {rtcl_show_compare === 'on' && listing.compare ? (
+                                            <div className="rtcl-el-button"
+                                                 dangerouslySetInnerHTML={{__html: listing.compare}}></div>
+                                        ) : ''}
+                                    </div>
+                                </div>
                             </div>
                         ) : ''}
 
@@ -36,11 +57,6 @@ function Layout_2({settings, data}) {
                             {(rtcl_show_labels === 'on' && listing.badges) ? (
                                 <div className="rtcl-listing-badge-wrap"
                                      dangerouslySetInnerHTML={{__html: listing.badges}}></div>
-                            ) : ''}
-
-                            {(rtcl_show_price === 'on' && listing.price) ? (
-                                <div className="item-price listing-price"
-                                     dangerouslySetInnerHTML={{__html: listing.price}}></div>
                             ) : ''}
 
                             {(rtcl_show_category === 'on' && listing.categories) ? (
@@ -53,11 +69,12 @@ function Layout_2({settings, data}) {
                                 </h3>
                             ) : ''}
 
+                            {(rtcl_show_custom_fields === 'on' && listing?.custom_field) ? (
+                                <div className="rtcl-custom-field-warp"
+                                     dangerouslySetInnerHTML={{__html: listing?.custom_field}}/>
+                            ) : ''}
+
                             <ul className="rtcl-listing-meta-data">
-                                {(rtcl_show_ad_types === 'on' && listing.listing_type) ? (
-                                    <li className="listing-type"><i
-                                        className="rtcl-icon rtcl-icon-tags"></i>{listing.listing_type}</li>
-                                ) : ''}
                                 {(rtcl_show_date === 'on' && listing.time) ? (
                                     <li className="listing-date"><i
                                         className="rtcl-icon rtcl-icon-clock"></i>{listing.time}</li>
@@ -71,16 +88,33 @@ function Layout_2({settings, data}) {
                                         className="rtcl-icon rtcl-icon-location"></i><span
                                         dangerouslySetInnerHTML={{__html: listing.locations}}></span></li>
                                 ) : ''}
+                            </ul>
+
+                            {(rtcl_show_description === 'on' && listing.excerpt) ? (
+                                <p className="rtcl-excerpt"
+                                   dangerouslySetInnerHTML={{__html: listing.excerpt.split(' ', rtcl_content_limit).join(' ')}}></p>
+                            ) : ''}
+
+                            {(rtcl_show_price === 'on' && listing.price) ? (
+                                <div className="item-price"
+                                     dangerouslySetInnerHTML={{__html: listing.price}}></div>
+                            ) : ''}
+                        </div>
+                        <div className="right-content">
+                            <ul className="rtcl-listing-meta-data">
+                                {(rtcl_show_ad_types === 'on' && listing.listing_type) ? (
+                                    <li className="listing-type"><i
+                                        className="rtcl-icon rtcl-icon-tags"></i>{listing.listing_type}</li>
+                                ) : ''}
                                 {(rtcl_show_views === 'on' && listing.views) ? (
                                     <li className="listing-views"><i
                                         className="rtcl-icon rtcl-icon-eye"></i>{listing.views} {__("views", "rtcl-divi-addons")}
                                     </li>
                                 ) : ''}
                             </ul>
-
-                            {(rtcl_show_description === 'on' && listing.excerpt) ? (
-                                <p className="rtcl-excerpt"
-                                   dangerouslySetInnerHTML={{__html: listing.excerpt.split(' ', rtcl_content_limit).join(' ')}}></p>
+                            {(rtcl_show_details_button === 'on' && listing.post_link) ? (
+                                <a className="rtcl-details-button"
+                                   href={listing.post_link}>{__("Details", "rtcl-divi-addons")}</a>
                             ) : ''}
                         </div>
                     </div>

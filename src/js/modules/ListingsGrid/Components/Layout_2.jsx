@@ -13,6 +13,10 @@ function Layout_2({settings, data}) {
         rtcl_show_category,
         rtcl_show_price,
         rtcl_show_user,
+        rtcl_show_favourites,
+        rtcl_show_quick_view,
+        rtcl_show_compare,
+        rtcl_show_custom_fields,
         rtcl_grid_class,
         rtcl_no_listing_text
     } = settings;
@@ -26,8 +30,24 @@ function Layout_2({settings, data}) {
 
                         {(rtcl_show_image === 'on' && listing.thumbnail) ? (
                             <div className="listing-thumb">
-                                <a href={listing.post_link} className="rtcl-media"
-                                   dangerouslySetInnerHTML={{__html: listing.thumbnail}}></a>
+                                <div className="listing-thumb-inner">
+                                    <a href={listing.post_link} className="rtcl-media"
+                                       dangerouslySetInnerHTML={{__html: listing.thumbnail}}></a>
+                                    <div className="rtcl-meta-buttons-wrap">
+                                        {rtcl_show_favourites === 'on' && listing.favourite_link ? (
+                                            <div className="rtcl-el-button"
+                                                 dangerouslySetInnerHTML={{__html: listing.favourite_link}}></div>
+                                        ) : ''}
+                                        {rtcl_show_quick_view === 'on' && listing.quick_view ? (
+                                            <div className="rtcl-el-button"
+                                                 dangerouslySetInnerHTML={{__html: listing.quick_view}}></div>
+                                        ) : ''}
+                                        {rtcl_show_compare === 'on' && listing.compare ? (
+                                            <div className="rtcl-el-button"
+                                                 dangerouslySetInnerHTML={{__html: listing.compare}}></div>
+                                        ) : ''}
+                                    </div>
+                                </div>
                             </div>
                         ) : ''}
 
@@ -51,6 +71,11 @@ function Layout_2({settings, data}) {
                             {(listing.title) ? (
                                 <h3 className="rtcl-listing-title"><a href={listing.post_link}>{listing.title}</a>
                                 </h3>
+                            ) : ''}
+
+                            {(rtcl_show_custom_fields === 'on' && listing?.custom_field) ? (
+                                <div className="rtcl-custom-field-warp"
+                                     dangerouslySetInnerHTML={{__html: listing?.custom_field}}/>
                             ) : ''}
 
                             <ul className="rtcl-listing-meta-data">

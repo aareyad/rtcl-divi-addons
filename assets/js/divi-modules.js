@@ -47,6 +47,10 @@ function Layout_1(_ref) {
     rtcl_show_category = settings.rtcl_show_category,
     rtcl_show_price = settings.rtcl_show_price,
     rtcl_show_user = settings.rtcl_show_user,
+    rtcl_show_favourites = settings.rtcl_show_favourites,
+    rtcl_show_quick_view = settings.rtcl_show_quick_view,
+    rtcl_show_compare = settings.rtcl_show_compare,
+    rtcl_show_custom_fields = settings.rtcl_show_custom_fields,
     rtcl_grid_class = settings.rtcl_grid_class,
     rtcl_no_listing_text = settings.rtcl_no_listing_text;
   return [data.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
@@ -56,12 +60,33 @@ function Layout_1(_ref) {
         className: [Object.values(listing.classes).join(" ")],
         children: [rtcl_show_image === 'on' && listing.thumbnail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           className: "listing-thumb",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-            href: listing.post_link,
-            className: "rtcl-media",
-            dangerouslySetInnerHTML: {
-              __html: listing.thumbnail
-            }
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "listing-thumb-inner",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+              href: listing.post_link,
+              className: "rtcl-media",
+              dangerouslySetInnerHTML: {
+                __html: listing.thumbnail
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "rtcl-meta-buttons-wrap",
+              children: [rtcl_show_favourites === 'on' && listing.favourite_link ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                className: "rtcl-el-button",
+                dangerouslySetInnerHTML: {
+                  __html: listing.favourite_link
+                }
+              }) : '', rtcl_show_quick_view === 'on' && listing.quick_view ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                className: "rtcl-el-button",
+                dangerouslySetInnerHTML: {
+                  __html: listing.quick_view
+                }
+              }) : '', rtcl_show_compare === 'on' && listing.compare ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                className: "rtcl-el-button",
+                dangerouslySetInnerHTML: {
+                  __html: listing.compare
+                }
+              }) : '']
+            })]
           })
         }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           className: "item-content",
@@ -81,6 +106,11 @@ function Layout_1(_ref) {
               href: listing.post_link,
               children: listing.title
             })
+          }) : '', rtcl_show_custom_fields === 'on' && listing !== null && listing !== void 0 && listing.custom_field ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "rtcl-custom-field-warp",
+            dangerouslySetInnerHTML: {
+              __html: listing === null || listing === void 0 ? void 0 : listing.custom_field
+            }
           }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
             className: "rtcl-listing-meta-data",
             children: [rtcl_show_ad_types === 'on' && listing.listing_type ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
@@ -163,6 +193,10 @@ function Layout_2(_ref) {
     rtcl_show_category = settings.rtcl_show_category,
     rtcl_show_price = settings.rtcl_show_price,
     rtcl_show_user = settings.rtcl_show_user,
+    rtcl_show_favourites = settings.rtcl_show_favourites,
+    rtcl_show_quick_view = settings.rtcl_show_quick_view,
+    rtcl_show_compare = settings.rtcl_show_compare,
+    rtcl_show_custom_fields = settings.rtcl_show_custom_fields,
     rtcl_grid_class = settings.rtcl_grid_class,
     rtcl_no_listing_text = settings.rtcl_no_listing_text;
   return [data.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
@@ -172,12 +206,33 @@ function Layout_2(_ref) {
         className: [Object.values(listing.classes).join(" ")],
         children: [rtcl_show_image === 'on' && listing.thumbnail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           className: "listing-thumb",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-            href: listing.post_link,
-            className: "rtcl-media",
-            dangerouslySetInnerHTML: {
-              __html: listing.thumbnail
-            }
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "listing-thumb-inner",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+              href: listing.post_link,
+              className: "rtcl-media",
+              dangerouslySetInnerHTML: {
+                __html: listing.thumbnail
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "rtcl-meta-buttons-wrap",
+              children: [rtcl_show_favourites === 'on' && listing.favourite_link ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                className: "rtcl-el-button",
+                dangerouslySetInnerHTML: {
+                  __html: listing.favourite_link
+                }
+              }) : '', rtcl_show_quick_view === 'on' && listing.quick_view ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                className: "rtcl-el-button",
+                dangerouslySetInnerHTML: {
+                  __html: listing.quick_view
+                }
+              }) : '', rtcl_show_compare === 'on' && listing.compare ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                className: "rtcl-el-button",
+                dangerouslySetInnerHTML: {
+                  __html: listing.compare
+                }
+              }) : '']
+            })]
           })
         }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           className: "item-content",
@@ -202,6 +257,11 @@ function Layout_2(_ref) {
               href: listing.post_link,
               children: listing.title
             })
+          }) : '', rtcl_show_custom_fields === 'on' && listing !== null && listing !== void 0 && listing.custom_field ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "rtcl-custom-field-warp",
+            dangerouslySetInnerHTML: {
+              __html: listing === null || listing === void 0 ? void 0 : listing.custom_field
+            }
           }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
             className: "rtcl-listing-meta-data",
             children: [rtcl_show_ad_types === 'on' && listing.listing_type ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
@@ -661,6 +721,11 @@ function Layout_2(_ref) {
     rtcl_show_category = settings.rtcl_show_category,
     rtcl_show_price = settings.rtcl_show_price,
     rtcl_show_user = settings.rtcl_show_user,
+    rtcl_show_favourites = settings.rtcl_show_favourites,
+    rtcl_show_quick_view = settings.rtcl_show_quick_view,
+    rtcl_show_compare = settings.rtcl_show_compare,
+    rtcl_show_custom_fields = settings.rtcl_show_custom_fields,
+    rtcl_show_details_button = settings.rtcl_show_details_button,
     rtcl_list_class = settings.rtcl_list_class,
     rtcl_no_listing_text = settings.rtcl_no_listing_text;
   return [data.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
@@ -670,12 +735,33 @@ function Layout_2(_ref) {
         className: [Object.values(listing.classes).join(" ")],
         children: [rtcl_show_image === 'on' && listing.thumbnail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           className: "listing-thumb",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-            href: listing.post_link,
-            className: "rtcl-media",
-            dangerouslySetInnerHTML: {
-              __html: listing.thumbnail
-            }
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "listing-thumb-inner",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+              href: listing.post_link,
+              className: "rtcl-media",
+              dangerouslySetInnerHTML: {
+                __html: listing.thumbnail
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "rtcl-meta-buttons-wrap",
+              children: [rtcl_show_favourites === 'on' && listing.favourite_link ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                className: "rtcl-el-button",
+                dangerouslySetInnerHTML: {
+                  __html: listing.favourite_link
+                }
+              }) : '', rtcl_show_quick_view === 'on' && listing.quick_view ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                className: "rtcl-el-button",
+                dangerouslySetInnerHTML: {
+                  __html: listing.quick_view
+                }
+              }) : '', rtcl_show_compare === 'on' && listing.compare ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                className: "rtcl-el-button",
+                dangerouslySetInnerHTML: {
+                  __html: listing.compare
+                }
+              }) : '']
+            })]
           })
         }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           className: "item-content",
@@ -683,11 +769,6 @@ function Layout_2(_ref) {
             className: "rtcl-listing-badge-wrap",
             dangerouslySetInnerHTML: {
               __html: listing.badges
-            }
-          }) : '', rtcl_show_price === 'on' && listing.price ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "item-price listing-price",
-            dangerouslySetInnerHTML: {
-              __html: listing.price
             }
           }) : '', rtcl_show_category === 'on' && listing.categories ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
             className: "listing-cat",
@@ -700,14 +781,14 @@ function Layout_2(_ref) {
               href: listing.post_link,
               children: listing.title
             })
+          }) : '', rtcl_show_custom_fields === 'on' && listing !== null && listing !== void 0 && listing.custom_field ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "rtcl-custom-field-warp",
+            dangerouslySetInnerHTML: {
+              __html: listing === null || listing === void 0 ? void 0 : listing.custom_field
+            }
           }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
             className: "rtcl-listing-meta-data",
-            children: [rtcl_show_ad_types === 'on' && listing.listing_type ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-              className: "listing-type",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
-                className: "rtcl-icon rtcl-icon-tags"
-              }), listing.listing_type]
-            }) : '', rtcl_show_date === 'on' && listing.time ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+            children: [rtcl_show_date === 'on' && listing.time ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
               className: "listing-date",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
                 className: "rtcl-icon rtcl-icon-clock"
@@ -726,17 +807,37 @@ function Layout_2(_ref) {
                   __html: listing.locations
                 }
               })]
-            }) : '', rtcl_show_views === 'on' && listing.views ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-              className: "listing-views",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
-                className: "rtcl-icon rtcl-icon-eye"
-              }), listing.views, " ", __("views", "rtcl-divi-addons")]
             }) : '']
           }), rtcl_show_description === 'on' && listing.excerpt ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
             className: "rtcl-excerpt",
             dangerouslySetInnerHTML: {
               __html: listing.excerpt.split(' ', rtcl_content_limit).join(' ')
             }
+          }) : '', rtcl_show_price === 'on' && listing.price ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "item-price",
+            dangerouslySetInnerHTML: {
+              __html: listing.price
+            }
+          }) : '']
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "right-content",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+            className: "rtcl-listing-meta-data",
+            children: [rtcl_show_ad_types === 'on' && listing.listing_type ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+              className: "listing-type",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                className: "rtcl-icon rtcl-icon-tags"
+              }), listing.listing_type]
+            }) : '', rtcl_show_views === 'on' && listing.views ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+              className: "listing-views",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                className: "rtcl-icon rtcl-icon-eye"
+              }), listing.views, " ", __("views", "rtcl-divi-addons")]
+            }) : '']
+          }), rtcl_show_details_button === 'on' && listing.post_link ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+            className: "rtcl-details-button",
+            href: listing.post_link,
+            children: __("Details", "rtcl-divi-addons")
           }) : '']
         })]
       }, index);
@@ -909,7 +1010,7 @@ var ListingsList = /*#__PURE__*/function (_Component) {
       // CSS Selectors
       var wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-listings-wrapper";
       var titleSelector = "".concat(wrapper, " .rtcl-listing-title a");
-      var priceSelector = "".concat(wrapper, " .listing-price .rtcl-price");
+      var priceSelector = "".concat(wrapper, " .item-price .rtcl-price");
       var metaSelector = "".concat(wrapper, " .rtcl-listing-meta-data");
       var metaIconSelector = "".concat(wrapper, " .rtcl-listing-meta-data i");
       var categorySelector = "".concat(wrapper, " .listing-cat");
