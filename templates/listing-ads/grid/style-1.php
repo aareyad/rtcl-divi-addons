@@ -8,6 +8,7 @@
 
 use Rtcl\Helpers\Functions;
 use Rtcl\Helpers\Pagination;
+use RtclPro\Controllers\Hooks\TemplateHooks;
 
 ?>
 
@@ -43,15 +44,77 @@ use Rtcl\Helpers\Pagination;
 
             <div <?php Functions::listing_class( [ 'rtcl-widget-listing-item', 'listing-item', $img_position_class ] ); ?>>
 				<?php
+				$button_icon = 0;
+				ob_start();
+				if ( 'on' === $instance['rtcl_show_favourites'] ) {
+					$button_icon ++;
+					?>
+                    <div class="rtcl-fav rtcl-el-button">
+						<?php echo Functions::get_favourites_link( $_id ); ?>
+                    </div>
+				<?php } ?>
+				<?php
+				$dispaly_favourites = ob_get_clean();
+				?>
+
+				<?php
+				ob_start();
+				if ( rtcl()->has_pro() ) {
+					if ( 'on' === $instance['rtcl_show_quick_view'] ) :
+						?>
+                        <div class="rtcl-el-button">
+                            <a class="rtcl-quick-view" href="#" title="<?php esc_attr_e( 'Quick View', 'rtcl-divi-addons' ); ?>"
+                               data-listing_id="<?php echo absint( $_id ); ?>">
+                                <i class="rtcl-icon rtcl-icon-zoom-in"></i>
+                            </a>
+                        </div>
+						<?php
+						$button_icon ++;
+					endif;
+				}
+				$dispaly_quick_view = ob_get_clean();
+				?>
+
+				<?php ob_start(); ?>
+				<?php
+				if ( rtcl()->has_pro() ) {
+					if ( 'on' === $instance['rtcl_show_compare'] ) :
+						?>
+                        <div class="rtcl-el-button">
+							<?php
+							$compare_ids    = ! empty( $_SESSION['rtcl_compare_ids'] ) ? $_SESSION['rtcl_compare_ids'] : [];
+							$selected_class = '';
+							if ( is_array( $compare_ids ) && in_array( $_id, $compare_ids ) ) {
+								$selected_class = ' selected';
+							}
+							?>
+                            <a class="rtcl-compare <?php echo esc_attr( $selected_class ); ?>" href="#"
+                               title="<?php esc_attr_e( 'Compare', 'rtcl-divi-addons' ); ?>"
+                               data-listing_id="<?php echo absint( $_id ); ?>">
+                                <i class="rtcl-icon rtcl-icon-retweet"></i>
+                            </a>
+                        </div>
+						<?php
+						$button_icon ++;
+					endif;
+				}
+				?>
+				<?php
+				$dispaly_compare = ob_get_clean();
+
+				$button = sprintf( '<div class="rtcl-meta-buttons-wrap meta-button-count-%s">%s %s %s</div>',
+					$button_icon, $dispaly_favourites, $dispaly_quick_view, $dispaly_compare );
+
 				if ( 'on' === $instance['rtcl_show_image'] ) {
 					$image_size    = $instance['rtcl_image_size'];
 					$the_thumbnail = $listing->get_the_thumbnail( $image_size );
 					if ( $the_thumbnail ) {
 						$img = sprintf(
-							"<div class='listing-thumb'><div class='listing-thumb-inner'><a href='%s' title='%s'>%s</a></div></div>",
+							"<div class='listing-thumb'><div class='listing-thumb-inner'><a href='%s' title='%s'>%s</a>%s</div></div>",
 							get_the_permalink(),
 							esc_html( get_the_title() ),
 							$the_thumbnail,
+							$button
 						);
 					}
 				}
@@ -146,9 +209,15 @@ use Rtcl\Helpers\Pagination;
 					}
 				}
 
+				if ( rtcl()->has_pro() && 'on' === $instance['rtcl_show_custom_fields'] ) {
+					ob_start();
+					TemplateHooks::loop_item_listable_fields();
+					$custom_field = ob_get_clean();
+				}
+
 				$item_content_right = sprintf( '%s', $price );
 
-				$item_content   = sprintf(
+				$item_content = sprintf(
 					'<div class="item-content">%s %s %s %s %s %s %s</div>',
 					$labels,
 					$category,
@@ -158,7 +227,9 @@ use Rtcl\Helpers\Pagination;
 					$listing_description,
 					$item_content_right
 				);
+
 				$final_contents = sprintf( '%s <div class="rtin-content-area">%s</div>', $img, $item_content );
+
 				echo wp_kses_post( $final_contents );
 				?>
             </div>

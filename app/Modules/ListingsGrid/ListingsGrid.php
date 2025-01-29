@@ -305,6 +305,54 @@ class ListingsGrid extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
+			'rtcl_show_custom_fields'  => [
+				'label'       => esc_html__( 'Show Custom Fields', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'off',
+				'description' => __( 'Show / Hide listing custom fields.', 'rtcl-divi-addons' ),
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'content_visibility',
+			],
+			'rtcl_show_favourites'     => [
+				'label'       => esc_html__( 'Show Favourites', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'off',
+				'description' => __( 'Show / Hide listing favourite button.', 'rtcl-divi-addons' ),
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'content_visibility',
+			],
+			'rtcl_show_quick_view'     => [
+				'label'       => esc_html__( 'Show Quick View', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'off',
+				'description' => __( 'Show / Hide quick view button.', 'rtcl-divi-addons' ),
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'content_visibility',
+			],
+			'rtcl_show_compare'        => [
+				'label'       => esc_html__( 'Show Compare', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'off',
+				'description' => __( 'Show / Hide compare button.', 'rtcl-divi-addons' ),
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'content_visibility',
+			],
 			// Style
 			'rtcl_title_color'         => [
 				'label'       => esc_html__( 'Title Color', 'addons-for-divi' ),
