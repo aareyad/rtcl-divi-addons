@@ -310,3 +310,65 @@
 .et-db .et-l .et_pb_module .rtcl-listings-wrapper .rtcl-list-view .rtcl-text-el-button a:hover {
   color: var(--rtcl-primary-color);
 }
+
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper {
+  font-size: 16px;
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item {
+  margin: 0;
+  padding: 0;
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 30px 25px;
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details img {
+  max-width: 100%;
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details img,
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details a {
+  display: inline-block;
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details.text-center {
+  text-align: center;
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details.text-right {
+  text-align: right;
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details .rtcl-category-title {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  color: #2a2a2a;
+  font-weight: 700;
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details .rtcl-category-title:hover {
+  color: var(--rtcl-primary-color);
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details .icon {
+  margin-bottom: 15px;
+  line-height: 1;
+  font-size: 32px;
+  transition: all 0.3s ease-out;
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details .icon a {
+  color: var(--rtcl-primary-color);
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details .icon .rtcl-icon {
+  line-height: 1;
+  display: inline-flex;
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details .icon .rtcl-icon:before {
+  width: inherit;
+  margin: 0;
+  line-height: 1;
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details .image {
+  line-height: 1;
+  margin-bottom: 15px;
+}
+.et-db .et-l .et_pb_module .rtcl-cat-items-wrapper .rtcl-cat-item .cat-details .count {
+  margin-top: 8px;
+  line-height: 1;
+}

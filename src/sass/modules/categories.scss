@@ -1,0 +1,78 @@
+.et-db .et-l .et_pb_module {
+  .rtcl-cat-items-wrapper {
+    font-size: 16px;
+
+    .rtcl-cat-item {
+      margin: 0;
+      padding: 0;
+
+      .cat-details {
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 30px 25px;
+
+        img {
+          max-width: 100%;
+        }
+
+        img,
+        a {
+          display: inline-block;
+        }
+
+        &.text-center {
+          text-align: center;
+        }
+
+        &.text-right {
+          text-align: right;
+        }
+
+        .rtcl-category-title {
+          font-size: 18px;
+          line-height: 1.5;
+          margin: 0;
+          padding: 0;
+          color: #2a2a2a;
+          font-weight: 700;
+
+          &:hover {
+            color: var(--rtcl-primary-color);
+          }
+        }
+
+        .icon {
+          margin-bottom: 15px;
+          line-height: 1;
+          font-size: 32px;
+          -webkit-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+
+          a {
+            color: var(--rtcl-primary-color);
+          }
+
+          .rtcl-icon {
+            line-height: 1;
+            display: inline-flex;
+
+            &:before {
+              width: inherit;
+              margin: 0;
+              line-height: 1;
+            }
+          }
+        }
+
+        .image {
+          line-height: 1;
+          margin-bottom: 15px;
+        }
+
+        .count {
+          margin-top: 8px;
+          line-height: 1;
+        }
+      }
+    }
+  }
+}

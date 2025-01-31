@@ -20,9 +20,11 @@ class Functions {
 
 		$terms = get_terms( $args );
 
-		$category_dropdown = [
+		$category_dropdown = [];
+
+		/*$category_dropdown = [
 			'all' => 'All',
-		];
+		];*/
 
 		foreach ( $terms as $id => $name ) {
 			$category_dropdown[ $id ] = $name;

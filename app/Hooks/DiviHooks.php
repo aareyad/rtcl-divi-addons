@@ -2,6 +2,7 @@
 
 namespace RtclDiviAddons\Hooks;
 
+use RtclDiviAddons\Modules\ListingCategories\ListingCategories;
 use RtclDiviAddons\Modules\ListingsGrid\ListingsGrid;
 use RtclDiviAddons\Modules\ListingsList\ListingsList;
 
@@ -21,6 +22,7 @@ class DiviHooks {
 
 		new ListingsGrid();
 		new ListingsList();
+		new ListingCategories();
 	}
 
 }

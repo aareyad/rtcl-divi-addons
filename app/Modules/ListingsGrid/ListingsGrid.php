@@ -355,7 +355,7 @@ class ListingsGrid extends \ET_Builder_Module {
 			],
 			// Style
 			'rtcl_title_color'         => [
-				'label'       => esc_html__( 'Title Color', 'addons-for-divi' ),
+				'label'       => esc_html__( 'Title Color', 'rtcl-divi-addons' ),
 				'description' => esc_html__( 'Here you can define a custom color for listing title.', 'rtcl-divi-addons' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
@@ -363,26 +363,26 @@ class ListingsGrid extends \ET_Builder_Module {
 				'hover'       => 'tabs',
 			],
 			'rtcl_meta_color'          => [
-				'label'       => esc_html__( 'Meta Color', 'addons-for-divi' ),
+				'label'       => esc_html__( 'Meta Color', 'rtcl-divi-addons' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'meta',
 			],
 			'rtcl_meta_icon_color'     => [
-				'label'       => esc_html__( 'Meta Icon Color', 'addons-for-divi' ),
+				'label'       => esc_html__( 'Meta Icon Color', 'rtcl-divi-addons' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'meta',
 			],
 			'rtcl_meta_category_color' => [
-				'label'       => esc_html__( 'Category Color', 'addons-for-divi' ),
+				'label'       => esc_html__( 'Category Color', 'rtcl-divi-addons' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'meta',
 				'hover'       => 'tabs',
 			],
 			'rtcl_price_color'         => [
-				'label'       => esc_html__( 'Price Color', 'addons-for-divi' ),
+				'label'       => esc_html__( 'Price Color', 'rtcl-divi-addons' ),
 				'description' => esc_html__( 'Here you can define a custom color for listing price.', 'rtcl-divi-addons' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',

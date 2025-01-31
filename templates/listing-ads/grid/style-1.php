@@ -16,10 +16,10 @@ use RtclPro\Controllers\Hooks\TemplateHooks;
 	<?php
 	$class = ! empty( $style ) ? 'rtcl-grid-' . $style : 'rtcl-grid-style-1';
 	$class .= ! empty( $instance['rtcl_grid_column'] ) ? ' columns-' . $instance['rtcl_grid_column'] : ' columns-3';
-	$class .= ! empty( $instance['rtcl_grid_column_tablet'] ) ? ' tab-columns-' . $instance['rtcl_grid_column_tablet'] : ' columns-2';
-	$class .= ! empty( $instance['rtcl_grid_column_phone'] ) ? ' mobile-columns-' . $instance['rtcl_grid_column_phone'] : ' columns-1';
+	$class .= ! empty( $instance['rtcl_grid_column_tablet'] ) ? ' tab-columns-' . $instance['rtcl_grid_column_tablet'] : ' tab-columns-2';
+	$class .= ! empty( $instance['rtcl_grid_column_phone'] ) ? ' mobile-columns-' . $instance['rtcl_grid_column_phone'] : ' mobile-columns-1';
 	?>
-    <div class="rtcl-listings rtcl-grid-view <?php echo esc_attr( $class ); ?> ">
+    <div class="rtcl-listings rtcl-grid-view <?php echo esc_attr( $class ); ?>">
 		<?php
 
 		while ( $the_loops->have_posts() ) :
