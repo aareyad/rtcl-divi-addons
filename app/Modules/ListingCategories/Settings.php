@@ -32,6 +32,7 @@ class Settings extends \ET_Builder_Module {
 				'toggles' => [
 					'card'  => esc_html__( 'Card', 'rtcl-divi-addons' ),
 					'title' => esc_html__( 'Title', 'rtcl-divi-addons' ),
+					'count' => esc_html__( 'Count', 'rtcl-divi-addons' ),
 				],
 			],
 		];
@@ -197,19 +198,6 @@ class Settings extends \ET_Builder_Module {
 				],
 			],
 			// Style
-			'rtcl_box_padding'       => [
-				'label'          => esc_html__( 'Padding', 'rtcl-divi-addons' ),
-				'type'           => 'range',
-				'defaunt_unit'   => 'px',
-				'default'        => '0px',
-				'range_settings' => array(
-					'min'  => '0',
-					'max'  => '100',
-					'step' => '1',
-				),
-				'tab_slug'       => 'advanced',
-				'toggle_slug'    => 'card',
-			],
 			'rtcl_content_alignment' => [
 				'label'       => esc_html__( 'Content Alignment', 'rtcl-divi-addons' ),
 				'type'        => 'text_align',
@@ -226,6 +214,28 @@ class Settings extends \ET_Builder_Module {
 				'toggle_slug' => 'title',
 				'hover'       => 'tabs',
 			],
+			'rtcl_count_color'       => [
+				'label'       => esc_html__( 'Count Color', 'rtcl-divi-addons' ),
+				'description' => esc_html__( 'Here you can define a custom color for listing count.', 'rtcl-divi-addons' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'count',
+			],
+			'rtcl_count_text_size'   => [
+				'label'          => esc_html__( 'Count Font Size', 'rtcl-divi-addons' ),
+				'description'    => esc_html__( 'Here you can define font size for listing count.', 'rtcl-divi-addons' ),
+				'type'           => 'range',
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'count',
+				'default'        => '16px',
+				'allowed_units'  => [ 'px' ],
+				'default_unit'   => 'px',
+				'range_settings' => array(
+					'min'  => 0,
+					'step' => 1,
+					'max'  => 40,
+				),
+			],
 		];
 	}
 
@@ -238,7 +248,7 @@ class Settings extends \ET_Builder_Module {
 		$advanced_fields['fonts'] = [
 			'title' => [
 				'css'              => array(
-					'main' => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-title',
+					'main' => '.et-db .et-l %%order_class%% .rtcl-categories-wrapper .rtcl-category-title',
 				),
 				'important'        => 'all',
 				'hide_text_color'  => true,
@@ -259,56 +269,6 @@ class Settings extends \ET_Builder_Module {
 				),
 				'font'             => [
 					'default' => '|700|||||||',
-				],
-			],
-			'meta'  => [
-				'css'              => array(
-					'main' => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-meta-data',
-				),
-				'important'        => 'all',
-				'hide_text_color'  => true,
-				'hide_text_shadow' => true,
-				'hide_text_align'  => true,
-				'tab_slug'         => 'advanced',
-				'toggle_slug'      => 'meta',
-				'line_height'      => array(
-					'range_settings' => array(
-						'min'  => '1',
-						'max'  => '3',
-						'step' => '.1',
-					),
-					'default'        => '1.2em',
-				),
-				'font_size'        => array(
-					'default' => '16px',
-				),
-				'font'             => [
-					'default' => '|400|||||||',
-				],
-			],
-			'price' => [
-				'css'              => array(
-					'main' => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listings .item-price .rtcl-price .rtcl-price-amount',
-				),
-				'important'        => 'all',
-				'hide_text_color'  => true,
-				'hide_text_shadow' => true,
-				'hide_text_align'  => true,
-				'tab_slug'         => 'advanced',
-				'toggle_slug'      => 'price',
-				'line_height'      => array(
-					'range_settings' => array(
-						'min'  => '1',
-						'max'  => '3',
-						'step' => '.1',
-					),
-					'default'        => '1.3em',
-				),
-				'font_size'        => array(
-					'default' => '20px',
-				),
-				'font'             => [
-					'default' => '|600|||||||',
 				],
 			]
 		];
