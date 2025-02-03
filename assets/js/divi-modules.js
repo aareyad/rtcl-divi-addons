@@ -60,44 +60,35 @@ function Categories(props) {
   var rtcl_cats_style = attributes.rtcl_cats_style,
     rtcl_grid_column = attributes.rtcl_grid_column,
     rtcl_category_limit = attributes.rtcl_category_limit;
-  var _useState = useState([]),
+  var _useState = useState(true),
     _useState2 = _slicedToArray(_useState, 2),
-    data = _useState2[0],
-    setData = _useState2[1];
-  var _useState3 = useState(true),
+    dataSuccess = _useState2[0],
+    setDataSuccess = _useState2[1];
+  var _useState3 = useState([]),
     _useState4 = _slicedToArray(_useState3, 2),
-    dataSuccess = _useState4[0],
-    setDataSuccess = _useState4[1];
-  var _useState5 = useState(0),
-    _useState6 = _slicedToArray(_useState5, 2),
-    pageState = _useState6[0],
-    setPageState = _useState6[1];
+    catListBox = _useState4[0],
+    setCatListBox = _useState4[1];
   var ajaxAttributes = {
-    cats: attributes.rtcl_listing_categories === 'all' ? '' : [attributes.rtcl_listing_categories],
-    locations: attributes.rtcl_listing_location === 'all' ? '' : [attributes.rtcl_listing_location],
-    listing_type: attributes.rtcl_listing_types === 'all' ? '' : attributes.rtcl_listing_types,
+    cats: attributes.rtcl_cats === '' ? [] : [attributes.rtcl_cats],
     orderby: attributes.rtcl_orderby,
-    sortby: attributes.rtcl_sortby,
-    perPage: attributes.rtcl_listing_per_page,
-    image_size: attributes.rtcl_image_size
+    sortby: attributes.rtcl_order,
+    category_limit: rtcl_category_limit,
+    hide_empty: attributes.rtcl_hide_empty
   };
   useEffect(function () {
-    var paginationLimit = 0;
-    paginationLimit = rtcl_listing_per_page;
     var ajaxdata = {
-      action: 'rtcl_gb_listings_ajax',
+      action: 'rtcl_gb_listing_cat_box',
       rtcl_nonce: rtcl_divi.rtcl_nonce,
       attributes: ajaxAttributes
     };
     axios__WEBPACK_IMPORTED_MODULE_3__["default"].post(rtcl.ajaxurl, qs__WEBPACK_IMPORTED_MODULE_4___default().stringify(ajaxdata)).then(function (response) {
       if (response.data.success) {
-        setData(_toConsumableArray(response.data.data.posts));
+        setCatListBox(_toConsumableArray(response.data.data));
         setDataSuccess(response.data.success);
       } else {
-        setData([]);
+        setCatListBox([]);
         setDataSuccess(response.data.success);
       }
-      setPageState(Math.ceil(response.data.data.total_post / (paginationLimit == 0 || paginationLimit == -1 ? 1 : paginationLimit)));
     })["catch"](function (error) {
       return console.log(error);
     });
@@ -106,10 +97,9 @@ function Categories(props) {
   var rtcl_grid_column_phone = attributes === null || attributes === void 0 ? void 0 : attributes.rtcl_grid_column_phone;
   attributes.rtcl_grid_class = classnames__WEBPACK_IMPORTED_MODULE_1___default()(['rtcl-categories', 'rtcl-grid-view', 'rtcl-category-' + rtcl_cats_style, 'columns-' + rtcl_grid_column, 'tab-columns-' + rtcl_grid_column_tablet, 'mobile-columns-' + rtcl_grid_column_phone]);
   function load_layout() {
-    return false;
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Layout_1__WEBPACK_IMPORTED_MODULE_0__["default"], {
       settings: attributes,
-      data: data
+      data: catListBox
     });
   }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -132,64 +122,53 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 var __ = wp.i18n.__;
-function Layout_1(_ref) {
-  var settings = _ref.settings,
-    data = _ref.data;
-  var rtcl_show_image = settings.rtcl_show_image,
-    rtcl_show_description = settings.rtcl_show_description,
-    rtcl_content_limit = settings.rtcl_content_limit,
-    rtcl_show_labels = settings.rtcl_show_labels,
-    rtcl_show_date = settings.rtcl_show_date,
-    rtcl_show_views = settings.rtcl_show_views,
-    rtcl_show_ad_types = settings.rtcl_show_ad_types,
-    rtcl_show_location = settings.rtcl_show_location,
-    rtcl_show_category = settings.rtcl_show_category,
-    rtcl_show_price = settings.rtcl_show_price,
-    rtcl_show_user = settings.rtcl_show_user,
-    rtcl_show_favourites = settings.rtcl_show_favourites,
-    rtcl_show_quick_view = settings.rtcl_show_quick_view,
-    rtcl_show_compare = settings.rtcl_show_compare,
-    rtcl_show_custom_fields = settings.rtcl_show_custom_fields,
-    rtcl_grid_class = settings.rtcl_grid_class,
-    rtcl_no_listing_text = settings.rtcl_no_listing_text;
-  return [data.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    className: "rtcl rtcl-gb-block",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: colClasses,
-      children: data.map(function (catlist, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-          className: boxContainerClass,
-          children: [content_visibility["icon"] && catlist.icon_html ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: icon_type == 'icon' ? 'item-icon' : 'item-image',
-            children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+function Layout_1(props) {
+  var data = props.data;
+  var _props$settings = props.settings,
+    rtcl_grid_class = _props$settings.rtcl_grid_class,
+    rtcl_content_limit = _props$settings.rtcl_content_limit,
+    rtcl_icon_type = _props$settings.rtcl_icon_type,
+    rtcl_description = _props$settings.rtcl_description,
+    rtcl_show_count = _props$settings.rtcl_show_count,
+    rtcl_show_image = _props$settings.rtcl_show_image;
+  return [data.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: rtcl_grid_class,
+    children: data.map(function (catlist, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "rtcl-cat-item",
+        children: ['on' === rtcl_show_image && catlist.icon_html ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: rtcl_icon_type === 'icon' ? 'item-icon' : 'item-image',
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+            href: catlist.permalink,
+            dangerouslySetInnerHTML: {
+              __html: catlist.icon_html
+            }
+          })
+        }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "item-content",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+            className: "title",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
               href: catlist.permalink,
               dangerouslySetInnerHTML: {
-                __html: catlist.icon_html
+                __html: catlist.name
               }
-            })]
-          }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "item-content",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-              className: "title",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                href: catlist.permalink,
-                dangerouslySetInnerHTML: {
-                  __html: catlist.name
-                }
-              })
-            }), content_visibility["counter"] && catlist.count ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-              className: "counter",
-              children: !count_after_text ? catlist.count == 1 ? catlist.count + __(' Ad') : catlist.count + __(' Ads') : catlist.count + ' ' + count_after_text
-            }) : '', content_visibility["catDesc"] && catlist.description ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-              className: "content",
-              children: "".concat(catlist.description.split(' ', content_limit).join(' ') + '....')
-            }) : '']
-          })]
-        }, index);
-      })
+            })
+          }), 'on' === rtcl_show_count && catlist.count ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "counter",
+            children: "catlist.count"
+          }) : '', 'on' === rtcl_description && catlist.description ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "content",
+            children: "".concat(catlist.description.split(' ', rtcl_content_limit).join(' ') + '....')
+          }) : '']
+        })]
+      }, index);
     })
   }) : ''];
 }
@@ -239,10 +218,8 @@ var ListingCategories = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       console.log(this.props);
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
-          children: "fdfdfdfdf"
-        })
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Components_Categories__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        settings: this.props
       });
     }
   }], [{

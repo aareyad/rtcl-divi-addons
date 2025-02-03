@@ -42,9 +42,7 @@ class ListingCategories extends Component {
         console.log(this.props)
 
         return (
-            <>
-            <h3>fdfdfdfdf</h3>
-            </>
+            <Categories settings={this.props}/>
         );
     }
 }
