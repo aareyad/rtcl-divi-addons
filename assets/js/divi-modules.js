@@ -238,10 +238,10 @@ var ListingCategories = /*#__PURE__*/function (_Component) {
   return _createClass(ListingCategories, [{
     key: "render",
     value: function render() {
-      console.log(this.props.__categories);
+      console.log(this.props);
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-          children: "Workkdfjdkfjdfld"
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+          children: "fdfdfdfdf"
         })
       });
     }

@@ -14,6 +14,11 @@ class ListingCategories extends Settings {
 	 * @return array
 	 */
 	public function widget_results( $data ) {
+		// user's selected category.
+		$category_includes = ! empty( $data['rtcl_cats'] ) ? $data['rtcl_cats'] : [];
+		$category_includes = explode( '|', $category_includes );
+
+		$category_terms = \RtclDiviAddons\Helpers\Functions::divi_get_user_selected_terms( $category_includes );
 
 		$args = array(
 			'taxonomy'     => rtcl()->category,
@@ -21,7 +26,7 @@ class ListingCategories extends Settings {
 			'orderby'      => ! empty( $data['rtcl_orderby'] ) ? $data['rtcl_orderby'] : 'name',
 			'order'        => ! empty( $data['rtcl_order'] ) ? $data['rtcl_order'] : 'asc',
 			'hide_empty'   => ! empty( $data['rtcl_hide_empty'] ) && 'on' === $data['rtcl_hide_empty'],
-			'include'      => ! empty( $data['rtcl_cats'] ) ? $data['rtcl_cats'] : array(),
+			'include'      => ! empty( $category_terms ) ? $category_terms : [],
 			'hierarchical' => false,
 		);
 		if ( 'custom' === $data['rtcl_orderby'] ) {

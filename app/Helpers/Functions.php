@@ -76,4 +76,31 @@ class Functions {
 
 		return apply_filters( 'rtcl_divi_listing_order_by', $order_by );
 	}
+
+	public static function divi_get_user_selected_terms( $category_includes ) {
+		// available categories.
+		$available_cat = self::get_listing_taxonomy( 'parent' );
+		// sort be key asc order.
+		ksort( $available_cat );
+		// filter only selected cat keys
+		$includes_keys = array_filter(
+			$category_includes,
+			function ( $cat ) {
+				if ( $cat === 'on' ) {
+					return $cat;
+				}
+			}
+		);
+		// available terms
+		$available_terms = array_keys( $available_cat );
+		$selected_terms  = array();
+
+		// push user's selected terms
+		foreach ( $includes_keys as $key => $value ) {
+			array_push( $selected_terms, $available_terms[ $key ] );
+		}
+
+		// return implode(',', $selected_terms);
+		return $selected_terms;
+	}
 }

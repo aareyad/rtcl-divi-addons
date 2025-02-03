@@ -39,11 +39,11 @@ class ListingCategories extends Component {
 
     render() {
 
-        console.log(this.props.__categories)
+        console.log(this.props)
 
         return (
             <>
-            <h2>Workkdfjdkfjdfld</h2>
+            <h3>fdfdfdfdf</h3>
             </>
         );
     }
