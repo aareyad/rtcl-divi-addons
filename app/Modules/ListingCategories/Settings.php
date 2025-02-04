@@ -30,14 +30,13 @@ class Settings extends \ET_Builder_Module {
 			],
 			'advanced' => [
 				'toggles' => [
-					'card'  => esc_html__( 'Card', 'rtcl-divi-addons' ),
-					'title' => esc_html__( 'Title', 'rtcl-divi-addons' ),
-					'count' => esc_html__( 'Count', 'rtcl-divi-addons' ),
+					'card'        => esc_html__( 'Card', 'rtcl-divi-addons' ),
+					'title'       => esc_html__( 'Title', 'rtcl-divi-addons' ),
+					'description' => esc_html__( 'Content', 'rtcl-divi-addons' ),
+					'count'       => esc_html__( 'Count', 'rtcl-divi-addons' ),
 				],
 			],
 		];
-
-		$selector = '%%order_class%% .rtcl-category-title a';
 	}
 
 	public function get_fields() {
@@ -214,6 +213,13 @@ class Settings extends \ET_Builder_Module {
 				'toggle_slug' => 'title',
 				'hover'       => 'tabs',
 			],
+			'rtcl_desc_color'        => [
+				'label'       => esc_html__( 'Description Color', 'rtcl-divi-addons' ),
+				'description' => esc_html__( 'Here you can define a custom color for category description.', 'rtcl-divi-addons' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'description'
+			],
 			'rtcl_count_color'       => [
 				'label'       => esc_html__( 'Count Color', 'rtcl-divi-addons' ),
 				'description' => esc_html__( 'Here you can define a custom color for listing count.', 'rtcl-divi-addons' ),
@@ -246,7 +252,7 @@ class Settings extends \ET_Builder_Module {
 		$advanced_fields['text_shadow'] = [];
 
 		$advanced_fields['fonts'] = [
-			'title' => [
+			'title'       => [
 				'css'              => array(
 					'main' => '.et-db .et-l %%order_class%% .rtcl-categories-wrapper .rtcl-category-title',
 				),
@@ -269,6 +275,31 @@ class Settings extends \ET_Builder_Module {
 				),
 				'font'             => [
 					'default' => '|700|||||||',
+				],
+			],
+			'description' => [
+				'css'              => array(
+					'main' => '.et-db .et-l %%order_class%% .rtcl-categories-wrapper .cat-details-inner p',
+				),
+				'important'        => 'all',
+				'hide_text_color'  => true,
+				'hide_text_shadow' => true,
+				'hide_text_align'  => true,
+				'tab_slug'         => 'advanced',
+				'toggle_slug'      => 'description',
+				'line_height'      => array(
+					'range_settings' => array(
+						'min'  => '1',
+						'max'  => '3',
+						'step' => '.1',
+					),
+					'default'        => '1.6em',
+				),
+				'font_size'        => array(
+					'default' => '16px',
+				),
+				'font'             => [
+					'default' => '|400|||||||',
 				],
 			]
 		];

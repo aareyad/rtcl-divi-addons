@@ -15,6 +15,7 @@ class ListingCategories extends Component {
         // Settings
         const titleColor = props.rtcl_title_color;
         const titleHoverColor = props?.rtcl_title_color__hover;
+        const descriptionColor = props.rtcl_desc_color;
         const countColor = props.rtcl_count_color;
         const countTextSize = props.rtcl_count_text_size;
 
@@ -48,6 +49,14 @@ class ListingCategories extends Component {
                 {
                     selector: `${wrapper} .cat-details-inner .count`,
                     declaration: `font-size: ${countTextSize};`
+                }
+            ]);
+        }
+        if ('' !== descriptionColor) {
+            additionalCss.push([
+                {
+                    selector: `${wrapper} .cat-details-inner p`,
+                    declaration: `color: ${descriptionColor};`
                 }
             ]);
         }

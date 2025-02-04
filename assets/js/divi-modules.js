@@ -260,6 +260,7 @@ var ListingCategories = /*#__PURE__*/function (_Component) {
       // Settings
       var titleColor = props.rtcl_title_color;
       var titleHoverColor = props === null || props === void 0 ? void 0 : props.rtcl_title_color__hover;
+      var descriptionColor = props.rtcl_desc_color;
       var countColor = props.rtcl_count_color;
       var countTextSize = props.rtcl_count_text_size;
 
@@ -286,6 +287,12 @@ var ListingCategories = /*#__PURE__*/function (_Component) {
         additionalCss.push([{
           selector: "".concat(wrapper, " .cat-details-inner .count"),
           declaration: "font-size: ".concat(countTextSize, ";")
+        }]);
+      }
+      if ('' !== descriptionColor) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .cat-details-inner p"),
+          declaration: "color: ".concat(descriptionColor, ";")
         }]);
       }
       return additionalCss;

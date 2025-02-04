@@ -72,6 +72,7 @@ class ListingCategories extends Settings {
 		$title_font_weight = explode( '|', $this->props['title_font'] )[1];
 		$count_color       = $this->props['rtcl_count_color'];
 		$count_text_size   = $this->props['rtcl_count_text_size'];
+		$description_color = $this->props['rtcl_desc_color'];
 
 		// Title
 		if ( ! empty( $title_color ) ) {
@@ -118,6 +119,16 @@ class ListingCategories extends Settings {
 					'selector'    => "$wrapper .cat-details-inner .count",
 					'declaration' => sprintf( 'font-size: %1$s;', $count_text_size ),
 				)
+			);
+		}
+		// description
+		if ( ! empty( $description_color ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => "$wrapper .cat-details-inner p",
+					'declaration' => sprintf( 'color: %1$s;', $description_color ),
+				]
 			);
 		}
 	}
