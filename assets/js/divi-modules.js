@@ -59,7 +59,27 @@ function Categories(props) {
   var attributes = props.settings;
   var rtcl_cats_style = attributes.rtcl_cats_style,
     rtcl_grid_column = attributes.rtcl_grid_column,
-    rtcl_category_limit = attributes.rtcl_category_limit;
+    rtcl_category_limit = attributes.rtcl_category_limit,
+    rtcl_cats = attributes.rtcl_cats,
+    rtcl_orderby = attributes.rtcl_orderby,
+    rtcl_order = attributes.rtcl_order,
+    rtcl_icon_type = attributes.rtcl_icon_type,
+    rtcl_hide_empty = attributes.rtcl_hide_empty;
+  var categories = rtcl_divi.cat_terms;
+
+  // Split the category includes string
+  var includesArray = rtcl_cats.split('|');
+
+  // Get corresponding IDs and title where status is "on"
+
+  var selectedCatIds = Object.keys(categories).filter(function (key, index) {
+    return includesArray[index] === "on";
+  }).map(function (key) {
+    return {
+      value: key,
+      title: categories[key]
+    };
+  });
   var _useState = useState(true),
     _useState2 = _slicedToArray(_useState, 2),
     dataSuccess = _useState2[0],
@@ -69,11 +89,14 @@ function Categories(props) {
     catListBox = _useState4[0],
     setCatListBox = _useState4[1];
   var ajaxAttributes = {
-    cats: attributes.rtcl_cats === '' ? [] : [attributes.rtcl_cats],
-    orderby: attributes.rtcl_orderby,
-    sortby: attributes.rtcl_order,
+    cats: selectedCatIds,
+    orderby: rtcl_orderby,
+    sortby: rtcl_order,
     category_limit: rtcl_category_limit,
-    hide_empty: attributes.rtcl_hide_empty
+    icon_type: rtcl_icon_type,
+    hide_empty: rtcl_hide_empty === 'on' ? 'true' : 'false',
+    enable_parent: 'true',
+    count_child: 'true'
   };
   useEffect(function () {
     var ajaxdata = {
@@ -93,9 +116,7 @@ function Categories(props) {
       return console.log(error);
     });
   }, []);
-  var rtcl_grid_column_tablet = attributes === null || attributes === void 0 ? void 0 : attributes.rtcl_grid_column_tablet;
-  var rtcl_grid_column_phone = attributes === null || attributes === void 0 ? void 0 : attributes.rtcl_grid_column_phone;
-  attributes.rtcl_grid_class = classnames__WEBPACK_IMPORTED_MODULE_1___default()(['rtcl-categories', 'rtcl-grid-view', 'rtcl-category-' + rtcl_cats_style, 'columns-' + rtcl_grid_column, 'tab-columns-' + rtcl_grid_column_tablet, 'mobile-columns-' + rtcl_grid_column_phone]);
+  attributes.rtcl_grid_class = classnames__WEBPACK_IMPORTED_MODULE_1___default()(['rtcl-cat-items-wrapper', 'rtcl-grid-view', 'rtcl-category-' + rtcl_cats_style, 'columns-' + rtcl_grid_column, attributes !== null && attributes !== void 0 && attributes.rtcl_grid_column_tablet ? 'tab-columns-' + attributes.rtcl_grid_column_tablet : 'tab-columns-2', attributes !== null && attributes !== void 0 && attributes.rtcl_grid_column_phone ? 'mobile-columns-' + attributes.rtcl_grid_column_phone : 'mobile-columns-1']);
   function load_layout() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Layout_1__WEBPACK_IMPORTED_MODULE_0__["default"], {
       settings: attributes,
@@ -136,38 +157,44 @@ function Layout_1(props) {
     rtcl_icon_type = _props$settings.rtcl_icon_type,
     rtcl_description = _props$settings.rtcl_description,
     rtcl_show_count = _props$settings.rtcl_show_count,
-    rtcl_show_image = _props$settings.rtcl_show_image;
+    rtcl_show_image = _props$settings.rtcl_show_image,
+    rtcl_content_alignment = _props$settings.rtcl_content_alignment;
   return [data.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: rtcl_grid_class,
     children: data.map(function (catlist, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         className: "rtcl-cat-item",
-        children: ['on' === rtcl_show_image && catlist.icon_html ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: rtcl_icon_type === 'icon' ? 'item-icon' : 'item-image',
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: catlist.permalink,
-            dangerouslySetInnerHTML: {
-              __html: catlist.icon_html
-            }
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "cat-details text-".concat(rtcl_content_alignment),
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "cat-details-inner",
+            children: ['on' === rtcl_show_image && catlist.icon_html ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: rtcl_icon_type === 'icon' ? 'icon' : 'image',
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+                href: catlist.permalink,
+                dangerouslySetInnerHTML: {
+                  __html: catlist.icon_html
+                }
+              })
+            }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+              className: "rtcl-category-title",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+                href: catlist.permalink,
+                dangerouslySetInnerHTML: {
+                  __html: catlist.name
+                }
+              })
+            }), 'on' === rtcl_show_count && catlist.count ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "count",
+              children: [catlist.count, " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                "class": "count-text",
+                children: __("ads", "rtcl-divi-addons")
+              })]
+            }) : '', 'on' === rtcl_description && catlist.description ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+              children: "".concat(catlist.description.split(' ', rtcl_content_limit).join(' ') + '....')
+            }) : '']
           })
-        }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "item-content",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-            className: "title",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-              href: catlist.permalink,
-              dangerouslySetInnerHTML: {
-                __html: catlist.name
-              }
-            })
-          }), 'on' === rtcl_show_count && catlist.count ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "counter",
-            children: "catlist.count"
-          }) : '', 'on' === rtcl_description && catlist.description ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            className: "content",
-            children: "".concat(catlist.description.split(' ', rtcl_content_limit).join(' ') + '....')
-          }) : '']
-        })]
+        })
       }, index);
     })
   }) : ''];
@@ -217,7 +244,6 @@ var ListingCategories = /*#__PURE__*/function (_Component) {
   return _createClass(ListingCategories, [{
     key: "render",
     value: function render() {
-      console.log(this.props);
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Components_Categories__WEBPACK_IMPORTED_MODULE_1__["default"], {
         settings: this.props
       });
@@ -229,11 +255,13 @@ var ListingCategories = /*#__PURE__*/function (_Component) {
 
       // CSS Selectors
       var wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-categories-wrapper";
-      var titleSelector = "".concat(wrapper, " .rtcl-cat-title a");
+      var titleSelector = "".concat(wrapper, " .rtcl-category-title a");
 
       // Settings
       var titleColor = props.rtcl_title_color;
       var titleHoverColor = props === null || props === void 0 ? void 0 : props.rtcl_title_color__hover;
+      var countColor = props.rtcl_count_color;
+      var countTextSize = props.rtcl_count_text_size;
 
       // Apply CSS
       if ('' !== titleColor) {
@@ -244,8 +272,20 @@ var ListingCategories = /*#__PURE__*/function (_Component) {
       }
       if ('' !== titleHoverColor && 'undefined' !== titleHoverColor) {
         additionalCss.push([{
-          selector: "".concat(wrapper, " .rtcl-listing-title a:hover"),
+          selector: "".concat(wrapper, " .rtcl-category-title a:hover"),
           declaration: "color: ".concat(titleHoverColor, ";")
+        }]);
+      }
+      if ('' !== countColor) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .cat-details-inner .count"),
+          declaration: "color: ".concat(countColor, ";")
+        }]);
+      }
+      if ('' !== countTextSize) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .cat-details-inner .count"),
+          declaration: "font-size: ".concat(countTextSize, ";")
         }]);
       }
       return additionalCss;

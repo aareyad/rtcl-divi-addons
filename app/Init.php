@@ -107,7 +107,7 @@ final class RtclDiviInit {
 
 		$localize = [
 			'rtcl_nonce' => wp_create_nonce( 'rtcl-nonce' ),
-			'cat_terms'  => ksort( $categories ),
+			'cat_terms'  => $categories,
 		];
 
 		wp_localize_script( 'rtcl-divi-modules', 'rtcl_divi', $localize );

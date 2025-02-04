@@ -10,11 +10,13 @@ class ListingCategories extends Component {
 
         // CSS Selectors
         const wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-categories-wrapper";
-        const titleSelector = `${wrapper} .rtcl-cat-title a`;
+        const titleSelector = `${wrapper} .rtcl-category-title a`;
 
         // Settings
         const titleColor = props.rtcl_title_color;
         const titleHoverColor = props?.rtcl_title_color__hover;
+        const countColor = props.rtcl_count_color;
+        const countTextSize = props.rtcl_count_text_size;
 
         // Apply CSS
         if ('' !== titleColor) {
@@ -28,8 +30,24 @@ class ListingCategories extends Component {
         if ('' !== titleHoverColor && 'undefined' !== titleHoverColor) {
             additionalCss.push([
                 {
-                    selector: `${wrapper} .rtcl-listing-title a:hover`,
+                    selector: `${wrapper} .rtcl-category-title a:hover`,
                     declaration: `color: ${titleHoverColor};`
+                }
+            ]);
+        }
+        if ('' !== countColor) {
+            additionalCss.push([
+                {
+                    selector: `${wrapper} .cat-details-inner .count`,
+                    declaration: `color: ${countColor};`
+                }
+            ]);
+        }
+        if ('' !== countTextSize) {
+            additionalCss.push([
+                {
+                    selector: `${wrapper} .cat-details-inner .count`,
+                    declaration: `font-size: ${countTextSize};`
                 }
             ]);
         }
@@ -38,9 +56,6 @@ class ListingCategories extends Component {
     }
 
     render() {
-
-        console.log(this.props)
-
         return (
             <Categories settings={this.props}/>
         );

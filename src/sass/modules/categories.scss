@@ -2,6 +2,19 @@
   .rtcl-cat-items-wrapper {
     font-size: 16px;
 
+    .rtcl-category-title {
+      font-size: 18px;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+      color: #2a2a2a;
+      font-weight: 700;
+
+      &:hover {
+        color: var(--rtcl-primary-color);
+      }
+    }
+
     .rtcl-cat-item {
       margin: 0;
       padding: 0;
@@ -12,6 +25,10 @@
 
         img {
           max-width: 100%;
+        }
+
+        p {
+          margin: 10px 0 0;
         }
 
         img,
@@ -25,19 +42,6 @@
 
         &.text-right {
           text-align: right;
-        }
-
-        .rtcl-category-title {
-          font-size: 18px;
-          line-height: 1.5;
-          margin: 0;
-          padding: 0;
-          color: #2a2a2a;
-          font-weight: 700;
-
-          &:hover {
-            color: var(--rtcl-primary-color);
-          }
         }
 
         .icon {

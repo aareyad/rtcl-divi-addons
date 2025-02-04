@@ -7,16 +7,44 @@ const {useState, useEffect} = wp.element;
 
 function Categories(props) {
     const attributes = props.settings;
-    const {rtcl_cats_style, rtcl_grid_column, rtcl_category_limit} = attributes;
+
+    const {
+        rtcl_cats_style,
+        rtcl_grid_column,
+        rtcl_category_limit,
+        rtcl_cats,
+        rtcl_orderby,
+        rtcl_order,
+        rtcl_icon_type,
+        rtcl_hide_empty
+    } = attributes;
+
+    const categories = rtcl_divi.cat_terms;
+
+    // Split the category includes string
+    const includesArray = rtcl_cats.split('|');
+
+    // Get corresponding IDs and title where status is "on"
+
+    const selectedCatIds = Object.keys(categories)
+        .filter((key, index) => includesArray[index] === "on")
+        .map((key) => ({
+            value: key,
+            title: categories[key]
+        }));
+
     const [dataSuccess, setDataSuccess] = useState(true);
     const [catListBox, setCatListBox] = useState([]);
 
     const ajaxAttributes = {
-        cats: attributes.rtcl_cats === '' ? [] : [attributes.rtcl_cats],
-        orderby: attributes.rtcl_orderby,
-        sortby: attributes.rtcl_order,
+        cats: selectedCatIds,
+        orderby: rtcl_orderby,
+        sortby: rtcl_order,
         category_limit: rtcl_category_limit,
-        hide_empty: attributes.rtcl_hide_empty,
+        icon_type: rtcl_icon_type,
+        hide_empty: rtcl_hide_empty === 'on' ? 'true' : 'false',
+        enable_parent: 'true',
+        count_child: 'true',
     };
 
     useEffect(() => {
@@ -39,16 +67,13 @@ function Categories(props) {
             .catch((error) => console.log(error));
     }, []);
 
-    const rtcl_grid_column_tablet = attributes?.rtcl_grid_column_tablet;
-    const rtcl_grid_column_phone = attributes?.rtcl_grid_column_phone;
-
     attributes.rtcl_grid_class = classnames([
-        'rtcl-categories',
+        'rtcl-cat-items-wrapper',
         'rtcl-grid-view',
         'rtcl-category-' + rtcl_cats_style,
         'columns-' + rtcl_grid_column,
-        'tab-columns-' + rtcl_grid_column_tablet,
-        'mobile-columns-' + rtcl_grid_column_phone
+        (attributes?.rtcl_grid_column_tablet) ? 'tab-columns-' + attributes.rtcl_grid_column_tablet : 'tab-columns-2',
+        (attributes?.rtcl_grid_column_phone) ? 'mobile-columns-' + attributes.rtcl_grid_column_phone : 'mobile-columns-1'
     ]);
 
     function load_layout() {
