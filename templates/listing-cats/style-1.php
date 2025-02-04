@@ -20,12 +20,8 @@ use Rtcl\Helpers\Functions;
 			<?php
 			foreach ( $terms as $trm ) {
 				$count = 0;
-				if ( 'on' !== $settings['rtcl_hide_empty'] && 'on' === $settings['rtcl_show_count'] ) {
+				if ( 'on' === $settings['rtcl_show_count'] ) {
 					$count = Functions::get_listings_count_by_taxonomy( $trm->term_id, rtcl()->category );
-
-					if ( 0 == $count ) {
-						continue;
-					}
 				}
 
 				$content_alignemnt = ! empty( $settings['rtcl_content_alignment'] ) ? $settings['rtcl_content_alignment'] : 'left';
