@@ -1361,6 +1361,38 @@ _defineProperty(ListingsList, "slug", 'rtcl_listings_list');
 
 /***/ }),
 
+/***/ "./src/js/modules/SettingsProvider.jsx":
+/*!*********************************************!*\
+  !*** ./src/js/modules/SettingsProvider.jsx ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SettingsProvider: () => (/* binding */ SettingsProvider),
+/* harmony export */   useSettings: () => (/* binding */ useSettings)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+var useContext = wp.element.useContext;
+var SettingsContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)();
+var SettingsProvider = function SettingsProvider(_ref) {
+  var children = _ref.children,
+    settings = _ref.settings;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(SettingsContext.Provider, {
+    value: settings,
+    children: children
+  });
+};
+var useSettings = function useSettings() {
+  return useContext(SettingsContext);
+};
+
+/***/ }),
+
 /***/ "./src/js/modules/SingleLocation/Components/Layout_1.jsx":
 /*!***************************************************************!*\
   !*** ./src/js/modules/SingleLocation/Components/Layout_1.jsx ***!
@@ -1372,59 +1404,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _SettingsProvider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../SettingsProvider */ "./src/js/modules/SettingsProvider.jsx");
+/* harmony import */ var _WrapperComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WrapperComponent */ "./src/js/modules/SingleLocation/Components/WrapperComponent.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 var __ = wp.i18n.__;
 function Layout_1(props) {
+  var _data$, _data$2, _data$3;
   var data = props.data;
-  var _props$settings = props.settings,
-    rtcl_grid_class = _props$settings.rtcl_grid_class,
-    rtcl_content_limit = _props$settings.rtcl_content_limit,
-    rtcl_icon_type = _props$settings.rtcl_icon_type,
-    rtcl_description = _props$settings.rtcl_description,
-    rtcl_show_count = _props$settings.rtcl_show_count,
-    rtcl_show_image = _props$settings.rtcl_show_image,
-    rtcl_content_alignment = _props$settings.rtcl_content_alignment;
-  return [data.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: rtcl_grid_class,
-    children: data.map(function (catlist, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "rtcl-cat-item",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "cat-details text-".concat(rtcl_content_alignment),
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "cat-details-inner",
-            children: ['on' === rtcl_show_image && catlist.icon_html ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              className: rtcl_icon_type === 'icon' ? 'icon' : 'image',
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-                href: catlist.permalink,
-                dangerouslySetInnerHTML: {
-                  __html: catlist.icon_html
-                }
-              })
-            }) : '', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-              className: "rtcl-category-title",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-                href: catlist.permalink,
-                dangerouslySetInnerHTML: {
-                  __html: catlist.name
-                }
-              })
-            }), 'on' === rtcl_show_count && catlist.count ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "count",
-              children: [catlist.count, " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-                "class": "count-text",
-                children: __("ads", "rtcl-divi-addons")
-              })]
-            }) : '', 'on' === rtcl_description && catlist.description ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-              children: "".concat(catlist.description.split(' ', rtcl_content_limit).join(' ') + '....')
-            }) : '']
-          })
-        })
-      }, index);
+  var settings = (0,_SettingsProvider__WEBPACK_IMPORTED_MODULE_0__.useSettings)();
+  var rtcl_show_count = settings.rtcl_show_count,
+    rtcl_enable_link = settings.rtcl_enable_link,
+    rtcl_content_alignment = settings.rtcl_content_alignment;
+  return [data && data.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    className: "rtcl-single-location-inner",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_WrapperComponent__WEBPACK_IMPORTED_MODULE_1__.WrapperComponent, {
+      link: rtcl_enable_link === 'on' ? data === null || data === void 0 || (_data$ = data[0]) === null || _data$ === void 0 ? void 0 : _data$.permalink : null,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "rtcl-location-img"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "rtcl-location-content text-".concat(rtcl_content_alignment),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+          className: "rtcl-location-name",
+          children: data === null || data === void 0 || (_data$2 = data[0]) === null || _data$2 === void 0 ? void 0 : _data$2.title
+        }), rtcl_show_count === 'on' && data !== null && data !== void 0 && (_data$3 = data[0]) !== null && _data$3 !== void 0 && _data$3.count ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "rtcl-location-listing-count",
+          children: data[0].count == 1 ? data[0].count + __(' Ad') : data[0].count + __(' Ads')
+        }) : '']
+      })]
     })
   }) : ''];
 }
@@ -1443,17 +1452,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
-/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(qs__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _Layout_1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Layout_1 */ "./src/js/modules/SingleLocation/Components/Layout_1.jsx");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(qs__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SettingsProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../SettingsProvider */ "./src/js/modules/SettingsProvider.jsx");
+/* harmony import */ var _Layout_1__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Layout_1 */ "./src/js/modules/SingleLocation/Components/Layout_1.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -1465,83 +1471,74 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+
 var _wp$element = wp.element,
   useState = _wp$element.useState,
   useEffect = _wp$element.useEffect;
-function Categories(props) {
-  var attributes = props.settings;
-  var rtcl_cats_style = attributes.rtcl_cats_style,
-    rtcl_grid_column = attributes.rtcl_grid_column,
-    rtcl_category_limit = attributes.rtcl_category_limit,
-    rtcl_cats = attributes.rtcl_cats,
-    rtcl_orderby = attributes.rtcl_orderby,
-    rtcl_order = attributes.rtcl_order,
-    rtcl_icon_type = attributes.rtcl_icon_type,
-    rtcl_hide_empty = attributes.rtcl_hide_empty;
-  var categories = rtcl_divi.cat_terms;
-
-  // Split the category includes string
-  var includesArray = rtcl_cats.split('|');
-
-  // Get corresponding IDs and title where status is "on"
-
-  var selectedCatIds = Object.keys(categories).filter(function (key, index) {
-    return includesArray[index] === "on";
-  }).map(function (key) {
-    return {
-      value: key,
-      title: categories[key]
-    };
-  });
-  var _useState = useState(true),
-    _useState2 = _slicedToArray(_useState, 2),
-    dataSuccess = _useState2[0],
-    setDataSuccess = _useState2[1];
-  var _useState3 = useState([]),
-    _useState4 = _slicedToArray(_useState3, 2),
-    catListBox = _useState4[0],
-    setCatListBox = _useState4[1];
+function Location(props) {
+  var _data$;
+  var settings = (0,_SettingsProvider__WEBPACK_IMPORTED_MODULE_1__.useSettings)();
+  var rtcl_location_style = settings.rtcl_location_style,
+    rtcl_location_tax = settings.rtcl_location_tax,
+    rtcl_show_count = settings.rtcl_show_count;
   var ajaxAttributes = {
-    cats: selectedCatIds,
-    orderby: rtcl_orderby,
-    sortby: rtcl_order,
-    category_limit: rtcl_category_limit,
-    icon_type: rtcl_icon_type,
-    hide_empty: rtcl_hide_empty === 'on' ? 'true' : 'false',
-    enable_parent: 'true',
-    count_child: 'true'
+    location: rtcl_location_tax
   };
+  var _useState = useState([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    data = _useState2[0],
+    setData = _useState2[1];
   useEffect(function () {
     var ajaxdata = {
-      action: 'rtcl_gb_listing_cat_box',
+      action: 'rtcl_gb_single_location',
       rtcl_nonce: rtcl_divi.rtcl_nonce,
       attributes: ajaxAttributes
     };
-    axios__WEBPACK_IMPORTED_MODULE_3__["default"].post(rtcl.ajaxurl, qs__WEBPACK_IMPORTED_MODULE_4___default().stringify(ajaxdata)).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_4__["default"].post(rtcl.ajaxurl, qs__WEBPACK_IMPORTED_MODULE_5___default().stringify(ajaxdata)).then(function (response) {
       if (response.data.success) {
-        setCatListBox(_toConsumableArray(response.data.data));
-        setDataSuccess(response.data.success);
+        setData([response.data.data]);
       } else {
-        setCatListBox([]);
-        setDataSuccess(response.data.success);
+        setData([]);
       }
     })["catch"](function (error) {
       return console.log(error);
     });
   }, []);
-  attributes.rtcl_grid_class = classnames__WEBPACK_IMPORTED_MODULE_1___default()(['rtcl-cat-items-wrapper', 'rtcl-grid-view', 'rtcl-category-' + rtcl_cats_style, 'columns-' + rtcl_grid_column, attributes !== null && attributes !== void 0 && attributes.rtcl_grid_column_tablet ? 'tab-columns-' + attributes.rtcl_grid_column_tablet : 'tab-columns-2', attributes !== null && attributes !== void 0 && attributes.rtcl_grid_column_phone ? 'mobile-columns-' + attributes.rtcl_grid_column_phone : 'mobile-columns-1']);
-  function load_layout() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Layout_1__WEBPACK_IMPORTED_MODULE_0__["default"], {
-      settings: attributes,
-      data: catListBox
-    });
-  }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-    className: "rtcl rtcl-categories-wrapper rtcl-divi-module",
-    children: load_layout()
+  var wrapperClass = classnames__WEBPACK_IMPORTED_MODULE_0___default()(['rtcl-single-location', rtcl_show_count === 'on' && data !== null && data !== void 0 && (_data$ = data[0]) !== null && _data$ !== void 0 && _data$.count ? 'rtcl-has-count' : '', 'rtcl-single-location-' + rtcl_location_style]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    className: "rtcl rtcl-divi-module ".concat(wrapperClass),
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Layout_1__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      data: data
+    })
   });
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Categories);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Location);
+
+/***/ }),
+
+/***/ "./src/js/modules/SingleLocation/Components/WrapperComponent.jsx":
+/*!***********************************************************************!*\
+  !*** ./src/js/modules/SingleLocation/Components/WrapperComponent.jsx ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   WrapperComponent: () => (/* binding */ WrapperComponent)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var WrapperComponent = function WrapperComponent(_ref) {
+  var link = _ref.link,
+    children = _ref.children;
+  return link ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+    href: link,
+    children: children
+  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: children
+  });
+};
 
 /***/ }),
 
@@ -1557,8 +1554,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Components_Location__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Components/Location */ "./src/js/modules/SingleLocation/Components/Location.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _SettingsProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../SettingsProvider */ "./src/js/modules/SettingsProvider.jsx");
+/* harmony import */ var _Components_Location__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Components/Location */ "./src/js/modules/SingleLocation/Components/Location.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -1577,6 +1575,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 
 
 
+
 var SingleLocation = /*#__PURE__*/function (_Component) {
   function SingleLocation() {
     _classCallCheck(this, SingleLocation);
@@ -1586,10 +1585,9 @@ var SingleLocation = /*#__PURE__*/function (_Component) {
   return _createClass(SingleLocation, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-          children: "dkdfj djfdsldkfldkldlj"
-        })
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SettingsProvider__WEBPACK_IMPORTED_MODULE_1__.SettingsProvider, {
+        settings: this.props,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Components_Location__WEBPACK_IMPORTED_MODULE_2__["default"], {})
       });
     }
   }], [{
@@ -1598,13 +1596,13 @@ var SingleLocation = /*#__PURE__*/function (_Component) {
       var additionalCss = [];
 
       // CSS Selectors
-      var wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-categories-wrapper";
-      var titleSelector = "".concat(wrapper, " .rtcl-category-title a");
+      var wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-single-location";
+      var titleSelector = "".concat(wrapper, " .rtcl-location-name");
 
       // Settings
       var titleColor = props.rtcl_title_color;
-      var titleHoverColor = props === null || props === void 0 ? void 0 : props.rtcl_title_color__hover;
       var countColor = props.rtcl_count_color;
+      var contentBackground = props.rtcl_box_content_bg;
 
       // Apply CSS
       if ('' !== titleColor) {
@@ -1613,16 +1611,16 @@ var SingleLocation = /*#__PURE__*/function (_Component) {
           declaration: "color: ".concat(titleColor, ";")
         }]);
       }
-      if ('' !== titleHoverColor && 'undefined' !== titleHoverColor) {
-        additionalCss.push([{
-          selector: "".concat(wrapper, " .rtcl-category-title a:hover"),
-          declaration: "color: ".concat(titleHoverColor, ";")
-        }]);
-      }
       if ('' !== countColor) {
         additionalCss.push([{
-          selector: "".concat(wrapper, " .cat-details-inner .count"),
+          selector: "".concat(wrapper, " .rtcl-location-listing-count"),
           declaration: "color: ".concat(countColor, ";")
+        }]);
+      }
+      if ('' !== contentBackground) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-location-content"),
+          declaration: "background-color: ".concat(contentBackground, ";")
         }]);
       }
       return additionalCss;

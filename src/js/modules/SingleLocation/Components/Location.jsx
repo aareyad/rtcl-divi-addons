@@ -1,55 +1,31 @@
 import axios from "axios";
 import Qs from "qs";
+import classnames from 'classnames';
+
+import {useSettings} from "../../SettingsProvider";
 import Layout_1 from "./Layout_1";
-import classnames from "classnames";
 
 const {useState, useEffect} = wp.element;
 
-function Categories(props) {
-    const attributes = props.settings;
+function Location(props) {
+
+    const settings = useSettings();
 
     const {
-        rtcl_cats_style,
-        rtcl_grid_column,
-        rtcl_category_limit,
-        rtcl_cats,
-        rtcl_orderby,
-        rtcl_order,
-        rtcl_icon_type,
-        rtcl_hide_empty
-    } = attributes;
-
-    const categories = rtcl_divi.cat_terms;
-
-    // Split the category includes string
-    const includesArray = rtcl_cats.split('|');
-
-    // Get corresponding IDs and title where status is "on"
-
-    const selectedCatIds = Object.keys(categories)
-        .filter((key, index) => includesArray[index] === "on")
-        .map((key) => ({
-            value: key,
-            title: categories[key]
-        }));
-
-    const [dataSuccess, setDataSuccess] = useState(true);
-    const [catListBox, setCatListBox] = useState([]);
+        rtcl_location_style,
+        rtcl_location_tax,
+        rtcl_show_count
+    } = settings;
 
     const ajaxAttributes = {
-        cats: selectedCatIds,
-        orderby: rtcl_orderby,
-        sortby: rtcl_order,
-        category_limit: rtcl_category_limit,
-        icon_type: rtcl_icon_type,
-        hide_empty: rtcl_hide_empty === 'on' ? 'true' : 'false',
-        enable_parent: 'true',
-        count_child: 'true',
+        location: rtcl_location_tax
     };
+
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         let ajaxdata = {
-            action: 'rtcl_gb_listing_cat_box',
+            action: 'rtcl_gb_single_location',
             rtcl_nonce: rtcl_divi.rtcl_nonce,
             attributes: ajaxAttributes
         }
@@ -57,34 +33,25 @@ function Categories(props) {
         axios.post(rtcl.ajaxurl, Qs.stringify(ajaxdata))
             .then((response) => {
                 if (response.data.success) {
-                    setCatListBox([...response.data.data]);
-                    setDataSuccess(response.data.success)
+                    setData([response.data.data]);
                 } else {
-                    setCatListBox([]);
-                    setDataSuccess(response.data.success)
+                    setData([]);
                 }
             })
             .catch((error) => console.log(error));
     }, []);
 
-    attributes.rtcl_grid_class = classnames([
-        'rtcl-cat-items-wrapper',
-        'rtcl-grid-view',
-        'rtcl-category-' + rtcl_cats_style,
-        'columns-' + rtcl_grid_column,
-        (attributes?.rtcl_grid_column_tablet) ? 'tab-columns-' + attributes.rtcl_grid_column_tablet : 'tab-columns-2',
-        (attributes?.rtcl_grid_column_phone) ? 'mobile-columns-' + attributes.rtcl_grid_column_phone : 'mobile-columns-1'
-    ]);
-
-    function load_layout() {
-        return <Layout_1 settings={attributes} data={catListBox}/>
-    }
+    const wrapperClass = classnames([
+        'rtcl-single-location',
+        (rtcl_show_count === 'on' && data?.[0]?.count) ? 'rtcl-has-count' : '',
+        'rtcl-single-location-' + rtcl_location_style
+    ])
 
     return (
-        <div className="rtcl rtcl-categories-wrapper rtcl-divi-module">
-            {load_layout()}
+        <div className={`rtcl rtcl-divi-module ${wrapperClass}`}>
+            <Layout_1 data={data}/>
         </div>
     );
 }
 
-export default Categories;
+export default Location;

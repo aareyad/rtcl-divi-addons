@@ -4,8 +4,9 @@ namespace RtclDiviAddons\Modules\SingleLocation;
 
 use Rtcl\Helpers\Functions;
 use RtclDiviAddons\Helpers\Functions as DiviFunctions;
+use RtclDiviAddons\Modules\Base\DiviModule;
 
-class SingleLocation extends \ET_Builder_Module {
+class SingleLocation extends DiviModule {
 
 	public $slug = 'rtcl_single_location';
 	public $vb_support = 'on';
@@ -24,8 +25,7 @@ class SingleLocation extends \ET_Builder_Module {
 		$this->settings_modal_toggles = [
 			'general'  => [
 				'toggles' => [
-					'general'    => esc_html__( 'General', 'rtcl-divi-addons' ),
-					'visibility' => esc_html__( 'Visibility', 'rtcl-divi-addons' ),
+					'general' => esc_html__( 'General', 'rtcl-divi-addons' ),
 				],
 			],
 			'advanced' => [
@@ -72,15 +72,6 @@ class SingleLocation extends \ET_Builder_Module {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
-			// computed.
-			'__location'             => array(
-				'type'                => 'computed',
-				'computed_callback'   => array( 'SingleLocation', 'get_content' ),
-				'computed_depends_on' => array(
-					'rtcl_location_tax'
-				)
-			),
-			// visibility
 			'rtcl_show_count'        => [
 				'label'       => esc_html__( 'Show Count', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
@@ -91,8 +82,16 @@ class SingleLocation extends \ET_Builder_Module {
 				'default'     => 'on',
 				'description' => __( 'Show / Hide listing counts.', 'rtcl-divi-addons' ),
 				'tab_slug'    => 'general',
-				'toggle_slug' => 'visibility',
+				'toggle_slug' => 'general',
 			],
+			// computed.
+			'__location'             => array(
+				'type'                => 'computed',
+				'computed_callback'   => array( 'SingleLocation', 'get_content' ),
+				'computed_depends_on' => array(
+					'rtcl_location_tax'
+				)
+			),
 			// Style
 			'rtcl_content_alignment' => [
 				'label'       => esc_html__( 'Content Alignment', 'rtcl-divi-addons' ),
@@ -102,13 +101,35 @@ class SingleLocation extends \ET_Builder_Module {
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'card',
 			],
+			'rtcl_box_content_bg'    => [
+				'label'       => esc_html__( 'Content Background Color', 'rtcl-divi-addons' ),
+				'description' => esc_html__( 'Here you can define a custom color for content background.', 'rtcl-divi-addons' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'card',
+			],
+			'rtcl_box_height'        => [
+				'label'          => esc_html__( 'Adjust Box Height', 'rtcl-divi-addons' ),
+				'description'    => esc_html__( 'Here you can define height for the box.', 'rtcl-divi-addons' ),
+				'type'           => 'range',
+				'default'        => '290px',
+				'allowed_units'  => [ 'px' ],
+				'default_unit'   => 'px',
+				'range_settings' => array(
+					'min'  => 100,
+					'step' => 1,
+					'max'  => 500,
+				),
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'card',
+				'mobile_options' => true,
+			],
 			'rtcl_title_color'       => [
 				'label'       => esc_html__( 'Name Color', 'rtcl-divi-addons' ),
 				'description' => esc_html__( 'Here you can define a custom color for category name.', 'rtcl-divi-addons' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'title',
-				'hover'       => 'tabs',
 			],
 			'rtcl_count_color'       => [
 				'label'       => esc_html__( 'Count Color', 'rtcl-divi-addons' ),
@@ -129,7 +150,7 @@ class SingleLocation extends \ET_Builder_Module {
 		$advanced_fields['fonts'] = [
 			'title' => [
 				'css'              => array(
-					'main' => '.et-db .et-l %%order_class%% .rtcl-single-location .rtcl-location-title',
+					'main' => '.et-db .et-l %%order_class%% .rtcl-single-location .rtcl-location-name',
 				),
 				'important'        => 'all',
 				'hide_text_color'  => true,
@@ -154,7 +175,7 @@ class SingleLocation extends \ET_Builder_Module {
 			],
 			'count' => [
 				'css'              => array(
-					'main' => '.et-db .et-l %%order_class%% .rtcl-single-location .count',
+					'main' => '.et-db .et-l %%order_class%% .rtcl-single-location .rtcl-location-listing-count',
 				),
 				'important'        => 'all',
 				'hide_text_color'  => true,
@@ -181,7 +202,7 @@ class SingleLocation extends \ET_Builder_Module {
 
 		$advanced_fields['margin_padding'] = [
 			'css'         => [
-				'main'      => '%%order_class%% .rtcl-single-location',
+				'main'      => '%%order_class%% .rtcl-single-location .rtcl-location-content',
 				'important' => 'all',
 			],
 			'tab_slug'    => 'advanced',
@@ -214,6 +235,7 @@ class SingleLocation extends \ET_Builder_Module {
 		$data = [
 			'title'         => esc_html__( 'Please Select a Location and Background', 'rtcl-divi-addons' ),
 			'count'         => 0,
+			'permalink'     => '#',
 			'template'      => $template_style,
 			'style'         => $style,
 			'settings'      => $settings,
@@ -236,28 +258,20 @@ class SingleLocation extends \ET_Builder_Module {
 	}
 
 	protected function render_css( $render_slug ) {
-		$wrapper           = '.et-db .et-l %%order_class%% .rtcl-categories-wrapper';
-		$title_color       = $this->props['rtcl_title_color'];
-		$title_hover_color = $this->get_hover_value( 'rtcl_title_color' );
-		$title_font_weight = explode( '|', $this->props['title_font'] )[1];
-		$count_color       = $this->props['rtcl_count_color'];
+		$wrapper            = '.et-db .et-l %%order_class%% .rtcl-single-location';
+		$content_background = $this->props['rtcl_box_content_bg'];
+		$title_color        = $this->props['rtcl_title_color'];
+		$title_font_weight  = explode( '|', $this->props['title_font'] )[1];
+		$count_color        = $this->props['rtcl_count_color'];
+		$box_height         = $this->props['rtcl_box_height'];
 
 		// Title
 		if ( ! empty( $title_color ) ) {
 			\ET_Builder_Element::set_style(
 				$render_slug,
 				[
-					'selector'    => "$wrapper .rtcl-category-title a",
+					'selector'    => "$wrapper .rtcl-location-name",
 					'declaration' => sprintf( 'color: %1$s;', $title_color ),
-				]
-			);
-		}
-		if ( ! empty( $title_hover_color ) ) {
-			\ET_Builder_Element::set_style(
-				$render_slug,
-				[
-					'selector'    => "$wrapper .rtcl-category-title a:hover",
-					'declaration' => sprintf( 'color: %1$s;', $title_hover_color ),
 				]
 			);
 		}
@@ -265,7 +279,7 @@ class SingleLocation extends \ET_Builder_Module {
 			\ET_Builder_Element::set_style(
 				$render_slug,
 				array(
-					'selector'    => '.et-db .et-l %%order_class%% .rtcl-categories-wrapper .rtcl-category-title',
+					'selector'    => "$wrapper .rtcl-location-name",
 					'declaration' => sprintf( 'font-weight: %1$s;', $title_font_weight ),
 				)
 			);
@@ -275,9 +289,28 @@ class SingleLocation extends \ET_Builder_Module {
 			\ET_Builder_Element::set_style(
 				$render_slug,
 				[
-					'selector'    => "$wrapper .cat-details-inner .count",
+					'selector'    => "$wrapper .rtcl-location-listing-count",
 					'declaration' => sprintf( 'color: %1$s;', $count_color ),
 				]
+			);
+		}
+		// box
+		if ( ! empty( $content_background ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => "$wrapper .rtcl-location-content",
+					'declaration' => sprintf( 'background-color: %1$s;', $content_background ),
+				]
+			);
+		}
+		if ( ! empty( $box_height ) ) {
+			$this->get_responsive_styles(
+				'rtcl_box_height',
+				"$wrapper .rtcl-single-location-inner",
+				array( 'primary' => 'height' ),
+				array( 'default' => 'auto' ),
+				$render_slug
 			);
 		}
 	}

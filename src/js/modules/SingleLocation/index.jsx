@@ -1,5 +1,6 @@
 // External Dependencies
 import React, {Component} from 'react';
+import {SettingsProvider} from '../SettingsProvider';
 import Location from "./Components/Location";
 
 class SingleLocation extends Component {
@@ -9,13 +10,13 @@ class SingleLocation extends Component {
         const additionalCss = [];
 
         // CSS Selectors
-        const wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-categories-wrapper";
-        const titleSelector = `${wrapper} .rtcl-category-title a`;
+        const wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-single-location";
+        const titleSelector = `${wrapper} .rtcl-location-name`;
 
         // Settings
         const titleColor = props.rtcl_title_color;
-        const titleHoverColor = props?.rtcl_title_color__hover;
         const countColor = props.rtcl_count_color;
+        const contentBackground = props.rtcl_box_content_bg;
 
         // Apply CSS
         if ('' !== titleColor) {
@@ -26,19 +27,19 @@ class SingleLocation extends Component {
                 }
             ]);
         }
-        if ('' !== titleHoverColor && 'undefined' !== titleHoverColor) {
-            additionalCss.push([
-                {
-                    selector: `${wrapper} .rtcl-category-title a:hover`,
-                    declaration: `color: ${titleHoverColor};`
-                }
-            ]);
-        }
         if ('' !== countColor) {
             additionalCss.push([
                 {
-                    selector: `${wrapper} .cat-details-inner .count`,
+                    selector: `${wrapper} .rtcl-location-listing-count`,
                     declaration: `color: ${countColor};`
+                }
+            ]);
+        }
+        if ('' !== contentBackground) {
+            additionalCss.push([
+                {
+                    selector: `${wrapper} .rtcl-location-content`,
+                    declaration: `background-color: ${contentBackground};`
                 }
             ]);
         }
@@ -48,7 +49,9 @@ class SingleLocation extends Component {
 
     render() {
         return (
-            <><h2>dkdfj djfdsldkfldkldlj</h2></>
+            <SettingsProvider settings={this.props}>
+                <Location/>
+            </SettingsProvider>
         );
     }
 }

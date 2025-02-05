@@ -1,4 +1,5 @@
-import classnames from 'classnames';
+import {useSettings} from "../../SettingsProvider";
+import {WrapperComponent} from "./WrapperComponent";
 
 const {__} = wp.i18n;
 
@@ -6,43 +7,28 @@ function Layout_1(props) {
 
     const data = props.data;
 
+    const settings = useSettings();
+
     const {
-        rtcl_grid_class,
-        rtcl_content_limit,
-        rtcl_icon_type,
-        rtcl_description,
         rtcl_show_count,
-        rtcl_show_image,
+        rtcl_enable_link,
         rtcl_content_alignment
-    } = props.settings;
+    } = settings;
 
     return [
 
-        data.length ? (
-            <div className={rtcl_grid_class}>
-                {data.map((catlist, index) => (
-
-                    <div className="rtcl-cat-item" key={index}>
-                        <div className={`cat-details text-${rtcl_content_alignment}`}>
-                            <div className="cat-details-inner">
-                                {'on' === rtcl_show_image && catlist.icon_html ?
-                                    <div className={rtcl_icon_type === 'icon' ? 'icon' : 'image'}>
-                                        <a href={catlist.permalink}
-                                           dangerouslySetInnerHTML={{__html: catlist.icon_html}}></a>
-                                    </div> : ''}
-                                <h3 className="rtcl-category-title">
-                                    <a href={catlist.permalink} dangerouslySetInnerHTML={{__html: catlist.name}}></a>
-                                </h3>
-                                {'on' === rtcl_show_count && catlist.count ?
-                                    <div className="count">{catlist.count} <span
-                                        class='count-text'>{__("ads", "rtcl-divi-addons")}</span></div> : ''}
-                                {'on' === rtcl_description && catlist.description ?
-                                    <p>{`${catlist.description.split(' ', rtcl_content_limit).join(' ') + '....'}`}</p> : ''}
-                            </div>
-                        </div>
+        data && data.length ? (
+            <div className="rtcl-single-location-inner">
+                <WrapperComponent link={rtcl_enable_link === 'on' ? data?.[0]?.permalink : null}>
+                    <div className="rtcl-location-img"></div>
+                    <div className={`rtcl-location-content text-${rtcl_content_alignment}`}>
+                        <h3 className="rtcl-location-name">{data?.[0]?.title}</h3>
+                        {(rtcl_show_count === 'on' && data?.[0]?.count) ?
+                            <div className="rtcl-location-listing-count">
+                                {data[0].count == 1 ? data[0].count + __(' Ad') : data[0].count + __(' Ads')}
+                            </div> : ''}
                     </div>
-                ))}
-
+                </WrapperComponent>
             </div>
         ) : '',
 
