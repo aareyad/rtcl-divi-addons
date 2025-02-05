@@ -17,6 +17,11 @@ class SingleLocation extends Component {
         const titleColor = props.rtcl_title_color;
         const countColor = props.rtcl_count_color;
         const contentBackground = props.rtcl_box_content_bg;
+        // box height responsive settings
+        const boxHeight = props.rtcl_box_height;
+        const isResponsiveBoxHeight = props.rtcl_box_height_last_edited && props.rtcl_box_height_last_edited.startsWith("on");
+        const boxHeightTablet = isResponsiveBoxHeight && props.rtcl_box_height_tablet ? props.rtcl_box_height_tablet : boxHeight;
+        const boxHeightPhone = isResponsiveBoxHeight && props.rtcl_box_height_phone ? props.rtcl_box_height_phone : boxHeight;
 
         // Apply CSS
         if ('' !== titleColor) {
@@ -42,6 +47,32 @@ class SingleLocation extends Component {
                     declaration: `background-color: ${contentBackground};`
                 }
             ]);
+        }
+        if (boxHeight) {
+            additionalCss.push([
+                {
+                    selector: `${wrapper} .rtcl-single-location-inner`,
+                    declaration: `height: ${boxHeight};`
+                }
+            ])
+        }
+        if (boxHeightTablet) {
+            additionalCss.push([
+                {
+                    selector: `${wrapper} .rtcl-single-location-inner`,
+                    declaration: `height: ${boxHeightTablet};`,
+                    device: 'tablet'
+                }
+            ])
+        }
+        if (boxHeightPhone) {
+            additionalCss.push([
+                {
+                    selector: `${wrapper} .rtcl-single-location-inner`,
+                    declaration: `height: ${boxHeightPhone};`,
+                    device: 'phone'
+                }
+            ])
         }
 
         return additionalCss;

@@ -1603,6 +1603,11 @@ var SingleLocation = /*#__PURE__*/function (_Component) {
       var titleColor = props.rtcl_title_color;
       var countColor = props.rtcl_count_color;
       var contentBackground = props.rtcl_box_content_bg;
+      // box height responsive settings
+      var boxHeight = props.rtcl_box_height;
+      var isResponsiveBoxHeight = props.rtcl_box_height_last_edited && props.rtcl_box_height_last_edited.startsWith("on");
+      var boxHeightTablet = isResponsiveBoxHeight && props.rtcl_box_height_tablet ? props.rtcl_box_height_tablet : boxHeight;
+      var boxHeightPhone = isResponsiveBoxHeight && props.rtcl_box_height_phone ? props.rtcl_box_height_phone : boxHeight;
 
       // Apply CSS
       if ('' !== titleColor) {
@@ -1621,6 +1626,26 @@ var SingleLocation = /*#__PURE__*/function (_Component) {
         additionalCss.push([{
           selector: "".concat(wrapper, " .rtcl-location-content"),
           declaration: "background-color: ".concat(contentBackground, ";")
+        }]);
+      }
+      if (boxHeight) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-single-location-inner"),
+          declaration: "height: ".concat(boxHeight, ";")
+        }]);
+      }
+      if (boxHeightTablet) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-single-location-inner"),
+          declaration: "height: ".concat(boxHeightTablet, ";"),
+          device: 'tablet'
+        }]);
+      }
+      if (boxHeightPhone) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-single-location-inner"),
+          declaration: "height: ".concat(boxHeightPhone, ";"),
+          device: 'phone'
         }]);
       }
       return additionalCss;
