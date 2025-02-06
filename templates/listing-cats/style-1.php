@@ -31,7 +31,7 @@ use Rtcl\Helpers\Functions;
 
 				$view_post = sprintf(
 				/* translators: %s: Category term */
-					__( 'View all posts in %s', 'classified-listing' ),
+					__( 'View all posts in %s', 'rtcl-divi-addons' ),
 					$trm->name
 				);
 				if ( $settings['rtcl_show_image'] ) {
@@ -80,7 +80,7 @@ use Rtcl\Helpers\Functions;
 				);
 
 				if ( 'on' === $settings['rtcl_show_count'] ) {
-					$ads_text = 'ads';
+					$ads_text = __( 'ads', 'rtcl-divi-addons' );
 					printf( "<div class='count'>%d <span class='count-text'>%s</span></div>", absint( $count ), esc_html( $ads_text ) );
 				}
 				if ( 'on' === $settings['rtcl_description'] && $trm->description ) {
