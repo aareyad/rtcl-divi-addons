@@ -77,9 +77,9 @@ class Functions {
 		return apply_filters( 'rtcl_divi_listing_order_by', $order_by );
 	}
 
-	public static function divi_get_user_selected_terms( $category_includes ) {
+	public static function divi_get_user_selected_terms( $category_includes, $taxonomy = 'rtcl_category' ) {
 		// available categories.
-		$available_cat = self::get_listing_taxonomy( 'parent' );
+		$available_cat = self::get_listing_taxonomy( 'parent', $taxonomy );
 		// sort be key asc order.
 		ksort( $available_cat );
 		// filter only selected cat keys

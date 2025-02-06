@@ -19,6 +19,227 @@ jQuery(window).on('et_builder_api_ready', function (event, API) {
 
 /***/ }),
 
+/***/ "./src/js/modules/AllLocation/Components/Layout_1.jsx":
+/*!************************************************************!*\
+  !*** ./src/js/modules/AllLocation/Components/Layout_1.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var __ = wp.i18n.__;
+function Layout_1(props) {
+  var data = props.data;
+  var _props$settings = props.settings,
+    rtcl_grid_class = _props$settings.rtcl_grid_class,
+    rtcl_content_limit = _props$settings.rtcl_content_limit,
+    rtcl_description = _props$settings.rtcl_description,
+    rtcl_show_count = _props$settings.rtcl_show_count,
+    rtcl_content_alignment = _props$settings.rtcl_content_alignment;
+  return [data && data.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: rtcl_grid_class,
+    children: data.map(function (termList, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "rtcl-location-item",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "location-details text-".concat(rtcl_content_alignment),
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "location-details-inner",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+              className: "rtcl-location-title",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                href: termList.permalink,
+                dangerouslySetInnerHTML: {
+                  __html: termList.name
+                }
+              })
+            }), 'on' === rtcl_show_count && termList.count ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "count",
+              children: [termList.count, " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                "class": "count-text",
+                children: __("ads")
+              })]
+            }) : '', 'on' === rtcl_description && termList.description ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+              children: "".concat(termList.description.split(' ', rtcl_content_limit).join(' ') + '....')
+            }) : '']
+          })
+        })
+      }, index);
+    })
+  }) : ''];
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Layout_1);
+
+/***/ }),
+
+/***/ "./src/js/modules/AllLocation/Components/Location.jsx":
+/*!************************************************************!*\
+  !*** ./src/js/modules/AllLocation/Components/Location.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Layout_1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Layout_1 */ "./src/js/modules/AllLocation/Components/Layout_1.jsx");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _SettingsProvider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../SettingsProvider */ "./src/js/modules/SettingsProvider.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function Location(props) {
+  var attributes = (0,_SettingsProvider__WEBPACK_IMPORTED_MODULE_2__.useSettings)();
+  var rtcl_location_style = attributes.rtcl_location_style,
+    rtcl_grid_column = attributes.rtcl_grid_column,
+    __location = attributes.__location;
+  attributes.rtcl_grid_class = classnames__WEBPACK_IMPORTED_MODULE_1___default()(['rtcl-location-items-wrapper', 'rtcl-grid-view', 'rtcl-location-' + rtcl_location_style, 'columns-' + rtcl_grid_column, attributes !== null && attributes !== void 0 && attributes.rtcl_grid_column_tablet ? 'tab-columns-' + attributes.rtcl_grid_column_tablet : 'tab-columns-2', attributes !== null && attributes !== void 0 && attributes.rtcl_grid_column_phone ? 'mobile-columns-' + attributes.rtcl_grid_column_phone : 'mobile-columns-1']);
+  function load_layout() {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Layout_1__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      settings: attributes,
+      data: __location
+    });
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    className: "rtcl rtcl-location-wrapper rtcl-divi-module",
+    children: load_layout()
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Location);
+
+/***/ }),
+
+/***/ "./src/js/modules/AllLocation/index.jsx":
+/*!**********************************************!*\
+  !*** ./src/js/modules/AllLocation/index.jsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Components_Location__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Components/Location */ "./src/js/modules/AllLocation/Components/Location.jsx");
+/* harmony import */ var _SettingsProvider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../SettingsProvider */ "./src/js/modules/SettingsProvider.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+// External Dependencies
+
+
+
+
+var AllLocation = /*#__PURE__*/function (_Component) {
+  function AllLocation() {
+    _classCallCheck(this, AllLocation);
+    return _callSuper(this, AllLocation, arguments);
+  }
+  _inherits(AllLocation, _Component);
+  return _createClass(AllLocation, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SettingsProvider__WEBPACK_IMPORTED_MODULE_2__.SettingsProvider, {
+        settings: this.props,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Components_Location__WEBPACK_IMPORTED_MODULE_1__["default"], {})
+      });
+    }
+  }], [{
+    key: "css",
+    value: function css(props) {
+      var additionalCss = [];
+
+      // CSS Selectors
+      var wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-location-wrapper";
+      var titleSelector = "".concat(wrapper, " .rtcl-location-title a");
+
+      // Settings
+      var titleColor = props.rtcl_title_color;
+      var titleHoverColor = props === null || props === void 0 ? void 0 : props.rtcl_title_color__hover;
+      var descriptionColor = props.rtcl_desc_color;
+      var countColor = props.rtcl_count_color;
+      // box gutter responsive settings
+      var boxGutter = props.rtcl_box_gutter;
+      var isResponsiveBoxGutter = props.rtcl_box_gutter_last_edited && props.rtcl_box_gutter_last_edited.startsWith("on");
+      var boxGutterTablet = isResponsiveBoxGutter && props.rtcl_box_gutter_tablet ? props.rtcl_box_gutter_tablet : boxGutter;
+      var boxGutterPhone = isResponsiveBoxGutter && props.rtcl_box_gutter_phone ? props.rtcl_box_gutter_phone : boxGutter;
+
+      // Apply CSS
+      if ('' !== titleColor) {
+        additionalCss.push([{
+          selector: titleSelector,
+          declaration: "color: ".concat(titleColor, ";")
+        }]);
+      }
+      if ('' !== titleHoverColor && 'undefined' !== titleHoverColor) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-location-title a:hover"),
+          declaration: "color: ".concat(titleHoverColor, ";")
+        }]);
+      }
+      if ('' !== countColor) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .location-details-inner .count"),
+          declaration: "color: ".concat(countColor, ";")
+        }]);
+      }
+      if ('' !== descriptionColor) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .location-details-inner p"),
+          declaration: "color: ".concat(descriptionColor, ";")
+        }]);
+      }
+      if (boxGutter) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-grid-view"),
+          declaration: "grid-gap: ".concat(boxGutter, ";")
+        }]);
+      }
+      if (boxGutterTablet) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-grid-view"),
+          declaration: "grid-gap: ".concat(boxGutterTablet, ";"),
+          device: 'tablet'
+        }]);
+      }
+      if (boxGutterPhone) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-grid-view"),
+          declaration: "grid-gap: ".concat(boxGutterPhone, ";"),
+          device: 'phone'
+        }]);
+      }
+      return additionalCss;
+    }
+  }]);
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+_defineProperty(AllLocation, "slug", 'rtcl_listing_all_location');
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AllLocation);
+
+/***/ }),
+
 /***/ "./src/js/modules/ListingCategories/Components/Categories.jsx":
 /*!********************************************************************!*\
   !*** ./src/js/modules/ListingCategories/Components/Categories.jsx ***!
@@ -1672,11 +1893,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ListingsList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListingsList */ "./src/js/modules/ListingsList/index.jsx");
 /* harmony import */ var _ListingCategories__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListingCategories */ "./src/js/modules/ListingCategories/index.jsx");
 /* harmony import */ var _SingleLocation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SingleLocation */ "./src/js/modules/SingleLocation/index.jsx");
+/* harmony import */ var _AllLocation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AllLocation */ "./src/js/modules/AllLocation/index.jsx");
 
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_ListingsGrid_index__WEBPACK_IMPORTED_MODULE_0__["default"], _ListingsList__WEBPACK_IMPORTED_MODULE_1__["default"], _ListingCategories__WEBPACK_IMPORTED_MODULE_2__["default"], _SingleLocation__WEBPACK_IMPORTED_MODULE_3__["default"]]);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_ListingsGrid_index__WEBPACK_IMPORTED_MODULE_0__["default"], _ListingsList__WEBPACK_IMPORTED_MODULE_1__["default"], _ListingCategories__WEBPACK_IMPORTED_MODULE_2__["default"], _SingleLocation__WEBPACK_IMPORTED_MODULE_3__["default"], _AllLocation__WEBPACK_IMPORTED_MODULE_4__["default"]]);
 
 /***/ }),
 
