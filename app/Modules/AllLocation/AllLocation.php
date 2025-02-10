@@ -366,7 +366,7 @@ class AllLocation extends DiviModule {
 	 */
 	public function widget_results( $data ) {
 		// user's selected location
-		$location_includes = ! empty( $data['rtcl_location'] ) ? $data['rtcl_location'] : [];
+		$location_includes = ! empty( $data['rtcl_location'] ) ? $data['rtcl_location'] : '';
 		$location_includes = explode( '|', $location_includes );
 
 		$location_terms = \RtclDiviAddons\Helpers\Functions::divi_get_user_selected_terms( $location_includes, rtcl()->location );
