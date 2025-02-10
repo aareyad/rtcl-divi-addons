@@ -37,7 +37,7 @@ class Settings extends DiviModule {
 		$listing_order_by  = DiviFunctions::get_order_options();
 
 		return [
-			'rtcl_grid_style'          => [
+			'rtcl_grid_style'           => [
 				'label'       => esc_html__( 'Style', 'rtcl-divi-addons' ),
 				'type'        => 'select',
 				'options'     => [
@@ -48,8 +48,8 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'layout',
 			],
-			'rtcl_grid_column'         => [
-				'label'          => esc_html__( 'Grid Column', 'rtcl-divi-addons' ),
+			'rtcl_grid_column'          => [
+				'label'          => esc_html__( 'Number of Columns', 'rtcl-divi-addons' ),
 				'type'           => 'select',
 				'options'        => [
 					'4' => __( 'Column 4', 'rtcl-divi-addons' ),
@@ -63,7 +63,73 @@ class Settings extends DiviModule {
 				'tab_slug'       => 'general',
 				'toggle_slug'    => 'layout',
 			],
-			'rtcl_listing_types'       => [
+			'rtcl_slider_auto_height'   => [
+				'label'       => esc_html__( 'Auto Height', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'off',
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'layout',
+			],
+			'rtcl_slider_loop'          => [
+				'label'       => esc_html__( 'Loop', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'off',
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'layout',
+			],
+			'rtcl_slider_autoplay'      => [
+				'label'       => esc_html__( 'Autoplay', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'on',
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'layout',
+			],
+			'rtcl_slider_stop_on_hover' => [
+				'label'       => esc_html__( 'Stop on Hover', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'on',
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'layout',
+			],
+			'rtcl_slider_arrow'         => [
+				'label'       => esc_html__( 'Arrow Navigation', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'on',
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'layout',
+			],
+			'rtcl_slider_dot'           => [
+				'label'       => esc_html__( 'Dot Navigation', 'rtcl-divi-addons' ),
+				'type'        => 'yes_no_button',
+				'options'     => [
+					'on'  => esc_html__( 'Yes', 'rtcl-divi-addons' ),
+					'off' => esc_html__( 'No', 'rtcl-divi-addons' ),
+				],
+				'default'     => 'off',
+				'tab_slug'    => 'general',
+				'toggle_slug' => 'layout',
+			],
+			'rtcl_listing_types'        => [
 				'label'       => esc_html__( 'Listing Types', 'rtcl-divi-addons' ),
 				'type'        => 'select',
 				'options'     => array_merge(
@@ -76,21 +142,21 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
-			'rtcl_listing_categories'  => [
+			'rtcl_listing_categories'   => [
 				'label'       => esc_html__( 'Categories', 'rtcl-divi-addons' ),
 				'type'        => 'multiple_checkboxes',
 				'options'     => $category_dropdown,
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
-			'rtcl_listing_location'    => [
+			'rtcl_listing_location'     => [
 				'label'       => esc_html__( 'Location', 'rtcl-divi-addons' ),
 				'type'        => 'multiple_checkboxes',
 				'options'     => $location_dropdown,
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
-			'rtcl_listing_per_page'    => [
+			'rtcl_listing_per_page'     => [
 				'label'       => esc_html__( 'Listing Per Page', 'rtcl-divi-addons' ),
 				'type'        => 'number',
 				'default'     => '10',
@@ -98,7 +164,7 @@ class Settings extends DiviModule {
 				'toggle_slug' => 'general',
 				'description' => esc_html__( 'Number of listing to display', 'rtcl-divi-addons' ),
 			],
-			'rtcl_orderby'             => [
+			'rtcl_orderby'              => [
 				'label'       => esc_html__( 'Order By', 'rtcl-divi-addons' ),
 				'type'        => 'select',
 				'options'     => $listing_order_by,
@@ -106,7 +172,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
-			'rtcl_sortby'              => [
+			'rtcl_sortby'               => [
 				'label'       => esc_html__( 'Sort By', 'rtcl-divi-addons' ),
 				'type'        => 'select',
 				'options'     => [
@@ -117,7 +183,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
-			'rtcl_image_size'          => [
+			'rtcl_image_size'           => [
 				'label'            => esc_html__( 'Image Size', 'rtcl-divi-addons' ),
 				'type'             => 'select',
 				'options'          => DiviFunctions::get_image_sizes_select(),
@@ -126,17 +192,10 @@ class Settings extends DiviModule {
 					'__html',
 				],
 				'tab_slug'         => 'general',
-				'toggle_slug'      => 'layout',
-			],
-			'rtcl_no_listing_text'     => [
-				'label'       => esc_html__( 'No Listing Text', 'rtcl-divi-addons' ),
-				'type'        => 'text',
-				'default'     => esc_html__( 'No Listing Found', 'rtcl-divi-addons' ),
-				'tab_slug'    => 'general',
-				'toggle_slug' => 'layout',
+				'toggle_slug'      => 'general',
 			],
 			// computed.
-			'__listings'               => array(
+			'__listings'                => array(
 				'type'                => 'computed',
 				'computed_callback'   => array( Settings::class, 'get_listings' ),
 				'computed_depends_on' => array(
@@ -149,14 +208,14 @@ class Settings extends DiviModule {
 					'rtcl_image_size',
 				)
 			),
-			'__categories'             => array(
+			'__categories'              => array(
 				'type'                => 'computed',
 				'computed_callback'   => array( Settings::class, 'get_categories' ),
 				'computed_depends_on' => array(
 					'rtcl_listing_categories'
 				)
 			),
-			'__location'               => array(
+			'__location'                => array(
 				'type'                => 'computed',
 				'computed_callback'   => array( Settings::class, 'get_location' ),
 				'computed_depends_on' => array(
@@ -164,7 +223,7 @@ class Settings extends DiviModule {
 				)
 			),
 			// visibility
-			'rtcl_show_image'          => [
+			'rtcl_show_image'           => [
 				'label'       => esc_html__( 'Show Image', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -176,7 +235,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_description'    => [
+			'rtcl_show_description'     => [
 				'label'       => esc_html__( 'Show Description', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -188,7 +247,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_content_limit'       => [
+			'rtcl_content_limit'        => [
 				'label'       => esc_html__( 'Description Limit', 'rtcl-divi-addons' ),
 				'type'        => 'number',
 				'default'     => '20',
@@ -199,7 +258,7 @@ class Settings extends DiviModule {
 					'rtcl_show_description' => 'on',
 				],
 			],
-			'rtcl_show_labels'         => [
+			'rtcl_show_labels'          => [
 				'label'       => esc_html__( 'Show Badge', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -211,7 +270,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_date'           => [
+			'rtcl_show_date'            => [
 				'label'       => esc_html__( 'Show Date', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -223,7 +282,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_views'          => [
+			'rtcl_show_views'           => [
 				'label'       => esc_html__( 'Show View Count', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -235,7 +294,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_ad_types'       => [
+			'rtcl_show_ad_types'        => [
 				'label'       => esc_html__( 'Show Ad Type', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -247,7 +306,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_location'       => [
+			'rtcl_show_location'        => [
 				'label'       => esc_html__( 'Show Location', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -259,7 +318,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_category'       => [
+			'rtcl_show_category'        => [
 				'label'       => esc_html__( 'Show Category', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -271,7 +330,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_price'          => [
+			'rtcl_show_price'           => [
 				'label'       => esc_html__( 'Show Price', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -283,7 +342,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_user'           => [
+			'rtcl_show_user'            => [
 				'label'       => esc_html__( 'Show Author Name', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -295,7 +354,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_custom_fields'  => [
+			'rtcl_show_custom_fields'   => [
 				'label'       => esc_html__( 'Show Custom Fields', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -307,7 +366,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_favourites'     => [
+			'rtcl_show_favourites'      => [
 				'label'       => esc_html__( 'Show Favourites', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -319,7 +378,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_quick_view'     => [
+			'rtcl_show_quick_view'      => [
 				'label'       => esc_html__( 'Show Quick View', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -331,7 +390,7 @@ class Settings extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'content_visibility',
 			],
-			'rtcl_show_compare'        => [
+			'rtcl_show_compare'         => [
 				'label'       => esc_html__( 'Show Compare', 'rtcl-divi-addons' ),
 				'type'        => 'yes_no_button',
 				'options'     => [
@@ -344,7 +403,7 @@ class Settings extends DiviModule {
 				'toggle_slug' => 'content_visibility',
 			],
 			// Style
-			'rtcl_title_color'         => [
+			'rtcl_title_color'          => [
 				'label'       => esc_html__( 'Title Color', 'rtcl-divi-addons' ),
 				'description' => esc_html__( 'Here you can define a custom color for listing title.', 'rtcl-divi-addons' ),
 				'type'        => 'color-alpha',
@@ -352,26 +411,26 @@ class Settings extends DiviModule {
 				'toggle_slug' => 'title',
 				'hover'       => 'tabs',
 			],
-			'rtcl_meta_color'          => [
+			'rtcl_meta_color'           => [
 				'label'       => esc_html__( 'Meta Color', 'rtcl-divi-addons' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'meta',
 			],
-			'rtcl_meta_icon_color'     => [
+			'rtcl_meta_icon_color'      => [
 				'label'       => esc_html__( 'Meta Icon Color', 'rtcl-divi-addons' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'meta',
 			],
-			'rtcl_meta_category_color' => [
+			'rtcl_meta_category_color'  => [
 				'label'       => esc_html__( 'Category Color', 'rtcl-divi-addons' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'meta',
 				'hover'       => 'tabs',
 			],
-			'rtcl_price_color'         => [
+			'rtcl_price_color'          => [
 				'label'       => esc_html__( 'Price Color', 'rtcl-divi-addons' ),
 				'description' => esc_html__( 'Here you can define a custom color for listing price.', 'rtcl-divi-addons' ),
 				'type'        => 'color-alpha',

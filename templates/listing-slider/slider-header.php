@@ -1,32 +1,33 @@
 <?php
 /**
- *
- * @author     RadiusTheme
- * @package    classified-listing/templates
- * @version    1.0.0
+ * @var array $instance
  */
 
 $cssstyle = null;
 $rand     = rand();
 $classes  = " rtcl-unique-class-$rand ";
 
-$classes .= ' rtcl-slider-pagination-dot';
-$classes .= ' rtcl-slider-btn-arrow';
+if ( 'on' === $instance['rtcl_slider_dot'] ) {
+	$classes .= ' rtcl-slider-pagination-dot';
+}
+if ( 'on' === $instance['rtcl_slider_arrow'] ) {
+	$classes .= ' rtcl-slider-btn-arrow';
+}
 
 $margin_right = 20;
 
 // css variable for jumping issue
 // Jumping Issue Reduce
 if ( ! empty( $instance['rtcl_grid_column'] ) ) {
-	$width    = 100 / ( $instance['rtcl_grid_column'] ? $instance['rtcl_grid_column'] : 1 );
+	$width    = 100 / ( $instance['rtcl_grid_column'] ?? 3 );
 	$cssstyle .= "--xl-width: calc( {$width}% - {$margin_right}px );";
 }
 if ( ! empty( $instance['rtcl_grid_column_tablet'] ) ) {
-	$width    = 100 / ( $instance['rtcl_grid_column_tablet'] ? $instance['rtcl_grid_column_tablet'] : 1 );
+	$width    = 100 / ( $instance['rtcl_grid_column_tablet'] ?? 2 );
 	$cssstyle .= "--md-width:calc( {$width}% - {$margin_right}px );";
 }
 if ( ! empty( $instance['rtcl_grid_column_phone'] ) ) {
-	$width    = 100 / ( $instance['rtcl_grid_column_phone'] ? $instance['rtcl_grid_column_phone'] : 1 );
+	$width    = 100 / ( $instance['rtcl_grid_column_phone'] ?? 1 );
 	$cssstyle .= "--mb-width:calc( {$width}% - {$margin_right}px );";
 }
 $cssstyle .= '--margin-right: ' . $margin_right . 'px;';
@@ -37,14 +38,14 @@ $cssstyle .= '--nagative-margin-right: -' . $margin_right . 'px;';
      style="<?php echo esc_attr( $cssstyle ); ?>">
 	<?php $class = ! empty( $style ) ? 'rtcl-grid-' . $style : 'rtcl-grid-style-1 '; ?>
 	<?php
-	$auto_height    = '0';
-	$loop           = '0';
-	$autoplay       = '0';
-	$stop_on_hover  = '0';
+	$auto_height    = 'on' === $instance['rtcl_slider_auto_height'] ? '1' : '0';
+	$loop           = 'on' === $instance['rtcl_slider_loop'] ? '1' : '0';
+	$autoplay       = 'on' === $instance['rtcl_slider_autoplay'] ? '1' : '0';
+	$stop_on_hover  = 'on' === $instance['rtcl_slider_stop_on_hover'] ? '1' : '0';
 	$delay          = '5000';
 	$autoplay_speed = '200';
-	$dots           = '0';
-	$nav            = '0';
+	$dots           = 'on' === $instance['rtcl_slider_dot'] ? '1' : '0';
+	$nav            = 'on' === $instance['rtcl_slider_arrow'] ? '1' : '0';
 	$space_between  = '20';
 
 	$autoplay   = boolval( $autoplay ) ? array(
