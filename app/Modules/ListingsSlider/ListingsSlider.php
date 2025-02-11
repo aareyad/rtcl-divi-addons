@@ -20,12 +20,12 @@ class ListingsSlider extends Settings {
 
 		$categories_list = $location_list = [];
 
-		$category_includes = ! empty( $data['rtcl_listing_categories'] ) ? $data['rtcl_listing_categories'] : '';
+		$category_includes = ! empty( $settings['rtcl_listing_categories'] ) ? $settings['rtcl_listing_categories'] : '';
 		$category_includes = explode( '|', $category_includes );
 
 		$categories_list = \RtclDiviAddons\Helpers\Functions::divi_get_user_selected_terms( $category_includes );
 
-		$location_includes = ! empty( $data['rtcl_listing_location'] ) ? $data['rtcl_listing_location'] : '';
+		$location_includes = ! empty( $settings['rtcl_listing_location'] ) ? $settings['rtcl_listing_location'] : '';
 		$location_includes = explode( '|', $location_includes );
 
 		$location_list = \RtclDiviAddons\Helpers\Functions::divi_get_user_selected_terms( $location_includes, rtcl()->location );

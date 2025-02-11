@@ -34,7 +34,7 @@ $cssstyle .= '--margin-right: ' . $margin_right . 'px;';
 $cssstyle .= '--nagative-margin-right: -' . $margin_right . 'px;';
 ?>
 
-<div class="rtcl rtcl-listings-wrapper rtcl-divi-module rtcl-el-slider-wrapper <?php echo esc_html( $classes ); ?>"
+<div class="rtcl rtcl-listings-wrapper rtcl-divi-module rtcl-el-slider-wrapper rtcl-slider-pagination-style-4 rtcl-slider-btn-style-1 <?php echo esc_html( $classes ); ?>"
      style="<?php echo esc_attr( $cssstyle ); ?>">
 	<?php $class = ! empty( $style ) ? 'rtcl-grid-' . $style : 'rtcl-grid-style-1 '; ?>
 	<?php

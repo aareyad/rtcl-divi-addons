@@ -68,7 +68,7 @@ function Listings(props) {
 
     return (
         <div className="rtcl rtcl-listings-wrapper rtcl-divi-module">
-            {load_layout()}
+            <h3>working</h3>
         </div>
     );
 }

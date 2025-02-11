@@ -52,7 +52,7 @@ final class RtclDiviInit {
 	 */
 	private function load_scripts() {
 		if ( $this->dependency->check() ) {
-			add_action( 'wp_enqueue_scripts', [ __CLASS__, 'front_end_script' ], 30 );
+			add_action( 'wp_enqueue_scripts', [ __CLASS__, 'front_end_script' ], 99 );
 			//add_action( 'admin_enqueue_scripts', [ __CLASS__, 'load_admin_script' ] );
 		}
 	}
@@ -98,6 +98,9 @@ final class RtclDiviInit {
 		wp_register_script( 'rtcl-divi-addons', RTCL_DIVI_ADDONS_URL . "/assets/js/frontend.js", [ 'jquery' ], self::$version, true );
 
 		wp_enqueue_style( 'rtcl-divi-addons' );
+
+		wp_enqueue_script( 'rtcl-single-listing' );
+		wp_enqueue_script( 'rtcl-quick-view' );
 
 		wp_enqueue_script( 'rtcl-divi-modules', RTCL_DIVI_ADDONS_URL . "/assets/js/divi-modules.js",
 			[ 'jquery', 'react-dom', 'react', 'et_pb_media_library', 'wp-element', 'wp-i18n' ],
