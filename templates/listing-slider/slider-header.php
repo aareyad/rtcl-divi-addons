@@ -104,7 +104,7 @@ $cssstyle .= '--nagative-margin-right: -' . $margin_right . 'px;';
 
 
 	?>
-    <div class="rtcl-listings rtcl-listings-slider-container swiper rtcl-grid-view <?php echo esc_attr( $class ); ?> rtcl-carousel-slider"
+    <div class="rtcl-listings rtcl-listings-slider-container swiper <?php echo esc_attr( $class ); ?> rtcl-carousel-slider"
          data-options="<?php echo esc_attr( $swiper_data ); ?>">
         <div class="rtcl-swiper-lazy-preloader">
             <svg class="spinner" viewBox="0 0 50 50">

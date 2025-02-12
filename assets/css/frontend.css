@@ -479,3 +479,19 @@
   margin-top: 8px;
   line-height: 1;
 }
+
+.et-db .et-l .et_pb_module .rtcl-listings-slider-container .listing-item {
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.et-db .et-l .et_pb_module .rtcl-listings-slider-container .rtcl-listable {
+  gap: 10px;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+.et-db .et-l .et_pb_module .rtcl-listings-slider-container .rtcl-listing-meta-data {
+  flex-direction: column;
+}
+.et-db .et-l .et_pb_module .rtcl-listings-slider-container .rtcl-listing-meta-data li {
+  line-height: 20px;
+}

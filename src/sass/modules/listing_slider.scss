@@ -1,0 +1,22 @@
+.et-db .et-l .et_pb_module {
+  .rtcl-listings-slider-container {
+    .listing-item {
+      padding: 0;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .rtcl-listable {
+      gap: 10px;
+      flex-wrap: nowrap;
+      flex-direction: column;
+    }
+
+    .rtcl-listing-meta-data {
+      flex-direction: column;
+
+      li {
+        line-height: 20px;
+      }
+    }
+  }
+}

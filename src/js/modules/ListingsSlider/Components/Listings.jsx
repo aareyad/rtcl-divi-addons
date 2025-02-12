@@ -8,14 +8,30 @@ const {useState, useEffect} = wp.element;
 
 function Listings(props) {
     const attributes = props.data;
-    const {rtcl_grid_style, rtcl_grid_column, rtcl_listing_per_page} = attributes;
+
+    const {
+        rtcl_grid_style,
+        __location,
+        __categories,
+        rtcl_grid_column,
+        rtcl_slider_auto_height,
+        rtcl_slider_loop,
+        rtcl_slider_autoplay,
+        rtcl_slider_stop_on_hover,
+        rtcl_slider_dot,
+        rtcl_slider_arrow,
+        rtcl_listing_per_page
+    } = attributes;
+
+    console.log(__categories);
+    console.log(__location);
+
     const [data, setData] = useState([]);
     const [dataSuccess, setDataSuccess] = useState(true);
-    const [pageState, setPageState] = useState(0);
 
     const ajaxAttributes = {
-        cats: attributes.rtcl_listing_categories === 'all' ? '' : [attributes.rtcl_listing_categories],
-        locations: attributes.rtcl_listing_location === 'all' ? '' : [attributes.rtcl_listing_location],
+        cats: __categories,
+        locations: __location,
         listing_type: attributes.rtcl_listing_types === 'all' ? '' : attributes.rtcl_listing_types,
         orderby: attributes.rtcl_orderby,
         sortby: attributes.rtcl_sortby,
@@ -24,8 +40,6 @@ function Listings(props) {
     };
 
     useEffect(() => {
-        let paginationLimit = 0;
-        paginationLimit = rtcl_listing_per_page;
         let ajaxdata = {
             action: 'rtcl_gb_listings_ajax',
             rtcl_nonce: rtcl_divi.rtcl_nonce,
@@ -41,22 +55,34 @@ function Listings(props) {
                     setData([]);
                     setDataSuccess(response.data.success)
                 }
-                setPageState(Math.ceil(response.data.data.total_post / ((paginationLimit == 0) || (paginationLimit == -1) ? 1 : paginationLimit)))
             })
             .catch((error) => console.log(error));
     }, []);
 
-    const rtcl_grid_column_tablet = attributes?.rtcl_grid_column_tablet;
-    const rtcl_grid_column_phone = attributes?.rtcl_grid_column_phone;
-
-    attributes.rtcl_grid_class = classnames([
+    const sliderClass = classnames([
+        'rtcl-listings-slider-container',
         'rtcl-listings',
-        'rtcl-grid-view',
-        'columns-' + rtcl_grid_column,
-        'tab-columns-' + rtcl_grid_column_tablet,
-        'mobile-columns-' + rtcl_grid_column_phone,
+        'rtcl-carousel-slider',
         'rtcl-grid-' + rtcl_grid_style
     ]);
+
+    const wrapperClass = classnames([
+        'rtcl-unique-class-' + Math.random(),
+        'on' === rtcl_slider_dot ? 'rtcl-slider-pagination-style-4' : '',
+        'on' === rtcl_slider_arrow ? 'rtcl-slider-btn-style-1' : ''
+    ]);
+
+    const sliderOptions = {
+        slidesPerView: rtcl_grid_column,
+        slidesPerGroup: rtcl_grid_column,
+        spaceBetween: 20,
+        loop: 'on' === rtcl_slider_loop,
+        slideClass: 'swiper-slide-customize',
+        autoplay: 'on' === rtcl_slider_autoplay,
+        pagination: false,
+        navigation: false,
+        autoHeight: 'on' === rtcl_slider_auto_height
+    };
 
     function load_layout() {
         if ('style-2' === rtcl_grid_style) {
@@ -67,8 +93,12 @@ function Listings(props) {
     }
 
     return (
-        <div className="rtcl rtcl-listings-wrapper rtcl-divi-module">
-            <h3>working</h3>
+        <div
+            className={`rtcl rtcl-listings-wrapper rtcl-divi-module ${wrapperClass}`}>
+            <div
+                className={`swiper ${sliderClass}`} data-options={JSON.stringify(sliderOptions)}>
+                {load_layout()}
+            </div>
         </div>
     );
 }

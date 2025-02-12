@@ -1595,6 +1595,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 var __ = wp.i18n.__;
 function Layout_1(_ref) {
   var settings = _ref.settings,
@@ -1614,13 +1620,13 @@ function Layout_1(_ref) {
     rtcl_show_quick_view = settings.rtcl_show_quick_view,
     rtcl_show_compare = settings.rtcl_show_compare,
     rtcl_show_custom_fields = settings.rtcl_show_custom_fields,
-    rtcl_grid_class = settings.rtcl_grid_class,
     rtcl_no_listing_text = settings.rtcl_no_listing_text;
+  var additionalClass = 'swiper-slide-customize';
   return [data.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    className: rtcl_grid_class,
+    className: "swiper-wrapper",
     children: data.map(function (listing, index) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: [Object.values(listing.classes).join(" ")],
+        className: [].concat(_toConsumableArray(Object.values(listing.classes)), [additionalClass]).join(" "),
         children: [rtcl_show_image === 'on' && listing.thumbnail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           className: "listing-thumb",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -1741,6 +1747,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 var __ = wp.i18n.__;
 function Layout_2(_ref) {
   var settings = _ref.settings,
@@ -1760,13 +1772,13 @@ function Layout_2(_ref) {
     rtcl_show_quick_view = settings.rtcl_show_quick_view,
     rtcl_show_compare = settings.rtcl_show_compare,
     rtcl_show_custom_fields = settings.rtcl_show_custom_fields,
-    rtcl_grid_class = settings.rtcl_grid_class,
     rtcl_no_listing_text = settings.rtcl_no_listing_text;
+  var additionalClass = 'swiper-slide-customize';
   return [data.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    className: rtcl_grid_class,
+    className: "swiper-wrapper",
     children: data.map(function (listing, index) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: [Object.values(listing.classes).join(" ")],
+        className: [].concat(_toConsumableArray(Object.values(listing.classes)), [additionalClass]).join(" "),
         children: [rtcl_show_image === 'on' && listing.thumbnail ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           className: "listing-thumb",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -1915,8 +1927,18 @@ var _wp$element = wp.element,
 function Listings(props) {
   var attributes = props.data;
   var rtcl_grid_style = attributes.rtcl_grid_style,
+    __location = attributes.__location,
+    __categories = attributes.__categories,
     rtcl_grid_column = attributes.rtcl_grid_column,
+    rtcl_slider_auto_height = attributes.rtcl_slider_auto_height,
+    rtcl_slider_loop = attributes.rtcl_slider_loop,
+    rtcl_slider_autoplay = attributes.rtcl_slider_autoplay,
+    rtcl_slider_stop_on_hover = attributes.rtcl_slider_stop_on_hover,
+    rtcl_slider_dot = attributes.rtcl_slider_dot,
+    rtcl_slider_arrow = attributes.rtcl_slider_arrow,
     rtcl_listing_per_page = attributes.rtcl_listing_per_page;
+  console.log(__categories);
+  console.log(__location);
   var _useState = useState([]),
     _useState2 = _slicedToArray(_useState, 2),
     data = _useState2[0],
@@ -1925,13 +1947,9 @@ function Listings(props) {
     _useState4 = _slicedToArray(_useState3, 2),
     dataSuccess = _useState4[0],
     setDataSuccess = _useState4[1];
-  var _useState5 = useState(0),
-    _useState6 = _slicedToArray(_useState5, 2),
-    pageState = _useState6[0],
-    setPageState = _useState6[1];
   var ajaxAttributes = {
-    cats: attributes.rtcl_listing_categories === 'all' ? '' : [attributes.rtcl_listing_categories],
-    locations: attributes.rtcl_listing_location === 'all' ? '' : [attributes.rtcl_listing_location],
+    cats: __categories,
+    locations: __location,
     listing_type: attributes.rtcl_listing_types === 'all' ? '' : attributes.rtcl_listing_types,
     orderby: attributes.rtcl_orderby,
     sortby: attributes.rtcl_sortby,
@@ -1939,8 +1957,6 @@ function Listings(props) {
     image_size: attributes.rtcl_image_size
   };
   useEffect(function () {
-    var paginationLimit = 0;
-    paginationLimit = rtcl_listing_per_page;
     var ajaxdata = {
       action: 'rtcl_gb_listings_ajax',
       rtcl_nonce: rtcl_divi.rtcl_nonce,
@@ -1954,14 +1970,23 @@ function Listings(props) {
         setData([]);
         setDataSuccess(response.data.success);
       }
-      setPageState(Math.ceil(response.data.data.total_post / (paginationLimit == 0 || paginationLimit == -1 ? 1 : paginationLimit)));
     })["catch"](function (error) {
       return console.log(error);
     });
   }, []);
-  var rtcl_grid_column_tablet = attributes === null || attributes === void 0 ? void 0 : attributes.rtcl_grid_column_tablet;
-  var rtcl_grid_column_phone = attributes === null || attributes === void 0 ? void 0 : attributes.rtcl_grid_column_phone;
-  attributes.rtcl_grid_class = classnames__WEBPACK_IMPORTED_MODULE_2___default()(['rtcl-listings', 'rtcl-grid-view', 'columns-' + rtcl_grid_column, 'tab-columns-' + rtcl_grid_column_tablet, 'mobile-columns-' + rtcl_grid_column_phone, 'rtcl-grid-' + rtcl_grid_style]);
+  var sliderClass = classnames__WEBPACK_IMPORTED_MODULE_2___default()(['rtcl-listings-slider-container', 'rtcl-listings', 'rtcl-carousel-slider', 'rtcl-grid-' + rtcl_grid_style]);
+  var wrapperClass = classnames__WEBPACK_IMPORTED_MODULE_2___default()(['rtcl-unique-class-' + Math.random(), 'on' === rtcl_slider_dot ? 'rtcl-slider-pagination-style-4' : '', 'on' === rtcl_slider_arrow ? 'rtcl-slider-btn-style-1' : '']);
+  var sliderOptions = {
+    slidesPerView: rtcl_grid_column,
+    slidesPerGroup: rtcl_grid_column,
+    spaceBetween: 20,
+    loop: 'on' === rtcl_slider_loop,
+    slideClass: 'swiper-slide-customize',
+    autoplay: 'on' === rtcl_slider_autoplay,
+    pagination: false,
+    navigation: false,
+    autoHeight: 'on' === rtcl_slider_auto_height
+  };
   function load_layout() {
     if ('style-2' === rtcl_grid_style) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Layout_2__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -1976,9 +2001,11 @@ function Listings(props) {
     }
   }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    className: "rtcl rtcl-listings-wrapper rtcl-divi-module",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
-      children: "working"
+    className: "rtcl rtcl-listings-wrapper rtcl-divi-module ".concat(wrapperClass),
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "swiper ".concat(sliderClass),
+      "data-options": JSON.stringify(sliderOptions),
+      children: load_layout()
     })
   });
 }

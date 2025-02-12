@@ -17,16 +17,17 @@ function Layout_2({settings, data}) {
         rtcl_show_quick_view,
         rtcl_show_compare,
         rtcl_show_custom_fields,
-        rtcl_grid_class,
         rtcl_no_listing_text
     } = settings;
 
+    const additionalClass = 'swiper-slide-customize';
+
     return [
         data.length ? (
-            <div className={rtcl_grid_class}>
+            <div className="swiper-wrapper">
 
                 {data.map((listing, index) => (
-                    <div key={index} className={[Object.values(listing.classes).join(" ")]}>
+                    <div key={index} className={[...Object.values(listing.classes), additionalClass].join(" ")}>
 
                         {(rtcl_show_image === 'on' && listing.thumbnail) ? (
                             <div className="listing-thumb">

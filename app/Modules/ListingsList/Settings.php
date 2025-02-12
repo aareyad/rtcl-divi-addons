@@ -411,7 +411,7 @@ class Settings extends \ET_Builder_Module {
 			],
 			'meta'  => [
 				'css'              => array(
-					'main' => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-meta-data',
+					'main' => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-meta-data li',
 				),
 				'important'        => 'all',
 				'hide_text_color'  => true,

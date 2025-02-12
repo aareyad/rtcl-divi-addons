@@ -445,7 +445,6 @@ class Settings extends DiviModule {
 		$advanced_fields                = [];
 		$advanced_fields['text']        = [];
 		$advanced_fields['text_shadow'] = [];
-		//$advanced_fields['fonts']       = [];
 
 		$advanced_fields['fonts'] = [
 			'title' => [
@@ -475,7 +474,7 @@ class Settings extends DiviModule {
 			],
 			'meta'  => [
 				'css'              => array(
-					'main' => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-meta-data',
+					'main' => '.et-db .et-l %%order_class%% .rtcl-listings-wrapper .rtcl-listing-meta-data li',
 				),
 				'important'        => 'all',
 				'hide_text_color'  => true,
@@ -533,10 +532,20 @@ class Settings extends DiviModule {
 	}
 
 	public static function get_categories( $args = array() ) {
-		return false;
+		$category_includes = ! empty( $args['rtcl_listing_categories'] ) ? $args['rtcl_listing_categories'] : '';
+		$category_includes = explode( '|', $category_includes );
+
+		$category_terms = DiviFunctions::divi_get_user_selected_terms( $category_includes, rtcl()->category );
+
+		return is_array( $category_terms ) ? $category_terms : [];
 	}
 
 	public static function get_location( $args = array() ) {
-		return false;
+		$location_includes = ! empty( $args['rtcl_listing_location'] ) ? $args['rtcl_listing_location'] : '';
+		$location_includes = explode( '|', $location_includes );
+
+		$location_terms = DiviFunctions::divi_get_user_selected_terms( $location_includes, rtcl()->location );
+
+		return is_array( $location_terms ) ? $location_terms : [];
 	}
 }
