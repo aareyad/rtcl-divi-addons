@@ -100,9 +100,6 @@ final class RtclDiviInit {
 
 		wp_enqueue_style( 'rtcl-divi-addons' );
 
-		//wp_enqueue_script( 'rtcl-single-listing' );
-		//wp_enqueue_script( 'rtcl-quick-view' );
-
 		wp_enqueue_script( 'rtcl-divi-modules', RTCL_DIVI_ADDONS_URL . "/assets/js/divi-modules.js",
 			[ 'jquery', 'react-dom', 'react', 'et_pb_media_library', 'wp-element', 'wp-i18n' ],
 			self::$version, true );
@@ -121,16 +118,6 @@ final class RtclDiviInit {
 		if ( ! et_core_is_fb_enabled() ) {
 			return;
 		}
-
-		/*wp_enqueue_script(
-			'rtcl-divi-swiper',
-			apply_filters( 'rtcl_divi_swiper_js_source', rtcl()->get_assets_uri( 'vendor/swiper/swiper-bundle.min.js' ) ),
-			[
-				'jquery',
-				'imagesloaded',
-			],
-			'7.4.1'
-		);*/
 
 		wp_enqueue_script( 'rtcl-divi-builder', RTCL_DIVI_ADDONS_URL . "/assets/js/frontend.js",
 			[ 'jquery', 'swiper', 'rtcl-divi-modules' ],
