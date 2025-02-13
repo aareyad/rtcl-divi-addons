@@ -7,6 +7,7 @@
     .rtcl-widget-search-form {
       display: flex;
       display: -ms-flexbox;
+      gap: 10px;
 
       & > div {
         flex: 1 1 0;
@@ -21,6 +22,7 @@
       color: #999;
       position: relative;
       font-size: 14px;
+      border-radius: 4px;
 
       @media all and (max-width: 575.98px) {
 
@@ -31,8 +33,40 @@
       margin: 0;
     }
 
+    .form-control {
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      height: 50px;
+      padding: 10px 15px;
+    }
+
     .rtcl-btn-holder {
-      max-width: 168px;
+      max-width: 130px;
+
+      .rtcl-search-btn {
+        font-size: 16px;
+        font-weight: 500;
+        height: 50px;
+        width: 100%;
+        background: var(--rtcl-button-bg-color);
+        color: var(--rtcl-button-color);
+        text-align: center;
+        padding: 10px;
+        transition: all 0.3s ease-out;
+        outline: none;
+        border-radius: 4px;
+        border: none;
+
+        i {
+          margin-right: 8px;
+        }
+
+        &:hover {
+          background: var(--rtcl-button-hover-bg-color);
+          color: var(--rtcl-button-hover-color);
+        }
+      }
     }
   }
 }

@@ -203,25 +203,28 @@ $orientation = $orientation ?? 'inline';
 		<?php if ( 'on' === $settings['types_field'] ): ?>
             <div class="<?php echo esc_attr( $type_class ); ?>">
                 <div class="form-group">
+					<?php if ( 'on' === $settings['fields_label'] ) { ?>
+                        <label for="rtcl-search-ad-type"><?php esc_html_e( 'Ad Type', 'rtcl-divi-addons' ); ?></label>
+					<?php } ?>
                     <div class="rtcl-search-input-button rtcl-search-input-type">
 						<?php
 						$listing_types = Functions::get_listing_types();
 						$listing_types = empty( $listing_types ) ? array() : $listing_types;
 						?>
-                        <div class="dropdown rtcl-listing-search-dropdown">
-                            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"><?php esc_html_e( 'Select Type', 'rtcl-divi-addons' ); ?></button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#"
-                                   data-adtype=""><?php echo esc_html( $typ_text ); ?></a>
-								<?php foreach ( $listing_types as $key => $listing_type ): ?>
-                                    <a class="dropdown-item" href="#"
-                                       data-adtype="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $listing_type ); ?></a>
-								<?php endforeach; ?>
-                            </div>
-                            <input type="hidden" name="filters[ad_type]">
-                        </div>
+                        <select class="form-control" id="rtcl-search-ad-type" name="filters[ad_type]">
+                            <option value=""><?php esc_html_e( 'Select Type', 'rtcl-divi-addons' ); ?></option>
+							<?php
+							if ( ! empty( $listing_types ) ) {
+								foreach ( $listing_types as $key => $listing_type ) {
+									?>
+                                    <option value="<?php echo esc_attr( $key ); ?>" <?php echo isset( $_GET['filters']['ad_type'] )
+									                                                           && trim( $_GET['filters']['ad_type'] ) == $key ? ' selected'
+										: null; ?>><?php echo esc_html( $listing_type ); ?></option>
+									<?php
+								}
+							}
+							?>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -231,7 +234,7 @@ $orientation = $orientation ?? 'inline';
             <div class="<?php echo esc_attr( $key_class ); ?>">
                 <div class="form-group">
                     <div class="rtcl-search-input-button rtcl-search-keyword">
-                        <input type="text" data-type="listing" name="q" class="rtcl-autocomplete"
+                        <input type="text" data-type="listing" name="q" class="form-control rtcl-autocomplete"
                                placeholder="<?php echo esc_html( $keyword_placeholder ); ?>"
                                value="<?php if ( isset( $_GET['q'] ) ) {
 							       echo esc_attr( Functions::clean( wp_unslash( ( $_GET['q'] ) ) ) );
@@ -242,7 +245,7 @@ $orientation = $orientation ?? 'inline';
 		<?php endif; ?>
 
         <div class="<?php echo esc_attr( $btn_class ); ?>">
-            <button type="submit" class="rtcl-search-btn">
+            <button type="submit" class="btn rtcl-search-btn">
                 <i class="fas fa-search" aria-hidden="true"></i><?php esc_html_e( 'Search', 'rtcl-divi-addons' ); ?>
             </button>
         </div>

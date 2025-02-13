@@ -504,6 +504,7 @@
 .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form {
   display: flex;
   display: -ms-flexbox;
+  gap: 10px;
 }
 .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form > div {
   flex: 1 1 0;
@@ -516,10 +517,39 @@
   color: #999;
   position: relative;
   font-size: 14px;
+  border-radius: 4px;
 }
 .et-db .et-l .et_pb_module .rtcl-divi-listing-search .form-group {
   margin: 0;
 }
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .form-control {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  height: 50px;
+  padding: 10px 15px;
+}
 .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-btn-holder {
-  max-width: 168px;
+  max-width: 130px;
+}
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-btn-holder .rtcl-search-btn {
+  font-size: 16px;
+  font-weight: 500;
+  height: 50px;
+  width: 100%;
+  background: var(--rtcl-button-bg-color);
+  color: var(--rtcl-button-color);
+  text-align: center;
+  padding: 10px;
+  transition: all 0.3s ease-out;
+  outline: none;
+  border-radius: 4px;
+  border: none;
+}
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-btn-holder .rtcl-search-btn i {
+  margin-right: 8px;
+}
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-btn-holder .rtcl-search-btn:hover {
+  background: var(--rtcl-button-hover-bg-color);
+  color: var(--rtcl-button-hover-color);
 }
