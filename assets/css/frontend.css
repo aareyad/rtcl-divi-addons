@@ -495,3 +495,31 @@
 .et-db .et-l .et_pb_module .rtcl-listings-slider-container .rtcl-listing-meta-data li {
   line-height: 20px;
 }
+
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search {
+  background-color: #e1e1e1;
+  padding: 25px;
+  border-radius: 6px;
+}
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form {
+  display: flex;
+  display: -ms-flexbox;
+}
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form > div {
+  flex: 1 1 0;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 0;
+  margin: 0;
+}
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-search-input-button {
+  background-color: #fff;
+  color: #999;
+  position: relative;
+  font-size: 14px;
+}
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .form-group {
+  margin: 0;
+}
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-btn-holder {
+  max-width: 168px;
+}

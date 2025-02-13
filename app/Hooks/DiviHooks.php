@@ -7,6 +7,7 @@ use RtclDiviAddons\Modules\ListingsList\ListingsList;
 use RtclDiviAddons\Modules\ListingsSlider\ListingsSlider;
 use RtclDiviAddons\Modules\ListingCategories\ListingCategories;
 use RtclDiviAddons\Modules\AllLocation\AllLocation;
+use RtclDiviAddons\Modules\SearchForm\SearchForm;
 use RtclDiviAddons\Modules\SingleLocation\SingleLocation;
 
 class DiviHooks {
@@ -29,6 +30,7 @@ class DiviHooks {
 		new ListingCategories();
 		new SingleLocation();
 		new AllLocation();
+		new SearchForm();
 	}
 
 }

@@ -13,6 +13,7 @@ function Listings(props) {
         rtcl_grid_style,
         __location,
         __categories,
+        rtcl_listing_types,
         rtcl_grid_column,
         rtcl_slider_auto_height,
         rtcl_slider_loop,
@@ -32,7 +33,7 @@ function Listings(props) {
     const ajaxAttributes = {
         cats: __categories,
         locations: __location,
-        listing_type: attributes.rtcl_listing_types === 'all' ? '' : attributes.rtcl_listing_types,
+        listing_type: rtcl_listing_types === 'all' ? '' : rtcl_listing_types,
         orderby: attributes.rtcl_orderby,
         sortby: attributes.rtcl_sortby,
         perPage: attributes.rtcl_listing_per_page,
@@ -57,7 +58,7 @@ function Listings(props) {
                 }
             })
             .catch((error) => console.log(error));
-    }, []);
+    }, [__categories, __location, rtcl_listing_types]);
 
     const sliderClass = classnames([
         'rtcl-listings-slider-container',

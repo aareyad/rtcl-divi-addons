@@ -4,6 +4,7 @@ import ListingsSlider from "./ListingsSlider";
 import ListingCategories from "./ListingCategories";
 import SingleLocation from "./SingleLocation";
 import AllLocation from "./AllLocation";
+import SearchForm from "./SearchForm";
 
 export default [
     ListingsGrid,
@@ -11,5 +12,6 @@ export default [
     ListingsSlider,
     ListingCategories,
     SingleLocation,
-    AllLocation
+    AllLocation,
+    SearchForm
 ];
