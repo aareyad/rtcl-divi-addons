@@ -501,41 +501,54 @@
   padding: 15px;
   border-radius: 6px;
 }
-.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form {
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form.rtcl-search-inline {
   display: flex;
   display: -ms-flexbox;
   gap: 5px;
 }
 @media screen and (max-width: 991px) {
-  .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form {
+  .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form.rtcl-search-inline {
     flex-wrap: wrap;
   }
 }
 @media screen and (max-width: 575px) {
-  .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form {
+  .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form.rtcl-search-inline {
     display: block;
   }
 }
-.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form > div {
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form.rtcl-search-inline > div {
   flex: 1 1 0;
   -webkit-box-flex: 1;
   -ms-flex: 1 1 0;
   margin: 0;
 }
 @media screen and (max-width: 991px) {
-  .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form > div {
+  .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form.rtcl-search-inline > div {
     flex: 0 0 47%;
     max-width: 47%;
     margin: 5px;
   }
 }
 @media screen and (max-width: 575px) {
-  .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form > div {
+  .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form.rtcl-search-inline > div {
     max-width: 100%;
   }
 }
-.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-price-space {
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form.rtcl-search-inline .rtcl-price-space {
   max-width: 100px;
+}
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form.rtcl-search-vertical > div + div {
+  margin-top: 10px;
+}
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form.rtcl-search-vertical .rtcl-btn-holder {
+  max-width: 120px;
+}
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form.rtcl-search-vertical .rtcl-btn-holder > label {
+  display: none;
+}
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-widget-search-form .rtcl-child-terms {
+  margin-top: 0;
+  border-top: 1px solid #e1e1e1;
 }
 .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-search-input-button {
   background-color: #fff;
@@ -562,6 +575,13 @@
   background-color: transparent;
   height: 50px;
   padding: 10px;
+  outline: none;
+  box-shadow: none;
+  color: #646464;
+}
+.et-db .et-l .et_pb_module .rtcl-divi-listing-search .form-control:focus {
+  outline: none;
+  box-shadow: none;
 }
 .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-btn-holder {
   max-width: 120px;
@@ -587,11 +607,6 @@
   outline: none;
   border-radius: 4px;
   border: none;
-}
-@media screen and (max-width: 575px) {
-  .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-btn-holder .rtcl-search-btn {
-    margin-top: 15px;
-  }
 }
 .et-db .et-l .et_pb_module .rtcl-divi-listing-search .rtcl-btn-holder .rtcl-search-btn i {
   margin-right: 8px;

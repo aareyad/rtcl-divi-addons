@@ -2145,8 +2145,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _SettingsProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../SettingsProvider */ "./src/js/modules/SettingsProvider.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -2164,7 +2163,6 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 // External Dependencies
 
 
-
 var SearchForm = /*#__PURE__*/function (_Component) {
   function SearchForm() {
     _classCallCheck(this, SearchForm);
@@ -2174,11 +2172,11 @@ var SearchForm = /*#__PURE__*/function (_Component) {
   return _createClass(SearchForm, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SettingsProvider__WEBPACK_IMPORTED_MODULE_1__.SettingsProvider, {
-        settings: this.props,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-          children: "working"
-        })
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "rtcl-divi-search-form-wrap",
+        dangerouslySetInnerHTML: {
+          __html: this.props.__form_html
+        }
       });
     }
   }], [{
@@ -2189,56 +2187,6 @@ var SearchForm = /*#__PURE__*/function (_Component) {
       // CSS Selectors
       var wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-single-location";
       var titleSelector = "".concat(wrapper, " .rtcl-location-name");
-
-      // Settings
-      var titleColor = props.rtcl_title_color;
-      var countColor = props.rtcl_count_color;
-      var contentBackground = props.rtcl_box_content_bg;
-      // box height responsive settings
-      var boxHeight = props.rtcl_box_height;
-      var isResponsiveBoxHeight = props.rtcl_box_height_last_edited && props.rtcl_box_height_last_edited.startsWith("on");
-      var boxHeightTablet = isResponsiveBoxHeight && props.rtcl_box_height_tablet ? props.rtcl_box_height_tablet : boxHeight;
-      var boxHeightPhone = isResponsiveBoxHeight && props.rtcl_box_height_phone ? props.rtcl_box_height_phone : boxHeight;
-
-      // Apply CSS
-      if ('' !== titleColor) {
-        additionalCss.push([{
-          selector: titleSelector,
-          declaration: "color: ".concat(titleColor, ";")
-        }]);
-      }
-      if ('' !== countColor) {
-        additionalCss.push([{
-          selector: "".concat(wrapper, " .rtcl-location-listing-count"),
-          declaration: "color: ".concat(countColor, ";")
-        }]);
-      }
-      if ('' !== contentBackground) {
-        additionalCss.push([{
-          selector: "".concat(wrapper, " .rtcl-location-content"),
-          declaration: "background-color: ".concat(contentBackground, ";")
-        }]);
-      }
-      if (boxHeight) {
-        additionalCss.push([{
-          selector: "".concat(wrapper, " .rtcl-single-location-inner"),
-          declaration: "height: ".concat(boxHeight, ";")
-        }]);
-      }
-      if (boxHeightTablet) {
-        additionalCss.push([{
-          selector: "".concat(wrapper, " .rtcl-single-location-inner"),
-          declaration: "height: ".concat(boxHeightTablet, ";"),
-          device: 'tablet'
-        }]);
-      }
-      if (boxHeightPhone) {
-        additionalCss.push([{
-          selector: "".concat(wrapper, " .rtcl-single-location-inner"),
-          declaration: "height: ".concat(boxHeightPhone, ";"),
-          device: 'phone'
-        }]);
-      }
       return additionalCss;
     }
   }]);

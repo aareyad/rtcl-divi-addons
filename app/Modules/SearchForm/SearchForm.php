@@ -142,6 +142,22 @@ class SearchForm extends DiviModule {
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
+			// computed.
+			'__form_html'        => array(
+				'type'                => 'computed',
+				'computed_callback'   => array( SearchForm::class, 'get_html' ),
+				'computed_depends_on' => array(
+					'search_style',
+					'search_orientation',
+					'fields_label',
+					'keyword_field',
+					'types_field',
+					'category_field',
+					'location_field',
+					'radius_field',
+					'price_field'
+				)
+			),
 			// Style
 			'form_background'    => [
 				'label'       => esc_html__( 'Form Background Color', 'rtcl-divi-addons' ),
@@ -238,11 +254,7 @@ class SearchForm extends DiviModule {
 		return $advanced_fields;
 	}
 
-	public function render( $unprocessed_props, $content, $render_slug ) {
-		$settings = $this->props;
-
-		$this->render_css( $render_slug );
-
+	public static function get_html( $settings = [] ) {
 		$style       = isset( $settings['search_style'] ) ? sanitize_text_field( $settings['search_style'] ) : 'dependency';
 		$orientation = ! empty( $settings['search_orientation'] ) ? sanitize_text_field( $settings['search_orientation'] ) : 'inline';
 
@@ -259,6 +271,14 @@ class SearchForm extends DiviModule {
 		$data = apply_filters( 'rtcl_divi_listing_search_form_options', $data );
 
 		return Functions::get_template_html( $data['template'], $data, '', $data['template_path'] );
+	}
+
+	public function render( $unprocessed_props, $content, $render_slug ) {
+		$settings = $this->props;
+
+		$this->render_css( $render_slug );
+
+		return self::get_html( $settings );
 	}
 
 	protected function render_css( $render_slug ) {

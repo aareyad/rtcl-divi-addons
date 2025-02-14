@@ -48,8 +48,9 @@ $order   = strtoupper( Functions::get_option_item( 'rtcl_general_settings', 'tax
 $style       = $style ?? 'dependency';
 $orientation = $orientation ?? 'inline';
 ?>
-<div class="rtcl rtcl-search rtcl-divi-listing-search rtcl-search-style-<?php echo esc_attr( $style ); ?> rtcl-search-<?php echo esc_attr( $orientation ); ?>">
-    <form action="<?php echo esc_url( Functions::get_filter_form_url() ); ?>" class="rtcl-widget-search-form">
+<div class="rtcl rtcl-search rtcl-divi-listing-search rtcl-search-style-<?php echo esc_attr( $style ); ?>">
+    <form action="<?php echo esc_url( Functions::get_filter_form_url() ); ?>"
+          class="rtcl-widget-search-form rtcl-search-<?php echo esc_attr( $orientation ); ?>">
 		<?php if ( 'on' === $settings['types_field'] ): ?>
             <div class="<?php echo esc_attr( $type_class ); ?>">
                 <div class="form-group">
@@ -88,7 +89,7 @@ $orientation = $orientation ?? 'inline';
 						<?php } ?>
 						<?php if ( $style === 'suggestion' ): ?>
                             <div class="rtcl-search-input-button rtcl-search-location">
-                                <input type="text" data-type="location" class="rtcl-autocomplete rtcl-location"
+                                <input type="text" data-type="location" class="rtcl-autocomplete rtcl-location form-control"
                                        placeholder="<?php echo esc_attr( $loc_text ); ?>"
                                        value="<?php echo $selected_location ? $selected_location->name : '' ?>">
                                 <input type="hidden" name="rtcl_location"
@@ -134,7 +135,7 @@ $orientation = $orientation ?? 'inline';
                             </div>
 						<?php else: ?>
                             <div class="rtcl-search-input-button rtcl-search-input-location">
-                                <span class="search-input-label location-name">
+                                <span class="search-input-label location-name form-control">
                                     <?php echo $selected_location ? esc_html( $selected_location->name ) : esc_html( $loc_text ) ?>
                                 </span>
                                 <input type="hidden" class="rtcl-term-field" name="rtcl_location"
@@ -223,7 +224,7 @@ $orientation = $orientation ?? 'inline';
                         </div>
 					<?php else: ?>
                         <div class="rtcl-search-input-button rtcl-search-input-category">
-                            <span class="search-input-label category-name">
+                            <span class="search-input-label category-name form-control">
                                 <?php echo $selected_category ? esc_html( $selected_category->name ) : esc_html( $cat_text ); ?>
                             </span>
                             <input type="hidden" name="rtcl_category" class="rtcl-term-field"
@@ -244,7 +245,7 @@ $orientation = $orientation ?? 'inline';
 						: ''; /* phpcs:ignore WordPress.Security.NonceVerification.Recommended */ ?>
                     <div class="rtcl-search-input-button">
                         <input id='rtcl-search-price-min' type="text" name="filters[price][min]" class="form-control"
-                               placeholder="<?php esc_attr_e( 'min', 'rtcl-divi-addons' ); ?>" value="<?php echo esc_attr( $min_price ); ?>">
+                               placeholder="<?php esc_attr_e( 'Min', 'rtcl-divi-addons' ); ?>" value="<?php echo esc_attr( $min_price ); ?>">
                     </div>
                 </div>
             </div>
@@ -257,7 +258,7 @@ $orientation = $orientation ?? 'inline';
 						: ''; /* phpcs:ignore WordPress.Security.NonceVerification.Recommended */ ?>
                     <div class="rtcl-search-input-button">
                         <input id='rtcl-search-price-max' type="text" name="filters[price][max]" class="form-control"
-                               placeholder="<?php esc_attr_e( 'max', 'rtcl-divi-addons' ); ?>" value="<?php echo esc_attr( $max_price ); ?>">
+                               placeholder="<?php esc_attr_e( 'Max', 'rtcl-divi-addons' ); ?>" value="<?php echo esc_attr( $max_price ); ?>">
                     </div>
                 </div>
             </div>
