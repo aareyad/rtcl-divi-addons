@@ -11,6 +11,7 @@ $loc_class    = 'rtcl-loc-space';
 $radius_class = 'rtcl-radius-space';
 $type_class   = 'rtcl-type-space';
 $cat_class    = 'rtcl-cat-space';
+$price_class  = 'rtcl-price-space';
 $key_class    = 'rtcl-key-space';
 $btn_class    = 'rtcl-btn-holder';
 
@@ -49,10 +50,42 @@ $orientation = $orientation ?? 'inline';
 ?>
 <div class="rtcl rtcl-search rtcl-divi-listing-search rtcl-search-style-<?php echo esc_attr( $style ); ?> rtcl-search-<?php echo esc_attr( $orientation ); ?>">
     <form action="<?php echo esc_url( Functions::get_filter_form_url() ); ?>" class="rtcl-widget-search-form">
+		<?php if ( 'on' === $settings['types_field'] ): ?>
+            <div class="<?php echo esc_attr( $type_class ); ?>">
+                <div class="form-group">
+					<?php if ( 'on' === $settings['fields_label'] ) { ?>
+                        <label for="rtcl-search-ad-type"><?php esc_html_e( 'Ad Type', 'rtcl-divi-addons' ); ?></label>
+					<?php } ?>
+                    <div class="rtcl-search-input-button rtcl-search-input-type">
+						<?php
+						$listing_types = Functions::get_listing_types();
+						$listing_types = empty( $listing_types ) ? array() : $listing_types;
+						?>
+                        <select class="form-control" id="rtcl-search-ad-type" name="filters[ad_type]">
+                            <option value=""><?php esc_html_e( 'Select Type', 'rtcl-divi-addons' ); ?></option>
+							<?php
+							if ( ! empty( $listing_types ) ) {
+								foreach ( $listing_types as $key => $listing_type ) {
+									?>
+                                    <option value="<?php echo esc_attr( $key ); ?>" <?php echo isset( $_GET['filters']['ad_type'] )
+									                                                           && trim( $_GET['filters']['ad_type'] ) == $key ? ' selected'
+										: null; ?>><?php echo esc_html( $listing_type ); ?></option>
+									<?php
+								}
+							}
+							?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+		<?php endif; ?>
 		<?php if ( 'on' === $settings['location_field'] ): ?>
 			<?php if ( 'local' === Functions::location_type() ): ?>
                 <div class="<?php echo esc_attr( $loc_class ); ?>">
                     <div class="form-group">
+						<?php if ( 'on' === $settings['fields_label'] ) { ?>
+                            <label><?php esc_html_e( 'Location', 'rtcl-divi-addons' ); ?></label>
+						<?php } ?>
 						<?php if ( $style === 'suggestion' ): ?>
                             <div class="rtcl-search-input-button rtcl-search-location">
                                 <input type="text" data-type="location" class="rtcl-autocomplete rtcl-location"
@@ -108,7 +141,6 @@ $orientation = $orientation ?? 'inline';
                                        value="<?php echo $selected_location ? esc_attr( $selected_location->slug ) : '' ?>">
                             </div>
 						<?php endif; ?>
-
                     </div>
                 </div>
 			<?php else: ?>
@@ -147,6 +179,9 @@ $orientation = $orientation ?? 'inline';
 		<?php if ( 'on' === $settings['category_field'] ): ?>
             <div class="<?php echo esc_attr( $cat_class ); ?>">
                 <div class="form-group">
+					<?php if ( 'on' === $settings['fields_label'] ) { ?>
+                        <label><?php esc_html_e( 'Categories', 'rtcl-divi-addons' ); ?></label>
+					<?php } ?>
 					<?php if ( $style === 'suggestion' || $style === 'standard' ): ?>
                         <div class="rtcl-search-input-button rtcl-search-category">
 							<?php
@@ -195,36 +230,34 @@ $orientation = $orientation ?? 'inline';
                                    value="<?php echo $selected_category ? esc_attr( $selected_category->slug ) : '' ?>">
                         </div>
 					<?php endif; ?>
-
                 </div>
             </div>
 		<?php endif; ?>
 
-		<?php if ( 'on' === $settings['types_field'] ): ?>
-            <div class="<?php echo esc_attr( $type_class ); ?>">
+		<?php if ( 'on' === $settings['price_field'] ) : ?>
+            <div class="<?php echo esc_attr( $price_class ); ?>">
                 <div class="form-group">
 					<?php if ( 'on' === $settings['fields_label'] ) { ?>
-                        <label for="rtcl-search-ad-type"><?php esc_html_e( 'Ad Type', 'rtcl-divi-addons' ); ?></label>
+                        <label for="rtcl-search-price-min"><?php esc_html_e( 'Min Price', 'rtcl-divi-addons' ); ?></label>
 					<?php } ?>
-                    <div class="rtcl-search-input-button rtcl-search-input-type">
-						<?php
-						$listing_types = Functions::get_listing_types();
-						$listing_types = empty( $listing_types ) ? array() : $listing_types;
-						?>
-                        <select class="form-control" id="rtcl-search-ad-type" name="filters[ad_type]">
-                            <option value=""><?php esc_html_e( 'Select Type', 'rtcl-divi-addons' ); ?></option>
-							<?php
-							if ( ! empty( $listing_types ) ) {
-								foreach ( $listing_types as $key => $listing_type ) {
-									?>
-                                    <option value="<?php echo esc_attr( $key ); ?>" <?php echo isset( $_GET['filters']['ad_type'] )
-									                                                           && trim( $_GET['filters']['ad_type'] ) == $key ? ' selected'
-										: null; ?>><?php echo esc_html( $listing_type ); ?></option>
-									<?php
-								}
-							}
-							?>
-                        </select>
+					<?php $min_price = isset( $_GET['filters']['price']['min'] ) ? $_GET['filters']['price']['min']
+						: ''; /* phpcs:ignore WordPress.Security.NonceVerification.Recommended */ ?>
+                    <div class="rtcl-search-input-button">
+                        <input id='rtcl-search-price-min' type="text" name="filters[price][min]" class="form-control"
+                               placeholder="<?php esc_attr_e( 'min', 'rtcl-divi-addons' ); ?>" value="<?php echo esc_attr( $min_price ); ?>">
+                    </div>
+                </div>
+            </div>
+            <div class="<?php echo esc_attr( $price_class ); ?>">
+                <div class="form-group">
+					<?php if ( 'on' === $settings['fields_label'] ) { ?>
+                        <label for="rtcl-search-price-max"><?php esc_html_e( 'Max Price', 'rtcl-divi-addons' ); ?></label>
+					<?php } ?>
+					<?php $max_price = isset( $_GET['filters']['price']['max'] ) ? $_GET['filters']['price']['max']
+						: ''; /* phpcs:ignore WordPress.Security.NonceVerification.Recommended */ ?>
+                    <div class="rtcl-search-input-button">
+                        <input id='rtcl-search-price-max' type="text" name="filters[price][max]" class="form-control"
+                               placeholder="<?php esc_attr_e( 'max', 'rtcl-divi-addons' ); ?>" value="<?php echo esc_attr( $max_price ); ?>">
                     </div>
                 </div>
             </div>
@@ -233,8 +266,11 @@ $orientation = $orientation ?? 'inline';
 		<?php if ( 'on' === $settings['keyword_field'] ): ?>
             <div class="<?php echo esc_attr( $key_class ); ?>">
                 <div class="form-group">
+					<?php if ( 'on' === $settings['fields_label'] ) { ?>
+                        <label for="rtcl-search-keyword-input"><?php esc_html_e( 'Keyword', 'rtcl-divi-addons' ); ?></label>
+					<?php } ?>
                     <div class="rtcl-search-input-button rtcl-search-keyword">
-                        <input type="text" data-type="listing" name="q" class="form-control rtcl-autocomplete"
+                        <input type="text" id="rtcl-search-keyword-input" data-type="listing" name="q" class="form-control rtcl-autocomplete"
                                placeholder="<?php echo esc_html( $keyword_placeholder ); ?>"
                                value="<?php if ( isset( $_GET['q'] ) ) {
 							       echo esc_attr( Functions::clean( wp_unslash( ( $_GET['q'] ) ) ) );
@@ -245,6 +281,9 @@ $orientation = $orientation ?? 'inline';
 		<?php endif; ?>
 
         <div class="<?php echo esc_attr( $btn_class ); ?>">
+			<?php if ( 'on' === $settings['fields_label'] ) { ?>
+                <label><?php esc_html_e( 'Submit', 'rtcl-divi-addons' ); ?></label>
+			<?php } ?>
             <button type="submit" class="btn rtcl-search-btn">
                 <i class="fas fa-search" aria-hidden="true"></i><?php esc_html_e( 'Search', 'rtcl-divi-addons' ); ?>
             </button>
