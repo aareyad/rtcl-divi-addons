@@ -173,12 +173,51 @@ class SearchForm extends DiviModule {
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'fields',
 			],
+			'field_background'   => [
+				'label'       => esc_html__( 'Input Background Color', 'rtcl-divi-addons' ),
+				'description' => esc_html__( 'Here you can define a custom color for field background.', 'rtcl-divi-addons' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'fields',
+			],
+			'field_text_color'   => [
+				'label'       => esc_html__( 'Input Text Color', 'rtcl-divi-addons' ),
+				'description' => esc_html__( 'Here you can define a custom color for input text.', 'rtcl-divi-addons' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'fields',
+			],
+			'field_gap'          => [
+				'label'          => esc_html__( 'Fields Gap', 'rtcl-divi-addons' ),
+				'description'    => esc_html__( 'Here you can define gutter for the fields gap.', 'rtcl-divi-addons' ),
+				'type'           => 'range',
+				'default'        => '5px',
+				'allowed_units'  => [ 'px' ],
+				'default_unit'   => 'px',
+				'range_settings' => array(
+					'min'  => 0,
+					'step' => 1,
+					'max'  => 30,
+				),
+				'tab_slug'       => 'advanced',
+				'toggle_slug'    => 'fields',
+				'mobile_options' => true,
+			],
 			'button_background'  => [
 				'label'       => esc_html__( 'Background Color', 'rtcl-divi-addons' ),
-				'description' => esc_html__( 'Here you can define a custom color for submit button.', 'rtcl-divi-addons' ),
+				'description' => esc_html__( 'Here you can define a custom color for submit button background.', 'rtcl-divi-addons' ),
 				'type'        => 'color-alpha',
 				'tab_slug'    => 'advanced',
 				'toggle_slug' => 'button',
+				'hover'       => 'tabs',
+			],
+			'button_color'       => [
+				'label'       => esc_html__( 'Text Color', 'rtcl-divi-addons' ),
+				'description' => esc_html__( 'Here you can define a custom text color for submit button.', 'rtcl-divi-addons' ),
+				'type'        => 'color-alpha',
+				'tab_slug'    => 'advanced',
+				'toggle_slug' => 'button',
+				'hover'       => 'tabs',
 			],
 		];
 	}
@@ -192,14 +231,14 @@ class SearchForm extends DiviModule {
 		$advanced_fields['fonts'] = [
 			'label'  => [
 				'css'              => array(
-					'main' => '.et-db .et-l %%order_class%% .rtcl-single-location .rtcl-location-name',
+					'main' => '.et-db .et-l %%order_class%% .rtcl-divi-listing-search .form-group > label',
 				),
 				'important'        => 'all',
 				'hide_text_color'  => true,
 				'hide_text_shadow' => true,
 				'hide_text_align'  => true,
 				'tab_slug'         => 'advanced',
-				'toggle_slug'      => 'title',
+				'toggle_slug'      => 'fields',
 				'line_height'      => array(
 					'range_settings' => array(
 						'min'  => '1',
@@ -217,14 +256,14 @@ class SearchForm extends DiviModule {
 			],
 			'button' => [
 				'css'              => array(
-					'main' => '.et-db .et-l %%order_class%% .rtcl-single-location .rtcl-location-listing-count',
+					'main' => '.et-db .et-l %%order_class%% .rtcl-divi-listing-search .rtcl-btn-holder .rtcl-search-btn',
 				),
 				'important'        => 'all',
 				'hide_text_color'  => true,
 				'hide_text_shadow' => true,
 				'hide_text_align'  => true,
 				'tab_slug'         => 'advanced',
-				'toggle_slug'      => 'count',
+				'toggle_slug'      => 'button',
 				'line_height'      => array(
 					'range_settings' => array(
 						'min'  => '1',
@@ -244,7 +283,7 @@ class SearchForm extends DiviModule {
 
 		$advanced_fields['margin_padding'] = [
 			'css'         => [
-				'main'      => '%%order_class%% .rtcl-single-location .rtcl-location-content',
+				'main'      => '%%order_class%% .rtcl-divi-listing-search',
 				'important' => 'all',
 			],
 			'tab_slug'    => 'advanced',
@@ -282,18 +321,111 @@ class SearchForm extends DiviModule {
 	}
 
 	protected function render_css( $render_slug ) {
-		$wrapper         = '.et-db .et-l %%order_class%% .rtcl-search-form';
-		$form_background = $this->props['form_background'];
+		$wrapper                 = '.et-db .et-l %%order_class%% .rtcl-divi-listing-search';
+		$form_background         = $this->props['form_background'];
+		$label_color             = $this->props['form_label_color'];
+		$input_background        = $this->props['field_background'];
+		$input_text_color        = $this->props['field_text_color'];
+		$button_background       = $this->props['button_background'];
+		$button_hover_background = $this->get_hover_value( 'button_background' );
+		$button_color            = $this->props['button_color'];
+		$button_hover_color      = $this->get_hover_value( 'button_color' );
+		$field_gutter            = $this->props['field_gap'];
+		$orientation             = $this->props['search_orientation'];
 
 		// Form
 		if ( ! empty( $form_background ) ) {
 			\ET_Builder_Element::set_style(
 				$render_slug,
 				[
-					'selector'    => "$wrapper .rtcl-location-content",
+					'selector'    => "$wrapper",
 					'declaration' => sprintf( 'background-color: %1$s;', $form_background ),
 				]
 			);
+		}
+		if ( ! empty( $label_color ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => "$wrapper .form-group > label",
+					'declaration' => sprintf( 'color: %1$s;', $label_color ),
+				]
+			);
+		}
+		if ( ! empty( $input_background ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => "$wrapper .rtcl-search-input-button",
+					'declaration' => sprintf( 'background-color: %1$s;', $input_background ),
+				]
+			);
+		}
+		if ( ! empty( $input_text_color ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => "$wrapper .rtcl-search-input-button .form-control",
+					'declaration' => sprintf( 'color: %1$s;', $input_text_color ),
+				]
+			);
+		}
+		if ( ! empty( $button_background ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => "$wrapper .rtcl-btn-holder .rtcl-search-btn",
+					'declaration' => sprintf( 'background-color: %1$s;', $button_background ),
+				]
+			);
+		}
+		if ( ! empty( $button_hover_background ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => "$wrapper .rtcl-btn-holder .rtcl-search-btn:hover",
+					'declaration' => sprintf( 'background-color: %1$s;', $button_hover_background ),
+				]
+			);
+		}
+		if ( ! empty( $button_color ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => "$wrapper .rtcl-btn-holder .rtcl-search-btn",
+					'declaration' => sprintf( 'color: %1$s;', $button_color ),
+				]
+			);
+		}
+		if ( ! empty( $button_hover_color ) ) {
+			\ET_Builder_Element::set_style(
+				$render_slug,
+				[
+					'selector'    => "$wrapper .rtcl-btn-holder .rtcl-search-btn:hover",
+					'declaration' => sprintf( 'color: %1$s;', $button_hover_color ),
+				]
+			);
+		}
+		if ( 'vertical' === $orientation ) {
+			if ( ! empty( $field_gutter ) ) {
+				$this->get_responsive_styles(
+					'field_gap',
+					"$wrapper .rtcl-widget-search-form div + div",
+					array( 'primary' => 'margin-top' ),
+					array( 'default' => '20px' ),
+					$render_slug
+				);
+			}
+		} else {
+			if ( ! empty( $field_gutter ) ) {
+				$this->get_responsive_styles(
+					'field_gap',
+					"$wrapper .rtcl-widget-search-form.rtcl-search-inline",
+					array( 'primary' => 'gap' ),
+					array( 'default' => '5px' ),
+					$render_slug
+				);
+			}
 		}
 	}
 }

@@ -2185,8 +2185,115 @@ var SearchForm = /*#__PURE__*/function (_Component) {
       var additionalCss = [];
 
       // CSS Selectors
-      var wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-single-location";
-      var titleSelector = "".concat(wrapper, " .rtcl-location-name");
+      var wrapper = ".et-db #et-boc .et-l %%order_class%% .rtcl-divi-listing-search";
+
+      // Settings
+      var formBg = props.form_background;
+      var labelColor = props.form_label_color;
+      var fieldBg = props.field_background;
+      var fieldColor = props.field_text_color;
+      var buttonBg = props.button_background;
+      var buttonHoverBg = props === null || props === void 0 ? void 0 : props.button_background__hover;
+      var buttonColor = props.button_color;
+      var buttonHoverColor = props === null || props === void 0 ? void 0 : props.button_color__hover;
+      // box gutter responsive settings
+      var boxGutter = props.field_gap;
+      var isResponsiveBoxGutter = props.field_gap_last_edited && props.field_gap_last_edited.startsWith("on");
+      var boxGutterTablet = isResponsiveBoxGutter && props.field_gap_tablet ? props.field_gap_tablet : boxGutter;
+      var boxGutterPhone = isResponsiveBoxGutter && props.field_gap_phone ? props.field_gap_phone : boxGutter;
+
+      // Apply style
+      if ('' !== formBg) {
+        additionalCss.push([{
+          selector: "".concat(wrapper),
+          declaration: "background-color: ".concat(formBg, ";")
+        }]);
+      }
+      if ('' !== labelColor) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .form-group > label"),
+          declaration: "color: ".concat(labelColor, ";")
+        }]);
+      }
+      if ('' !== fieldBg) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-search-input-button"),
+          declaration: "background-color: ".concat(fieldBg, ";")
+        }]);
+      }
+      if ('' !== fieldColor) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-search-input-button .form-control"),
+          declaration: "color: ".concat(fieldColor, ";")
+        }]);
+      }
+      if ('' !== buttonBg) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-btn-holder .rtcl-search-btn"),
+          declaration: "background-color: ".concat(buttonBg, ";")
+        }]);
+      }
+      if ('' !== buttonColor) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-btn-holder .rtcl-search-btn"),
+          declaration: "color: ".concat(buttonColor, ";")
+        }]);
+      }
+      if ('' !== buttonHoverBg && 'undefined' !== buttonHoverBg) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-btn-holder .rtcl-search-btn:hover"),
+          declaration: "background-color: ".concat(buttonHoverBg, ";")
+        }]);
+      }
+      if ('' !== buttonHoverColor && 'undefined' !== buttonHoverColor) {
+        additionalCss.push([{
+          selector: "".concat(wrapper, " .rtcl-btn-holder .rtcl-search-btn:hover"),
+          declaration: "color: ".concat(buttonHoverColor, ";")
+        }]);
+      }
+      if ('vertical' === props.search_orientation) {
+        if (boxGutter) {
+          additionalCss.push([{
+            selector: "".concat(wrapper, " .rtcl-widget-search-form div + div"),
+            declaration: "margin-top: ".concat(boxGutter, ";")
+          }]);
+        }
+        if (boxGutterTablet) {
+          additionalCss.push([{
+            selector: "".concat(wrapper, " .rtcl-widget-search-form div + div"),
+            declaration: "margin-top: ".concat(boxGutterTablet, ";"),
+            device: 'tablet'
+          }]);
+        }
+        if (boxGutterPhone) {
+          additionalCss.push([{
+            selector: "".concat(wrapper, " .rtcl-widget-search-form div + div"),
+            declaration: "margin-top: ".concat(boxGutterPhone, ";"),
+            device: 'phone'
+          }]);
+        }
+      } else {
+        if (boxGutter) {
+          additionalCss.push([{
+            selector: "".concat(wrapper, " .rtcl-widget-search-form.rtcl-search-inline"),
+            declaration: "gap: ".concat(boxGutter, ";")
+          }]);
+        }
+        if (boxGutterTablet) {
+          additionalCss.push([{
+            selector: "".concat(wrapper, " .rtcl-widget-search-form.rtcl-search-inline"),
+            declaration: "gap: ".concat(boxGutterTablet, ";"),
+            device: 'tablet'
+          }]);
+        }
+        if (boxGutterPhone) {
+          additionalCss.push([{
+            selector: "".concat(wrapper, " .rtcl-widget-search-form.rtcl-search-inline"),
+            declaration: "gap: ".concat(boxGutterPhone, ";"),
+            device: 'phone'
+          }]);
+        }
+      }
       return additionalCss;
     }
   }]);
