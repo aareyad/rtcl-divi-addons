@@ -8,9 +8,11 @@ use RtclDiviAddons\Helpers\Functions as DiviFunctions;
 class Settings extends \ET_Builder_Module {
 	public $slug = 'rtcl_listings_list';
 	public $vb_support = 'on';
+	public $icon_path;
 
 	public function init() {
-		$this->name = esc_html__( 'Listings List', 'rtcl-divi-addons' );
+		$this->name      = esc_html__( 'Listings List', 'rtcl-divi-addons' );
+		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		$this->settings_modal_toggles = [
 			'general'  => [

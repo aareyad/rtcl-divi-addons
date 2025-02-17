@@ -3,7 +3,7 @@
 namespace RtclDiviAddons\Models;
 
 class Dependencies {
-	const MIN_RTCL = '4.0.0';
+	const MIN_RTCL = '4.0.4';
 
 	private static $singleton = false;
 	private array $missing = [];

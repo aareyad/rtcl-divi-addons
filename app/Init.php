@@ -54,7 +54,6 @@ final class RtclDiviInit {
 		if ( $this->dependency->check() ) {
 			add_action( 'wp_enqueue_scripts', [ __CLASS__, 'front_end_script' ], 99 );
 			add_action( 'wp_enqueue_scripts', [ __CLASS__, 'enqueue_builder_scripts' ], 999 );
-			//add_action( 'admin_enqueue_scripts', [ __CLASS__, 'load_admin_script' ] );
 		}
 	}
 
@@ -124,10 +123,6 @@ final class RtclDiviInit {
 			self::$version,
 			true
 		);
-	}
-
-	public static function load_admin_script() {
-
 	}
 
 	/**

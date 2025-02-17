@@ -9,9 +9,11 @@ use RtclDiviAddons\Modules\Base\DiviModule;
 class Settings extends DiviModule {
 	public $slug = 'rtcl_listings_slider';
 	public $vb_support = 'on';
+	public $icon_path;
 
 	public function init() {
-		$this->name = esc_html__( 'Listings Slider', 'rtcl-divi-addons' );
+		$this->name      = esc_html__( 'Listings Slider', 'rtcl-divi-addons' );
+		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		$this->settings_modal_toggles = [
 			'general'  => [
