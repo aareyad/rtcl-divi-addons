@@ -173,7 +173,7 @@ use RtclPro\Controllers\Hooks\TemplateHooks;
 							'<li class="listing-view"><i class="rtcl-icon rtcl-icon-eye" aria-hidden="true"></i>%s</li>',
 							sprintf(
 							/* translators: %s: views count */
-								_n( '%s view', '%s views', $views, 'rtcl-divi-modules' ),
+								_n( '%s view', '%s views', $views, 'rtcl-divi-addons' ),
 								number_format_i18n( $views )
 							)
 						);

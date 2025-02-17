@@ -2,7 +2,7 @@
 /**
  * @wordpress-plugin
  * Plugin Name:       Classified Listing - Addons for Divi Builder
- * Plugin URI:        https://wordpress.org/plugins/classified-listing/
+ * Plugin URI:
  * Description:       Classified Listing required addons for Divi Builder
  * Version:           1.0.0
  * Author:            RadiusTheme

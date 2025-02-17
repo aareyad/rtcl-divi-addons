@@ -1,0 +1,765 @@
+# Copyright (C) 2025 Classified Listing - Addons for Divi Builder
+# This file is distributed under the same license as the Classified Listing - Addons for Divi Builder package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Classified Listing - Addons for Divi Builder\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-02-17 05:07+0000\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../app/Helpers/Functions.php:62
+msgid "Full Size"
+msgstr ""
+
+#: ../app/Helpers/Functions.php:69, ../app/Modules/AllLocation/AllLocation.php:37, ../app/Modules/AllLocation/AllLocation.php:97, ../app/Modules/ListingCategories/Settings.php:34, ../app/Modules/ListingCategories/Settings.php:94, ../app/Modules/ListingsGrid/ListingsGrid.php:26, ../app/Modules/ListingsList/Settings.php:25, ../app/Modules/ListingsSlider/Settings.php:26, ../app/Modules/SingleLocation/SingleLocation.php:34
+msgid "Title"
+msgstr ""
+
+#: ../app/Helpers/Functions.php:70, ../app/Modules/AllLocation/AllLocation.php:96, ../app/Modules/ListingCategories/Settings.php:93
+msgid "Date"
+msgstr ""
+
+#: ../app/Helpers/Functions.php:71, ../app/Modules/AllLocation/AllLocation.php:95, ../app/Modules/ListingCategories/Settings.php:92
+msgid "ID"
+msgstr ""
+
+#: ../app/Helpers/Functions.php:72, ../app/Modules/ListingsGrid/ListingsGrid.php:27, ../app/Modules/ListingsList/Settings.php:26, ../app/Modules/ListingsSlider/Settings.php:27
+msgid "Price"
+msgstr ""
+
+#: ../app/Helpers/Functions.php:73
+msgid "Views"
+msgstr ""
+
+#: ../app/Helpers/Functions.php:74, ../app/Modules/AllLocation/AllLocation.php:94, ../app/Modules/ListingCategories/Settings.php:91
+msgid "None"
+msgstr ""
+
+#: ../app/Models/Dependencies.php:71
+msgid "and"
+msgstr ""
+
+#: ../app/Models/Dependencies.php:84
+msgid "<strong>Classified Listing - Addons for Divi Builder</strong> is enabled but not effective. It requires %s in order to work."
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:23
+msgid "Listing Location"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:29, ../app/Modules/ListingCategories/Settings.php:26, ../app/Modules/ListingsGrid/ListingsGrid.php:19, ../app/Modules/ListingsList/Settings.php:18, ../app/Modules/ListingsSlider/Settings.php:19, ../app/Modules/SearchForm/SearchForm.php:27, ../app/Modules/SingleLocation/SingleLocation.php:28
+msgid "General"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:30, ../app/Modules/ListingCategories/Settings.php:27, ../app/Modules/ListingsGrid/ListingsGrid.php:20, ../app/Modules/ListingsList/Settings.php:19, ../app/Modules/ListingsSlider/Settings.php:20
+msgid "Query"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:31, ../app/Modules/ListingCategories/Settings.php:28, ../app/Modules/ListingsGrid/ListingsGrid.php:21, ../app/Modules/ListingsList/Settings.php:20, ../app/Modules/ListingsSlider/Settings.php:21
+msgid "Visibility"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:36, ../app/Modules/ListingCategories/Settings.php:33
+msgid "Card"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:38, ../app/Modules/ListingCategories/Settings.php:35
+msgid "Content"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:39, ../app/Modules/AllLocation/AllLocation.php:98, ../app/Modules/ListingCategories/Settings.php:36, ../app/Modules/ListingCategories/Settings.php:95, ../app/Modules/SingleLocation/SingleLocation.php:35
+msgid "Count"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:50, ../app/Modules/ListingCategories/Settings.php:47, ../app/Modules/ListingsGrid/ListingsGrid.php:41, ../app/Modules/ListingsList/Settings.php:40, ../app/Modules/ListingsSlider/Settings.php:41, ../app/Modules/SearchForm/SearchForm.php:44, ../app/Modules/SingleLocation/SingleLocation.php:46
+msgid "Style"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:53, ../app/Modules/ListingCategories/Settings.php:50, ../app/Modules/ListingsGrid/ListingsGrid.php:44, ../app/Modules/ListingsList/Settings.php:43, ../app/Modules/ListingsSlider/Settings.php:44, ../app/Modules/SingleLocation/SingleLocation.php:49
+msgid "Style 1"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:60, ../app/Modules/ListingCategories/Settings.php:57, ../app/Modules/ListingsGrid/ListingsGrid.php:52
+msgid "Grid Column"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:63, ../app/Modules/ListingCategories/Settings.php:60, ../app/Modules/ListingsGrid/ListingsGrid.php:55, ../app/Modules/ListingsSlider/Settings.php:55
+msgid "Column 4"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:64, ../app/Modules/ListingCategories/Settings.php:61, ../app/Modules/ListingsGrid/ListingsGrid.php:56, ../app/Modules/ListingsSlider/Settings.php:56
+msgid "Column 3"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:65, ../app/Modules/ListingCategories/Settings.php:62, ../app/Modules/ListingsGrid/ListingsGrid.php:57, ../app/Modules/ListingsSlider/Settings.php:57
+msgid "Column 2"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:66, ../app/Modules/ListingCategories/Settings.php:63, ../app/Modules/ListingsGrid/ListingsGrid.php:58, ../app/Modules/ListingsSlider/Settings.php:58
+msgid "Column 1"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:69
+msgid "Select column number to display location."
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:75, ../app/Modules/ListingsGrid/ListingsGrid.php:88, ../app/Modules/ListingsList/Settings.php:72, ../app/Modules/ListingsSlider/Settings.php:153, ../app/Modules/SingleLocation/SingleLocation.php:56, ../templates/search-form/listing-search.php:88
+msgid "Location"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:78, ../app/Modules/ListingCategories/Settings.php:75
+msgid "Leave checkboxes unchecked to select all"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:83, ../app/Modules/ListingCategories/Settings.php:80
+msgid "Limit"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:88
+msgid "Number of location to display"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:91, ../app/Modules/ListingCategories/Settings.php:88, ../app/Modules/ListingsGrid/ListingsGrid.php:115, ../app/Modules/ListingsList/Settings.php:99, ../app/Modules/ListingsSlider/Settings.php:168
+msgid "Order By"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:99, ../app/Modules/ListingCategories/Settings.php:96
+msgid "Custom Order"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:106, ../app/Modules/ListingCategories/Settings.php:103, ../app/Modules/ListingsGrid/ListingsGrid.php:123, ../app/Modules/ListingsList/Settings.php:107, ../app/Modules/ListingsSlider/Settings.php:176
+msgid "Sort By"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:109, ../app/Modules/ListingCategories/Settings.php:106, ../app/Modules/ListingsGrid/ListingsGrid.php:126, ../app/Modules/ListingsList/Settings.php:110, ../app/Modules/ListingsSlider/Settings.php:179
+msgid "Ascending"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:110, ../app/Modules/ListingCategories/Settings.php:107, ../app/Modules/ListingsGrid/ListingsGrid.php:127, ../app/Modules/ListingsList/Settings.php:111, ../app/Modules/ListingsSlider/Settings.php:180
+msgid "Descending"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:117, ../app/Modules/ListingCategories/Settings.php:114
+msgid "Hide Empty"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:120, ../app/Modules/AllLocation/AllLocation.php:145, ../app/Modules/AllLocation/AllLocation.php:157, ../app/Modules/ListingCategories/Settings.php:117, ../app/Modules/ListingCategories/Settings.php:142, ../app/Modules/ListingCategories/Settings.php:168, ../app/Modules/ListingCategories/Settings.php:180, ../app/Modules/ListingsGrid/ListingsGrid.php:107, ../app/Modules/ListingsGrid/ListingsGrid.php:181, ../app/Modules/ListingsGrid/ListingsGrid.php:193, ../app/Modules/ListingsGrid/ListingsGrid.php:216, ../app/Modules/ListingsGrid/ListingsGrid.php:228, ../app/Modules/ListingsGrid/ListingsGrid.php:240, ../app/Modules/ListingsGrid/ListingsGrid.php:252, ../app/Modules/ListingsGrid/ListingsGrid.php:264, ../app/Modules/ListingsGrid/ListingsGrid.php:276, ../app/Modules/ListingsGrid/ListingsGrid.php:288, ../app/Modules/ListingsGrid/ListingsGrid.php:300, ../app/Modules/ListingsGrid/ListingsGrid.php:312, ../app/Modules/ListingsGrid/ListingsGrid.php:324, ../app/Modules/ListingsGrid/ListingsGrid.php:336, ../app/Modules/ListingsGrid/ListingsGrid.php:348, ../app/Modules/ListingsList/Settings.php:91, ../app/Modules/ListingsList/Settings.php:155, ../app/Modules/ListingsList/Settings.php:167, ../app/Modules/ListingsList/Settings.php:190, ../app/Modules/ListingsList/Settings.php:202, ../app/Modules/ListingsList/Settings.php:214, ../app/Modules/ListingsList/Settings.php:226, ../app/Modules/ListingsList/Settings.php:238, ../app/Modules/ListingsList/Settings.php:250, ../app/Modules/ListingsList/Settings.php:262, ../app/Modules/ListingsList/Settings.php:274, ../app/Modules/ListingsList/Settings.php:286, ../app/Modules/ListingsList/Settings.php:298, ../app/Modules/ListingsList/Settings.php:310, ../app/Modules/ListingsList/Settings.php:322, ../app/Modules/ListingsList/Settings.php:334, ../app/Modules/ListingsSlider/Settings.php:70, ../app/Modules/ListingsSlider/Settings.php:81, ../app/Modules/ListingsSlider/Settings.php:92, ../app/Modules/ListingsSlider/Settings.php:103, ../app/Modules/ListingsSlider/Settings.php:114, ../app/Modules/ListingsSlider/Settings.php:125, ../app/Modules/ListingsSlider/Settings.php:230, ../app/Modules/ListingsSlider/Settings.php:242, ../app/Modules/ListingsSlider/Settings.php:265, ../app/Modules/ListingsSlider/Settings.php:277, ../app/Modules/ListingsSlider/Settings.php:289, ../app/Modules/ListingsSlider/Settings.php:301, ../app/Modules/ListingsSlider/Settings.php:313, ../app/Modules/ListingsSlider/Settings.php:325, ../app/Modules/ListingsSlider/Settings.php:337, ../app/Modules/ListingsSlider/Settings.php:349, ../app/Modules/ListingsSlider/Settings.php:361, ../app/Modules/ListingsSlider/Settings.php:373, ../app/Modules/ListingsSlider/Settings.php:385, ../app/Modules/ListingsSlider/Settings.php:397, ../app/Modules/SearchForm/SearchForm.php:71, ../app/Modules/SearchForm/SearchForm.php:82, ../app/Modules/SearchForm/SearchForm.php:94, ../app/Modules/SearchForm/SearchForm.php:105, ../app/Modules/SearchForm/SearchForm.php:116, ../app/Modules/SearchForm/SearchForm.php:127, ../app/Modules/SearchForm/SearchForm.php:138, ../app/Modules/SingleLocation/SingleLocation.php:67, ../app/Modules/SingleLocation/SingleLocation.php:79
+msgid "Yes"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:121, ../app/Modules/AllLocation/AllLocation.php:146, ../app/Modules/AllLocation/AllLocation.php:158, ../app/Modules/ListingCategories/Settings.php:118, ../app/Modules/ListingCategories/Settings.php:143, ../app/Modules/ListingCategories/Settings.php:169, ../app/Modules/ListingCategories/Settings.php:181, ../app/Modules/ListingsGrid/ListingsGrid.php:108, ../app/Modules/ListingsGrid/ListingsGrid.php:182, ../app/Modules/ListingsGrid/ListingsGrid.php:194, ../app/Modules/ListingsGrid/ListingsGrid.php:217, ../app/Modules/ListingsGrid/ListingsGrid.php:229, ../app/Modules/ListingsGrid/ListingsGrid.php:241, ../app/Modules/ListingsGrid/ListingsGrid.php:253, ../app/Modules/ListingsGrid/ListingsGrid.php:265, ../app/Modules/ListingsGrid/ListingsGrid.php:277, ../app/Modules/ListingsGrid/ListingsGrid.php:289, ../app/Modules/ListingsGrid/ListingsGrid.php:301, ../app/Modules/ListingsGrid/ListingsGrid.php:313, ../app/Modules/ListingsGrid/ListingsGrid.php:325, ../app/Modules/ListingsGrid/ListingsGrid.php:337, ../app/Modules/ListingsGrid/ListingsGrid.php:349, ../app/Modules/ListingsList/Settings.php:92, ../app/Modules/ListingsList/Settings.php:156, ../app/Modules/ListingsList/Settings.php:168, ../app/Modules/ListingsList/Settings.php:191, ../app/Modules/ListingsList/Settings.php:203, ../app/Modules/ListingsList/Settings.php:215, ../app/Modules/ListingsList/Settings.php:227, ../app/Modules/ListingsList/Settings.php:239, ../app/Modules/ListingsList/Settings.php:251, ../app/Modules/ListingsList/Settings.php:263, ../app/Modules/ListingsList/Settings.php:275, ../app/Modules/ListingsList/Settings.php:287, ../app/Modules/ListingsList/Settings.php:299, ../app/Modules/ListingsList/Settings.php:311, ../app/Modules/ListingsList/Settings.php:323, ../app/Modules/ListingsList/Settings.php:335, ../app/Modules/ListingsSlider/Settings.php:71, ../app/Modules/ListingsSlider/Settings.php:82, ../app/Modules/ListingsSlider/Settings.php:93, ../app/Modules/ListingsSlider/Settings.php:104, ../app/Modules/ListingsSlider/Settings.php:115, ../app/Modules/ListingsSlider/Settings.php:126, ../app/Modules/ListingsSlider/Settings.php:231, ../app/Modules/ListingsSlider/Settings.php:243, ../app/Modules/ListingsSlider/Settings.php:266, ../app/Modules/ListingsSlider/Settings.php:278, ../app/Modules/ListingsSlider/Settings.php:290, ../app/Modules/ListingsSlider/Settings.php:302, ../app/Modules/ListingsSlider/Settings.php:314, ../app/Modules/ListingsSlider/Settings.php:326, ../app/Modules/ListingsSlider/Settings.php:338, ../app/Modules/ListingsSlider/Settings.php:350, ../app/Modules/ListingsSlider/Settings.php:362, ../app/Modules/ListingsSlider/Settings.php:374, ../app/Modules/ListingsSlider/Settings.php:386, ../app/Modules/ListingsSlider/Settings.php:398, ../app/Modules/SearchForm/SearchForm.php:72, ../app/Modules/SearchForm/SearchForm.php:83, ../app/Modules/SearchForm/SearchForm.php:95, ../app/Modules/SearchForm/SearchForm.php:106, ../app/Modules/SearchForm/SearchForm.php:117, ../app/Modules/SearchForm/SearchForm.php:128, ../app/Modules/SearchForm/SearchForm.php:139, ../app/Modules/SingleLocation/SingleLocation.php:68, ../app/Modules/SingleLocation/SingleLocation.php:80
+msgid "No"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:124
+msgid "Show / Hide location that has no listings."
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:142, ../app/Modules/ListingCategories/Settings.php:165, ../app/Modules/SingleLocation/SingleLocation.php:76
+msgid "Show Count"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:149, ../app/Modules/ListingCategories/Settings.php:172, ../app/Modules/SingleLocation/SingleLocation.php:83
+msgid "Show / Hide listing counts."
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:154, ../app/Modules/ListingCategories/Settings.php:177, ../app/Modules/ListingsGrid/ListingsGrid.php:190, ../app/Modules/ListingsList/Settings.php:164, ../app/Modules/ListingsSlider/Settings.php:239
+msgid "Show Description"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:161
+msgid "Show / Hide location description."
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:166, ../app/Modules/ListingCategories/Settings.php:189, ../app/Modules/ListingsGrid/ListingsGrid.php:202, ../app/Modules/ListingsList/Settings.php:176, ../app/Modules/ListingsSlider/Settings.php:251
+msgid "Description Limit"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:169, ../app/Modules/ListingCategories/Settings.php:192, ../app/Modules/ListingsGrid/ListingsGrid.php:205, ../app/Modules/ListingsList/Settings.php:179, ../app/Modules/ListingsSlider/Settings.php:254
+msgid "Number of words to display."
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:178, ../app/Modules/ListingCategories/Settings.php:201, ../app/Modules/SingleLocation/SingleLocation.php:97
+msgid "Content Alignment"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:186
+msgid "Gutter Space"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:187
+msgid "Here you can define gutter for the box."
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:202, ../app/Modules/ListingCategories/Settings.php:209, ../app/Modules/SingleLocation/SingleLocation.php:128
+msgid "Name Color"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:203
+msgid "Here you can define a custom color for location name."
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:210, ../app/Modules/ListingCategories/Settings.php:217
+msgid "Description Color"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:211
+msgid "Here you can define a custom color for location description."
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:217, ../app/Modules/ListingCategories/Settings.php:224, ../app/Modules/SingleLocation/SingleLocation.php:135
+msgid "Count Color"
+msgstr ""
+
+#: ../app/Modules/AllLocation/AllLocation.php:218, ../app/Modules/ListingCategories/Settings.php:225, ../app/Modules/SingleLocation/SingleLocation.php:136
+msgid "Here you can define a custom color for listing count."
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:20
+msgid "Listing Categories"
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:66
+msgid "Select column number to display categories."
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:72, ../app/Modules/ListingsGrid/ListingsGrid.php:80, ../app/Modules/ListingsList/Settings.php:64, ../app/Modules/ListingsSlider/Settings.php:146, ../templates/search-form/listing-search.php:184
+msgid "Categories"
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:85
+msgid "Number of category to display"
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:121
+msgid "Show / Hide categories that has no listings."
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:139
+msgid "Show Image / Icon"
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:146
+msgid "Show / Hide listing image or icon."
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:151
+msgid "Icon Type"
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:154
+msgid "Image"
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:155
+msgid "Icon"
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:184
+msgid "Show / Hide category description."
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:210, ../app/Modules/SingleLocation/SingleLocation.php:129
+msgid "Here you can define a custom color for category name."
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:218
+msgid "Here you can define a custom color for category description."
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:231
+msgid "Count Font Size"
+msgstr ""
+
+#: ../app/Modules/ListingCategories/Settings.php:232
+msgid "Here you can define font size for listing count."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:14
+msgid "Listings Grid"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:28, ../app/Modules/ListingsList/Settings.php:27, ../app/Modules/ListingsSlider/Settings.php:28
+msgid "Meta"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:45, ../app/Modules/ListingsList/Settings.php:44, ../app/Modules/ListingsSlider/Settings.php:45
+msgid "Style 2"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:61, ../app/Modules/ListingsSlider/Settings.php:61
+msgid "Select column number to display listings."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:67, ../app/Modules/ListingsList/Settings.php:51, ../app/Modules/ListingsSlider/Settings.php:133
+msgid "Listing Types"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:96, ../app/Modules/ListingsList/Settings.php:80, ../app/Modules/ListingsSlider/Settings.php:160
+msgid "Listing Per Page"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:101, ../app/Modules/ListingsList/Settings.php:85, ../app/Modules/ListingsSlider/Settings.php:165
+msgid "Number of listing to display"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:104, ../app/Modules/ListingsList/Settings.php:88
+msgid "Listing Pagination"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:134, ../app/Modules/ListingsList/Settings.php:118, ../app/Modules/ListingsSlider/Settings.php:187
+msgid "Image Size"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:145, ../app/Modules/ListingsList/Settings.php:129
+msgid "No Listing Text"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:147, ../app/Modules/ListingsList/Settings.php:131
+msgid "No Listing Found"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:178, ../app/Modules/ListingsList/Settings.php:152, ../app/Modules/ListingsSlider/Settings.php:227
+msgid "Show Image"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:185, ../app/Modules/ListingsList/Settings.php:159, ../app/Modules/ListingsSlider/Settings.php:234
+msgid "Show / Hide listing image."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:197, ../app/Modules/ListingsList/Settings.php:171, ../app/Modules/ListingsSlider/Settings.php:246
+msgid "Show / Hide listing description."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:213, ../app/Modules/ListingsList/Settings.php:187, ../app/Modules/ListingsSlider/Settings.php:262
+msgid "Show Badge"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:220, ../app/Modules/ListingsList/Settings.php:194, ../app/Modules/ListingsSlider/Settings.php:269
+msgid "Show / Hide listing badge."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:225, ../app/Modules/ListingsList/Settings.php:199, ../app/Modules/ListingsSlider/Settings.php:274
+msgid "Show Date"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:232, ../app/Modules/ListingsList/Settings.php:206, ../app/Modules/ListingsSlider/Settings.php:281
+msgid "Show / Hide listing date."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:237, ../app/Modules/ListingsList/Settings.php:211, ../app/Modules/ListingsSlider/Settings.php:286
+msgid "Show View Count"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:244, ../app/Modules/ListingsList/Settings.php:218, ../app/Modules/ListingsSlider/Settings.php:293
+msgid "Show / Hide listing views."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:249, ../app/Modules/ListingsList/Settings.php:223, ../app/Modules/ListingsSlider/Settings.php:298
+msgid "Show Ad Type"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:256, ../app/Modules/ListingsList/Settings.php:230, ../app/Modules/ListingsSlider/Settings.php:305
+msgid "Show / Hide listing ad type."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:261, ../app/Modules/ListingsList/Settings.php:235, ../app/Modules/ListingsSlider/Settings.php:310
+msgid "Show Location"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:268, ../app/Modules/ListingsList/Settings.php:242, ../app/Modules/ListingsSlider/Settings.php:317
+msgid "Show / Hide listing location."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:273, ../app/Modules/ListingsList/Settings.php:247, ../app/Modules/ListingsSlider/Settings.php:322
+msgid "Show Category"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:280, ../app/Modules/ListingsList/Settings.php:254, ../app/Modules/ListingsSlider/Settings.php:329
+msgid "Show / Hide listing categories."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:285, ../app/Modules/ListingsList/Settings.php:259, ../app/Modules/ListingsSlider/Settings.php:334
+msgid "Show Price"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:292, ../app/Modules/ListingsList/Settings.php:266, ../app/Modules/ListingsSlider/Settings.php:341
+msgid "Show / Hide listing price."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:297, ../app/Modules/ListingsList/Settings.php:283, ../app/Modules/ListingsSlider/Settings.php:346
+msgid "Show Author Name"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:304, ../app/Modules/ListingsList/Settings.php:290, ../app/Modules/ListingsSlider/Settings.php:353
+msgid "Show / Hide listing author name."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:309, ../app/Modules/ListingsList/Settings.php:271, ../app/Modules/ListingsSlider/Settings.php:358
+msgid "Show Custom Fields"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:316, ../app/Modules/ListingsList/Settings.php:278, ../app/Modules/ListingsSlider/Settings.php:365
+msgid "Show / Hide listing custom fields."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:321, ../app/Modules/ListingsList/Settings.php:307, ../app/Modules/ListingsSlider/Settings.php:370
+msgid "Show Favourites"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:328, ../app/Modules/ListingsList/Settings.php:314, ../app/Modules/ListingsSlider/Settings.php:377
+msgid "Show / Hide listing favourite button."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:333, ../app/Modules/ListingsList/Settings.php:319, ../app/Modules/ListingsSlider/Settings.php:382
+msgid "Show Quick View"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:340, ../app/Modules/ListingsList/Settings.php:326, ../app/Modules/ListingsSlider/Settings.php:389
+msgid "Show / Hide quick view button."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:345, ../app/Modules/ListingsList/Settings.php:331, ../app/Modules/ListingsSlider/Settings.php:394
+msgid "Show Compare"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:352, ../app/Modules/ListingsList/Settings.php:338, ../app/Modules/ListingsSlider/Settings.php:401
+msgid "Show / Hide compare button."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:358, ../app/Modules/ListingsList/Settings.php:344, ../app/Modules/ListingsSlider/Settings.php:407
+msgid "Title Color"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:359, ../app/Modules/ListingsList/Settings.php:345, ../app/Modules/ListingsSlider/Settings.php:408
+msgid "Here you can define a custom color for listing title."
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:366, ../app/Modules/ListingsList/Settings.php:352, ../app/Modules/ListingsSlider/Settings.php:415
+msgid "Meta Color"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:372, ../app/Modules/ListingsList/Settings.php:358, ../app/Modules/ListingsSlider/Settings.php:421
+msgid "Meta Icon Color"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:378, ../app/Modules/ListingsList/Settings.php:364, ../app/Modules/ListingsSlider/Settings.php:427
+msgid "Category Color"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:385, ../app/Modules/ListingsList/Settings.php:371, ../app/Modules/ListingsSlider/Settings.php:434
+msgid "Price Color"
+msgstr ""
+
+#: ../app/Modules/ListingsGrid/ListingsGrid.php:386, ../app/Modules/ListingsList/Settings.php:372, ../app/Modules/ListingsSlider/Settings.php:435
+msgid "Here you can define a custom color for listing price."
+msgstr ""
+
+#: ../app/Modules/ListingsList/Settings.php:13
+msgid "Listings List"
+msgstr ""
+
+#: ../app/Modules/ListingsList/Settings.php:295
+msgid "Show Details Button"
+msgstr ""
+
+#: ../app/Modules/ListingsList/Settings.php:302
+msgid "Show / Hide listing details button."
+msgstr ""
+
+#: ../app/Modules/ListingsSlider/Settings.php:14
+msgid "Listings Slider"
+msgstr ""
+
+#: ../app/Modules/ListingsSlider/Settings.php:52
+msgid "Number of Columns"
+msgstr ""
+
+#: ../app/Modules/ListingsSlider/Settings.php:67
+msgid "Auto Height"
+msgstr ""
+
+#: ../app/Modules/ListingsSlider/Settings.php:78
+msgid "Loop"
+msgstr ""
+
+#: ../app/Modules/ListingsSlider/Settings.php:89
+msgid "Autoplay"
+msgstr ""
+
+#: ../app/Modules/ListingsSlider/Settings.php:100
+msgid "Stop on Hover"
+msgstr ""
+
+#: ../app/Modules/ListingsSlider/Settings.php:111
+msgid "Arrow Navigation"
+msgstr ""
+
+#: ../app/Modules/ListingsSlider/Settings.php:122
+msgid "Dot Navigation"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:21
+msgid "Listing Search Form"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:32
+msgid "Form"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:33
+msgid "Fields"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:34
+msgid "Search Button"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:47
+msgid "Dependency Selection"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:48
+msgid "Standard"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:49
+msgid "Popup"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:50
+msgid "Auto Suggestion"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:57
+msgid "Orientation"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:60
+msgid "Inline"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:61
+msgid "Vertical"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:68
+msgid "Show Fields Label"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:79
+msgid "Keywords Field"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:86
+msgid "Show / Hide keyword field."
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:91
+msgid "Ad Types Field"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:102
+msgid "Category Field"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:113
+msgid "Location Field"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:124
+msgid "Radius Field"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:135
+msgid "Price Field"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:163
+msgid "Form Background Color"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:164
+msgid "Here you can define a custom color for form background."
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:170
+msgid "Label Color"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:171
+msgid "Here you can define a custom color for form label."
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:177
+msgid "Input Background Color"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:178
+msgid "Here you can define a custom color for field background."
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:184
+msgid "Input Text Color"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:185
+msgid "Here you can define a custom color for input text."
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:191
+msgid "Fields Gap"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:192
+msgid "Here you can define gutter for the fields gap."
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:207
+msgid "Background Color"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:208
+msgid "Here you can define a custom color for submit button background."
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:215
+msgid "Text Color"
+msgstr ""
+
+#: ../app/Modules/SearchForm/SearchForm.php:216
+msgid "Here you can define a custom text color for submit button."
+msgstr ""
+
+#: ../app/Modules/SingleLocation/SingleLocation.php:22
+msgid "Listing Single Location"
+msgstr ""
+
+#: ../app/Modules/SingleLocation/SingleLocation.php:33
+msgid "Box"
+msgstr ""
+
+#: ../app/Modules/SingleLocation/SingleLocation.php:59
+msgid "Select a location to display."
+msgstr ""
+
+#: ../app/Modules/SingleLocation/SingleLocation.php:64
+msgid "Enable Link"
+msgstr ""
+
+#: ../app/Modules/SingleLocation/SingleLocation.php:71
+msgid "Add / Remove listing location link."
+msgstr ""
+
+#: ../app/Modules/SingleLocation/SingleLocation.php:105
+msgid "Content Background Color"
+msgstr ""
+
+#: ../app/Modules/SingleLocation/SingleLocation.php:106
+msgid "Here you can define a custom color for content background."
+msgstr ""
+
+#: ../app/Modules/SingleLocation/SingleLocation.php:112
+msgid "Adjust Box Height"
+msgstr ""
+
+#: ../app/Modules/SingleLocation/SingleLocation.php:113
+msgid "Here you can define height for the box."
+msgstr ""
+
+#: ../app/Modules/SingleLocation/SingleLocation.php:236
+msgid "Please Select a Location and Background"
+msgstr ""
+
+#. translators: %s: Location term
+#. translators: %s: Category term
+#: ../templates/all-location/style-1.php:34, ../templates/listing-cats/style-1.php:34
+msgid "View all posts in %s"
+msgstr ""
+
+#: ../templates/all-location/style-1.php:46, ../templates/listing-cats/style-1.php:83
+msgid "ads"
+msgstr ""
+
+#: ../templates/listing-slider/style-1.php:57, ../templates/listing-slider/style-2.php:57, ../templates/listing-ads/grid/style-1.php:66, ../templates/listing-ads/grid/style-2.php:66, ../templates/listing-ads/list/style-1.php:66, ../templates/listing-ads/list/style-1.php:69, ../templates/listing-ads/list/style-2.php:67
+msgid "Quick View"
+msgstr ""
+
+#: ../templates/listing-slider/style-1.php:83, ../templates/listing-slider/style-2.php:83, ../templates/listing-ads/grid/style-1.php:92, ../templates/listing-ads/grid/style-2.php:92, ../templates/listing-ads/list/style-1.php:93, ../templates/listing-ads/list/style-1.php:95, ../templates/listing-ads/list/style-2.php:93
+msgid "Compare"
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:18
+msgid "Select Location"
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:19
+msgid "Select Category"
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:20, ../templates/search-form/listing-search.php:66
+msgid "Select Type"
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:21
+msgid "Enter Keyword here ..."
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:58
+msgid "Ad Type"
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:153
+msgid "Select a location"
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:170
+msgid "Radius"
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:242
+msgid "Min Price"
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:248
+msgid "Min"
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:255
+msgid "Max Price"
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:261
+msgid "Max"
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:271
+msgid "Keyword"
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:286
+msgid "Submit"
+msgstr ""
+
+#: ../templates/search-form/listing-search.php:289
+msgid "Search"
+msgstr ""
+
+#. translators: Ads count
+#: ../templates/single-location/style-1.php:13
+msgctxt "Number of Ads"
+msgid "%s Ad"
+msgid_plural "%s Ads"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../templates/listing-ads/list/style-1.php:217, ../templates/listing-ads/list/style-2.php:239
+msgid "Details"
+msgstr ""

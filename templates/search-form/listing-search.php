@@ -91,9 +91,9 @@ $orientation = $orientation ?? 'inline';
                             <div class="rtcl-search-input-button rtcl-search-location">
                                 <input type="text" data-type="location" class="rtcl-autocomplete rtcl-location form-control"
                                        placeholder="<?php echo esc_attr( $loc_text ); ?>"
-                                       value="<?php echo $selected_location ? $selected_location->name : '' ?>">
+                                       value="<?php echo $selected_location ? esc_attr( $selected_location->name ) : '' ?>">
                                 <input type="hidden" name="rtcl_location"
-                                       value="<?php echo $selected_location ? $selected_location->slug : '' ?>">
+                                       value="<?php echo $selected_location ? esc_attr( $selected_location->slug ) : '' ?>">
                             </div>
 						<?php elseif ( $style === 'standard' ): ?>
                             <div class="rtcl-search-input-button rtcl-search-location">
