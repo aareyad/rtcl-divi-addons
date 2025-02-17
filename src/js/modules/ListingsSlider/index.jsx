@@ -89,7 +89,9 @@ class ListingsSlider extends Component {
     render() {
 
         return (
-            <Listings data={this.props}/>
+            <div className="rtcl-divi-listing-slider-wrapper">
+                <Listings data={this.props}/>
+            </div>
         );
     }
 }

@@ -18,5 +18,16 @@
         line-height: 20px;
       }
     }
+
+    .listing-thumb .rtcl-meta-buttons-wrap .quick-label,
+    .listing-thumb .rtcl-meta-buttons-wrap .compare-label {
+      display: none;
+    }
+  }
+}
+
+.rtcl-divi-listing-slider-wrapper {
+  .swiper-wrapper {
+    gap: 20px;
   }
 }

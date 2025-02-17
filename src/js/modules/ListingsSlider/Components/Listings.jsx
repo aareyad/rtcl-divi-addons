@@ -36,7 +36,7 @@ function Listings(props) {
         listing_type: rtcl_listing_types === 'all' ? '' : rtcl_listing_types,
         orderby: attributes.rtcl_orderby,
         sortby: attributes.rtcl_sortby,
-        perPage: attributes.rtcl_listing_per_page,
+        perPage: rtcl_listing_per_page > 4 ? 4 : rtcl_listing_per_page,
         image_size: attributes.rtcl_image_size,
     };
 

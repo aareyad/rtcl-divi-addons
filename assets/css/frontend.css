@@ -495,6 +495,14 @@
 .et-db .et-l .et_pb_module .rtcl-listings-slider-container .rtcl-listing-meta-data li {
   line-height: 20px;
 }
+.et-db .et-l .et_pb_module .rtcl-listings-slider-container .listing-thumb .rtcl-meta-buttons-wrap .quick-label,
+.et-db .et-l .et_pb_module .rtcl-listings-slider-container .listing-thumb .rtcl-meta-buttons-wrap .compare-label {
+  display: none;
+}
+
+.rtcl-divi-listing-slider-wrapper .swiper-wrapper {
+  gap: 20px;
+}
 
 .et-db .et-l .et_pb_module .rtcl-divi-listing-search {
   background-color: #e1e1e1;

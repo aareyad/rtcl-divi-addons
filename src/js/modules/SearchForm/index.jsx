@@ -55,6 +55,10 @@ class SearchForm extends Component {
                 {
                     selector: `${wrapper} .rtcl-search-input-button .form-control`,
                     declaration: `color: ${fieldColor};`
+                },
+                {
+                    selector: `${wrapper} .rtcl-search-input-button .form-control::placeholder`,
+                    declaration: `color: ${fieldColor};`
                 }
             ]);
         }

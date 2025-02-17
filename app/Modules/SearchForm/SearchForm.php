@@ -365,7 +365,7 @@ class SearchForm extends DiviModule {
 			\ET_Builder_Element::set_style(
 				$render_slug,
 				[
-					'selector'    => "$wrapper .rtcl-search-input-button .form-control",
+					'selector'    => "$wrapper .rtcl-search-input-button .form-control, $wrapper .rtcl-search-input-button .form-control::placeholder",
 					'declaration' => sprintf( 'color: %1$s;', $input_text_color ),
 				]
 			);

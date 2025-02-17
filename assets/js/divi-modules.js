@@ -1954,7 +1954,7 @@ function Listings(props) {
     listing_type: rtcl_listing_types === 'all' ? '' : rtcl_listing_types,
     orderby: attributes.rtcl_orderby,
     sortby: attributes.rtcl_sortby,
-    perPage: attributes.rtcl_listing_per_page,
+    perPage: rtcl_listing_per_page > 4 ? 4 : rtcl_listing_per_page,
     image_size: attributes.rtcl_image_size
   };
   useEffect(function () {
@@ -2055,8 +2055,11 @@ var ListingsSlider = /*#__PURE__*/function (_Component) {
   return _createClass(ListingsSlider, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Components_Listings__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        data: this.props
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "rtcl-divi-listing-slider-wrapper",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Components_Listings__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          data: this.props
+        })
       });
     }
   }], [{
@@ -2224,6 +2227,9 @@ var SearchForm = /*#__PURE__*/function (_Component) {
       if ('' !== fieldColor) {
         additionalCss.push([{
           selector: "".concat(wrapper, " .rtcl-search-input-button .form-control"),
+          declaration: "color: ".concat(fieldColor, ";")
+        }, {
+          selector: "".concat(wrapper, " .rtcl-search-input-button .form-control::placeholder"),
           declaration: "color: ".concat(fieldColor, ";")
         }]);
       }
