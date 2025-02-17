@@ -1388,6 +1388,12 @@ var _wp$element = wp.element,
 function Listings(props) {
   var attributes = props.data;
   var rtcl_list_style = attributes.rtcl_list_style,
+    __categories = attributes.__categories,
+    __location = attributes.__location,
+    rtcl_listing_types = attributes.rtcl_listing_types,
+    rtcl_orderby = attributes.rtcl_orderby,
+    rtcl_sortby = attributes.rtcl_sortby,
+    rtcl_image_size = attributes.rtcl_image_size,
     rtcl_listing_per_page = attributes.rtcl_listing_per_page;
   var _useState = useState([]),
     _useState2 = _slicedToArray(_useState, 2),
@@ -1402,13 +1408,13 @@ function Listings(props) {
     pageState = _useState6[0],
     setPageState = _useState6[1];
   var ajaxAttributes = {
-    cats: attributes.rtcl_listing_categories === 'all' ? '' : [attributes.rtcl_listing_categories],
-    locations: attributes.rtcl_listing_location === 'all' ? '' : [attributes.rtcl_listing_location],
-    listing_type: attributes.rtcl_listing_types === 'all' ? '' : attributes.rtcl_listing_types,
-    orderby: attributes.rtcl_orderby,
-    sortby: attributes.rtcl_sortby,
-    perPage: attributes.rtcl_listing_per_page,
-    image_size: attributes.rtcl_image_size
+    cats: __categories,
+    locations: __location,
+    listing_type: rtcl_listing_types === 'all' ? '' : rtcl_listing_types,
+    orderby: rtcl_orderby,
+    sortby: rtcl_sortby,
+    perPage: rtcl_listing_per_page,
+    image_size: rtcl_image_size
   };
   useEffect(function () {
     var paginationLimit = 0;
@@ -1430,7 +1436,7 @@ function Listings(props) {
     })["catch"](function (error) {
       return console.log(error);
     });
-  }, []);
+  }, [__categories, __location, rtcl_listing_types]);
   attributes.rtcl_list_class = classnames__WEBPACK_IMPORTED_MODULE_2___default()(['rtcl-listings', 'rtcl-list-view', 'rtcl-list-' + rtcl_list_style]);
   function load_layout() {
     if ('style-2' === rtcl_list_style) {

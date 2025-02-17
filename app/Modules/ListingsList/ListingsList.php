@@ -19,15 +19,15 @@ class ListingsList extends Settings {
 
 	public static function widget_query_args( $settings ) {
 
-		$categories_list = $location_list = [];
+		$category_includes = ! empty( $settings['rtcl_listing_categories'] ) ? $settings['rtcl_listing_categories'] : '';
+		$category_includes = explode( '|', $category_includes );
 
-		if ( isset( $settings['rtcl_listing_categories'] ) && 'all' !== $settings['rtcl_listing_categories'] ) {
-			$categories_list[] = absint( $settings['rtcl_listing_categories'] );
-		}
+		$categories_list = \RtclDiviAddons\Helpers\Functions::divi_get_user_selected_terms( $category_includes );
 
-		if ( isset( $settings['rtcl_listing_location'] ) && 'all' !== $settings['rtcl_listing_location'] ) {
-			$location_list[] = absint( $settings['rtcl_listing_location'] );
-		}
+		$location_includes = ! empty( $settings['rtcl_listing_location'] ) ? $settings['rtcl_listing_location'] : '';
+		$location_includes = explode( '|', $location_includes );
+
+		$location_list = \RtclDiviAddons\Helpers\Functions::divi_get_user_selected_terms( $location_includes, rtcl()->location );
 
 		$orderby           = isset( $settings['rtcl_orderby'] ) && ! empty( $settings['rtcl_orderby'] ) ? $settings['rtcl_orderby'] : 'date';
 		$order             = isset( $settings['rtcl_sortby'] ) && ! empty( $settings['rtcl_sortby'] ) ? $settings['rtcl_sortby'] : 'desc';
