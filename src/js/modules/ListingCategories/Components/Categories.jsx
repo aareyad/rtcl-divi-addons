@@ -12,32 +12,18 @@ function Categories(props) {
         rtcl_cats_style,
         rtcl_grid_column,
         rtcl_category_limit,
-        rtcl_cats,
         rtcl_orderby,
         rtcl_order,
         rtcl_icon_type,
+        __categories,
         rtcl_hide_empty
     } = attributes;
-
-    const categories = rtcl_divi.cat_terms;
-
-    // Split the category includes string
-    const includesArray = rtcl_cats.split('|');
-
-    // Get corresponding IDs and title where status is "on"
-
-    const selectedCatIds = Object.keys(categories)
-        .filter((key, index) => includesArray[index] === "on")
-        .map((key) => ({
-            value: key,
-            title: categories[key]
-        }));
 
     const [dataSuccess, setDataSuccess] = useState(true);
     const [catListBox, setCatListBox] = useState([]);
 
     const ajaxAttributes = {
-        cats: selectedCatIds,
+        cats: __categories,
         orderby: rtcl_orderby,
         sortby: rtcl_order,
         category_limit: rtcl_category_limit,
@@ -65,7 +51,7 @@ function Categories(props) {
                 }
             })
             .catch((error) => console.log(error));
-    }, []);
+    }, [__categories]);
 
     attributes.rtcl_grid_class = classnames([
         'rtcl-cat-items-wrapper',

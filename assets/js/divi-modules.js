@@ -281,26 +281,11 @@ function Categories(props) {
   var rtcl_cats_style = attributes.rtcl_cats_style,
     rtcl_grid_column = attributes.rtcl_grid_column,
     rtcl_category_limit = attributes.rtcl_category_limit,
-    rtcl_cats = attributes.rtcl_cats,
     rtcl_orderby = attributes.rtcl_orderby,
     rtcl_order = attributes.rtcl_order,
     rtcl_icon_type = attributes.rtcl_icon_type,
+    __categories = attributes.__categories,
     rtcl_hide_empty = attributes.rtcl_hide_empty;
-  var categories = rtcl_divi.cat_terms;
-
-  // Split the category includes string
-  var includesArray = rtcl_cats.split('|');
-
-  // Get corresponding IDs and title where status is "on"
-
-  var selectedCatIds = Object.keys(categories).filter(function (key, index) {
-    return includesArray[index] === "on";
-  }).map(function (key) {
-    return {
-      value: key,
-      title: categories[key]
-    };
-  });
   var _useState = useState(true),
     _useState2 = _slicedToArray(_useState, 2),
     dataSuccess = _useState2[0],
@@ -310,7 +295,7 @@ function Categories(props) {
     catListBox = _useState4[0],
     setCatListBox = _useState4[1];
   var ajaxAttributes = {
-    cats: selectedCatIds,
+    cats: __categories,
     orderby: rtcl_orderby,
     sortby: rtcl_order,
     category_limit: rtcl_category_limit,
@@ -336,7 +321,7 @@ function Categories(props) {
     })["catch"](function (error) {
       return console.log(error);
     });
-  }, []);
+  }, [__categories]);
   attributes.rtcl_grid_class = classnames__WEBPACK_IMPORTED_MODULE_1___default()(['rtcl-cat-items-wrapper', 'rtcl-grid-view', 'rtcl-category-' + rtcl_cats_style, 'columns-' + rtcl_grid_column, attributes !== null && attributes !== void 0 && attributes.rtcl_grid_column_tablet ? 'tab-columns-' + attributes.rtcl_grid_column_tablet : 'tab-columns-2', attributes !== null && attributes !== void 0 && attributes.rtcl_grid_column_phone ? 'mobile-columns-' + attributes.rtcl_grid_column_phone : 'mobile-columns-1']);
   function load_layout() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Layout_1__WEBPACK_IMPORTED_MODULE_0__["default"], {

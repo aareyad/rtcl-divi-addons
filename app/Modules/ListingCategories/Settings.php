@@ -125,7 +125,7 @@ class Settings extends \ET_Builder_Module {
 			// computed.
 			'__categories'           => array(
 				'type'                => 'computed',
-				'computed_callback'   => array( 'Settings', 'get_content' ),
+				'computed_callback'   => array( Settings::class, 'get_content' ),
 				'computed_depends_on' => array(
 					'rtcl_cats',
 					'rtcl_category_limit',
@@ -317,7 +317,19 @@ class Settings extends \ET_Builder_Module {
 	}
 
 	public static function get_content( $args = [] ) {
+		$category_includes = ! empty( $args['rtcl_cats'] ) ? $args['rtcl_cats'] : '';
+		$category_includes = explode( '|', $category_includes );
 
-		return false;
+		$category_terms = DiviFunctions::divi_get_user_selected_terms( $category_includes, rtcl()->category );
+
+		$sort_terms = [];
+
+		if ( ! empty( $category_terms ) ) {
+			foreach ( $category_terms as $term_id ) {
+				$sort_terms[]['value'] = $term_id;
+			}
+		}
+
+		return $sort_terms;
 	}
 }
