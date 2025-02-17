@@ -8,19 +8,30 @@ const {useState, useEffect} = wp.element;
 
 function Listings(props) {
     const attributes = props.data;
-    const {rtcl_grid_style, rtcl_grid_column, rtcl_listing_per_page} = attributes;
+    const {
+        rtcl_grid_style,
+        rtcl_grid_column,
+        __categories,
+        __location,
+        rtcl_listing_types,
+        rtcl_orderby,
+        rtcl_sortby,
+        rtcl_image_size,
+        rtcl_listing_per_page
+    } = attributes;
+
     const [data, setData] = useState([]);
     const [dataSuccess, setDataSuccess] = useState(true);
     const [pageState, setPageState] = useState(0);
 
     const ajaxAttributes = {
-        cats: attributes.rtcl_listing_categories === 'all' ? '' : [attributes.rtcl_listing_categories],
-        locations: attributes.rtcl_listing_location === 'all' ? '' : [attributes.rtcl_listing_location],
-        listing_type: attributes.rtcl_listing_types === 'all' ? '' : attributes.rtcl_listing_types,
-        orderby: attributes.rtcl_orderby,
-        sortby: attributes.rtcl_sortby,
-        perPage: attributes.rtcl_listing_per_page,
-        image_size: attributes.rtcl_image_size,
+        cats: __categories,
+        locations: __location,
+        listing_type: rtcl_listing_types === 'all' ? '' : rtcl_listing_types,
+        orderby: rtcl_orderby,
+        sortby: rtcl_sortby,
+        perPage: rtcl_listing_per_page,
+        image_size: rtcl_image_size,
     };
 
     useEffect(() => {
@@ -44,7 +55,7 @@ function Listings(props) {
                 setPageState(Math.ceil(response.data.data.total_post / ((paginationLimit == 0) || (paginationLimit == -1) ? 1 : paginationLimit)))
             })
             .catch((error) => console.log(error));
-    }, []);
+    }, [__categories, __location, rtcl_listing_types]);
 
     const rtcl_grid_column_tablet = attributes?.rtcl_grid_column_tablet;
     const rtcl_grid_column_phone = attributes?.rtcl_grid_column_phone;

@@ -103,11 +103,8 @@ final class RtclDiviInit {
 			[ 'jquery', 'react-dom', 'react', 'et_pb_media_library', 'wp-element', 'wp-i18n' ],
 			self::$version, true );
 
-		$categories = Functions::get_listing_taxonomy( 'parent' );
-
 		$localize = [
 			'rtcl_nonce' => wp_create_nonce( 'rtcl-nonce' ),
-			'cat_terms'  => $categories,
 		];
 
 		wp_localize_script( 'rtcl-divi-modules', 'rtcl_divi', $localize );

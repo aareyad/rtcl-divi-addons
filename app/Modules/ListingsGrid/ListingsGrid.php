@@ -80,17 +80,15 @@ class ListingsGrid extends \ET_Builder_Module {
 			],
 			'rtcl_listing_categories'  => [
 				'label'       => esc_html__( 'Categories', 'rtcl-divi-addons' ),
-				'type'        => 'select',
+				'type'        => 'multiple_checkboxes',
 				'options'     => $category_dropdown,
-				'default'     => 'all',
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
 			'rtcl_listing_location'    => [
 				'label'       => esc_html__( 'Location', 'rtcl-divi-addons' ),
-				'type'        => 'select',
+				'type'        => 'multiple_checkboxes',
 				'options'     => $location_dropdown,
-				'default'     => 'all',
 				'tab_slug'    => 'general',
 				'toggle_slug' => 'general',
 			],
@@ -153,7 +151,7 @@ class ListingsGrid extends \ET_Builder_Module {
 			// computed.
 			'__listings'               => array(
 				'type'                => 'computed',
-				'computed_callback'   => array( 'ListingsGrid', 'get_listings' ),
+				'computed_callback'   => array( ListingsGrid::class, 'get_listings' ),
 				'computed_depends_on' => array(
 					'rtcl_listing_types',
 					'rtcl_listing_categories',
@@ -174,6 +172,20 @@ class ListingsGrid extends \ET_Builder_Module {
 					'rtcl_image_size',
 					'rtcl_listing_pagination'
 				),
+			),
+			'__categories'             => array(
+				'type'                => 'computed',
+				'computed_callback'   => array( ListingsGrid::class, 'get_categories' ),
+				'computed_depends_on' => array(
+					'rtcl_listing_categories'
+				)
+			),
+			'__location'               => array(
+				'type'                => 'computed',
+				'computed_callback'   => array( ListingsGrid::class, 'get_location' ),
+				'computed_depends_on' => array(
+					'rtcl_listing_location'
+				)
 			),
 			// visibility
 			'rtcl_show_image'          => [
@@ -493,15 +505,15 @@ class ListingsGrid extends \ET_Builder_Module {
 
 	public static function widget_query_args( $settings ) {
 
-		$categories_list = $location_list = [];
+		$category_includes = ! empty( $settings['rtcl_listing_categories'] ) ? $settings['rtcl_listing_categories'] : '';
+		$category_includes = explode( '|', $category_includes );
 
-		if ( isset( $settings['rtcl_listing_categories'] ) && 'all' !== $settings['rtcl_listing_categories'] ) {
-			$categories_list[] = absint( $settings['rtcl_listing_categories'] );
-		}
+		$categories_list = \RtclDiviAddons\Helpers\Functions::divi_get_user_selected_terms( $category_includes );
 
-		if ( isset( $settings['rtcl_listing_location'] ) && 'all' !== $settings['rtcl_listing_location'] ) {
-			$location_list[] = absint( $settings['rtcl_listing_location'] );
-		}
+		$location_includes = ! empty( $settings['rtcl_listing_location'] ) ? $settings['rtcl_listing_location'] : '';
+		$location_includes = explode( '|', $location_includes );
+
+		$location_list = \RtclDiviAddons\Helpers\Functions::divi_get_user_selected_terms( $location_includes, rtcl()->location );
 
 		$orderby           = isset( $settings['rtcl_orderby'] ) && ! empty( $settings['rtcl_orderby'] ) ? $settings['rtcl_orderby'] : 'date';
 		$order             = isset( $settings['rtcl_sortby'] ) && ! empty( $settings['rtcl_sortby'] ) ? $settings['rtcl_sortby'] : 'desc';
@@ -579,6 +591,24 @@ class ListingsGrid extends \ET_Builder_Module {
 
 	public static function get_listings( $args = array(), $conditional_tags = array(), $current_page = array() ) {
 		return false;
+	}
+
+	public static function get_categories( $args = array() ) {
+		$category_includes = ! empty( $args['rtcl_listing_categories'] ) ? $args['rtcl_listing_categories'] : '';
+		$category_includes = explode( '|', $category_includes );
+
+		$category_terms = DiviFunctions::divi_get_user_selected_terms( $category_includes, rtcl()->category );
+
+		return is_array( $category_terms ) ? $category_terms : [];
+	}
+
+	public static function get_location( $args = array() ) {
+		$location_includes = ! empty( $args['rtcl_listing_location'] ) ? $args['rtcl_listing_location'] : '';
+		$location_includes = explode( '|', $location_includes );
+
+		$location_terms = DiviFunctions::divi_get_user_selected_terms( $location_includes, rtcl()->location );
+
+		return is_array( $location_terms ) ? $location_terms : [];
 	}
 
 	public function render( $unprocessed_props, $content, $render_slug ) {
