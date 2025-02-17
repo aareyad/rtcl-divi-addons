@@ -326,7 +326,9 @@ class Settings extends \ET_Builder_Module {
 
 		if ( ! empty( $category_terms ) ) {
 			foreach ( $category_terms as $term_id ) {
-				$sort_terms[]['value'] = $term_id;
+				$sort_terms[] = [
+					'value' => $term_id,
+				];
 			}
 		}
 

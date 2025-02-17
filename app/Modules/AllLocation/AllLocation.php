@@ -326,7 +326,7 @@ class AllLocation extends DiviModule {
 
 
 		if ( ! empty( $available_location ) ) {
-			$location_includes = ! empty( $args['rtcl_location'] ) ? $args['rtcl_location'] : [];
+			$location_includes = ! empty( $args['rtcl_location'] ) ? $args['rtcl_location'] : '';
 			$location_includes = explode( '|', $location_includes );
 
 			$location_terms = DiviFunctions::divi_get_user_selected_terms( $location_includes, rtcl()->location );
