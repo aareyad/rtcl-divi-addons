@@ -28,6 +28,7 @@ if (process.env.npm_config_package) {
             'assets',
             'languages',
             'vendor',
+            'templates',
             'index.php',
             `${package_slug}.php`];
         fs.ensureDir(copyTo, function (err) {
